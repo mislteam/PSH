@@ -1,0 +1,1 @@
+import{r as s,j as r,c as o}from"./axios-ac480417.js";import{a as n,M as a,C as c}from"./Home-6231f22b.js";const i=()=>{const{coins:e,prices:t}=s.useContext(n);return r.jsx("div",{className:"my-5",children:r.jsx(a,{coins:e,prices:t})})},x=()=>r.jsx(r.Fragment,{children:r.jsx(c,{children:r.jsx(i,{})})});o(document.getElementById("root")).render(r.jsx(x,{}));

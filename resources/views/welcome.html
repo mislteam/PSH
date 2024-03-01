@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Translate Web Page Content</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <h1>Welcome to My Website</h1>
+  <p>This is some content that needs to be translated.</p>
+  <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80" alt="">
+  <select id="languageSelect">
+    <option value="en">English</option>
+    <option value="fr">French</option>
+    <option value="es">Spanish</option>
+    <!-- Add more language options -->
+  </select>
+
+  <script>
+    $('#languageSelect').change(function () {
+      const selectedLanguage = $(this).val();
+      const contentToTranslate = $('body').html();
+
+      $.ajax({
+        url: 'https://translation.googleapis.com/language/translate/v2',
+        method: 'POST',
+        dataType: 'json',
+        data: {
+          q: contentToTranslate,
+          target: selectedLanguage,
+          key: 'AIzaSyAiAoYHpQ0rgfbaNnOKTwwEGBUX9jPvDgM', // Replace with your Google Cloud API key
+        },
+        success: function (data) {
+          const translatedContent = data.data.translations[0].translatedText;
+          console.log(translatedContent);
+          $('body').html(translatedContent);
+        },
+      });
+    });
+  </script>
+</body>
+</html>

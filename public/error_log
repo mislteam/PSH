@@ -1,0 +1,25 @@
+[06-Sep-2023 08:20:16 UTC] PHP Warning:  require(/home/fwsdemop/public_html/coinbankkr/public/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/fwsdemop/public_html/coinbankkr/public/index.php on line 34
+[06-Sep-2023 08:20:16 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/fwsdemop/public_html/coinbankkr/public/../vendor/autoload.php' (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/fwsdemop/public_html/coinbankkr/public/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/fwsdemop/public_html/coinbankkr/public/index.php on line 34
+[06-Sep-2023 08:20:28 UTC] PHP Warning:  require(/home/fwsdemop/public_html/coinbankkr/public/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/fwsdemop/public_html/coinbankkr/public/index.php on line 34
+[06-Sep-2023 08:20:28 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/fwsdemop/public_html/coinbankkr/public/../vendor/autoload.php' (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/fwsdemop/public_html/coinbankkr/public/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/fwsdemop/public_html/coinbankkr/public/index.php on line 34
+[06-Sep-2023 08:20:54 UTC] PHP Warning:  require(/home/fwsdemop/public_html/coinbankkr/public/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/fwsdemop/public_html/coinbankkr/public/index.php on line 34
+[06-Sep-2023 08:20:54 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/fwsdemop/public_html/coinbankkr/public/../vendor/autoload.php' (include_path='.:/opt/alt/php80/usr/share/pear:/opt/alt/php80/usr/share/php:/usr/share/pear:/usr/share/php') in /home/fwsdemop/public_html/coinbankkr/public/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/fwsdemop/public_html/coinbankkr/public/index.php on line 34
+[06-Sep-2023 08:27:19 UTC] PHP Warning:  require(/home/fwsdemop/public_html/coinbankkr/public/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/fwsdemop/public_html/coinbankkr/public/index.php on line 34
+[06-Sep-2023 08:27:19 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/fwsdemop/public_html/coinbankkr/public/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/fwsdemop/public_html/coinbankkr/public/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/fwsdemop/public_html/coinbankkr/public/index.php on line 34
+[06-Sep-2023 08:56:13 UTC] PHP Warning:  require(/home/fwsdemop/public_html/coinbankkr/public/../vendor/autoload.php): Failed to open stream: No such file or directory in /home/fwsdemop/public_html/coinbankkr/public/index.php on line 34
+[06-Sep-2023 08:56:13 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/fwsdemop/public_html/coinbankkr/public/../vendor/autoload.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/fwsdemop/public_html/coinbankkr/public/index.php:34
+Stack trace:
+#0 {main}
+  thrown in /home/fwsdemop/public_html/coinbankkr/public/index.php on line 34

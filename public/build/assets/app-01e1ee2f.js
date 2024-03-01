@@ -1,0 +1,1 @@
+import{c as r,j as e,H as s,R as t,a as o}from"./axios-ac480417.js";import{C as n,H as a}from"./Home-6231f22b.js";const i=()=>e.jsx(e.Fragment,{children:e.jsx(n,{children:e.jsx(s,{children:e.jsx(t,{children:e.jsx(o,{path:"/",element:e.jsx(a,{})})})})})});r(document.getElementById("root")).render(e.jsx(i,{}));

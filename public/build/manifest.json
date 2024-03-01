@@ -1,0 +1,51 @@
+{
+  "Home.css": {
+    "file": "assets/Home-06737433.css",
+    "src": "Home.css"
+  },
+  "_Home-6231f22b.js": {
+    "css": [
+      "assets/Home-06737433.css"
+    ],
+    "file": "assets/Home-6231f22b.js",
+    "imports": [
+      "_axios-ac480417.js"
+    ]
+  },
+  "_axios-ac480417.js": {
+    "file": "assets/axios-ac480417.js"
+  },
+  "resources/js/home/app.jsx": {
+    "file": "assets/app-01e1ee2f.js",
+    "imports": [
+      "_axios-ac480417.js",
+      "_Home-6231f22b.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/home/app.jsx"
+  },
+  "resources/js/market/app.jsx": {
+    "file": "assets/app-253bd6e0.js",
+    "imports": [
+      "_axios-ac480417.js",
+      "_Home-6231f22b.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/market/app.jsx"
+  },
+  "resources/js/trade/app.css": {
+    "file": "assets/app-4d235328.css",
+    "src": "resources/js/trade/app.css"
+  },
+  "resources/js/trade/app.jsx": {
+    "css": [
+      "assets/app-4d235328.css"
+    ],
+    "file": "assets/app-ee9014fd.js",
+    "imports": [
+      "_axios-ac480417.js"
+    ],
+    "isEntry": true,
+    "src": "resources/js/trade/app.jsx"
+  }
+}
