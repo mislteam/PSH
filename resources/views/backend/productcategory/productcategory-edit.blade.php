@@ -48,12 +48,12 @@
                             <label class="col-sm-2 col-form-label"><strong>Product Category Image:</strong></label>
                             <div class="col-sm-10">
                                 <img src="{{asset('storage/category_images/'.$category->category_image) }}"
-                                    class="rounded img-thumbnail shadow-sm" alt="cat" />
+                                    class="rounded img-thumbnail shadow-sm" alt="cat" id="preview_image_before_upload"/>
                                 <div class="input-group">
                                     <div class="custom-file">
                                         <input id="inputGroupFile01" type="file" name="cat_image"
                                             class="custom-file-input"
-                                            accept="image/jpeg, image/png, image/webp, image/jpeg">
+                                            accept="image/jpeg, image/png, image/webp, image/jpeg" id='fileInput'>
                                         <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                     </div>
                                 </div>

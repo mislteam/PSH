@@ -2,10 +2,10 @@
     <ul class="pagination pagination m-2 float-right">
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())
-            <li class="disabled page-item"><a href="#" class="page-link">Previous</a></li>
+            <li class="disabled page-item"><a href="#" class="page-link"><<<</a></li>
         @else
             <li class="page-item">
-                <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev" url='<?php echo(Request::segment(2))?>'>Previous</a></li>
+                <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev" url='<?php echo(Request::segment(2))?>'><<<</a></li>
         @endif
 
         @if($paginator->currentPage() > 3)
@@ -36,9 +36,9 @@
         {{-- Next Page Link --}}
         @if ($paginator->hasMorePages())
             <li class="page-item">
-                <a href="{{ $paginator->nextPageUrl() }}" rel="next" class="page-link" url='<?php echo(Request::segment(2))?>'>Next</a></li>
+                <a href="{{ $paginator->nextPageUrl() }}" rel="next" class="page-link" url='<?php echo(Request::segment(2))?>'>>>></a></li>
         @else
-            <li class="disabled page-item"><a href="#" class="page-link">Last</a></li>
+            <li class="disabled page-item"><a href="#" class="page-link">>>></a></li>
         @endif
     </ul>
 @endif

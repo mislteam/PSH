@@ -33,7 +33,17 @@ class PermissionSeeder extends Seeder
             'view changePlan',   
             'view admin',
             'view category',
+            'edit category',
+            'delete category',
+            'create category',
             'view subcategory',
+            'edit subcategory',
+            'delete subcategory',
+            'create subcategory',
+            'view brand',
+            'edit brand',
+            'delete brand',
+            'create brand',
         ];
 
         foreach ($permissions as $permission) {

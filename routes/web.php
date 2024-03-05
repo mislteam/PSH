@@ -21,6 +21,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\GetamountController;
 use App\Http\Controllers\Backend\HomebannerController;
 use App\Http\Controllers\Backend\PermissionController;
+use App\Http\Controllers\Backend\ProductBrandController;
 use App\Http\Controllers\Backend\ServicesavingController;
 use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\ProductCategoryController;
@@ -90,7 +91,15 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
         Route::post('/product-sub-category/delete', [ProductSubCategoryController::class, 'delete'])->name('productsubcategory.delete');
     });
 
-
+    // Products brands
+    Route::prefix('products')->group(function () {
+        Route::get('/product-brand', [ProductBrandController::class, 'index'])->name('productbrand.index');
+        Route::get('/product-brand/create', [ProductBrandController::class, 'create'])->name('productbrand.create');
+        Route::post('/product-brand/store', [ProductBrandController::class, 'store'])->name('productbrand.store');
+        Route::get('/product-brand/edit/{id}', [ProductBrandController::class, 'edit'])->name('productbrand.edit');
+        Route::post('/product-brand/update/{id}', [ProductBrandController::class, 'update'])->name('productbrand.update');
+        Route::post('/product-brand/delete', [ProductBrandController::class, 'delete'])->name('productbrand.delete');
+    });
 
     // User 
     Route::prefix('user')->group(function () {

@@ -23,7 +23,7 @@
   </form>
   @else
   <div style="padding:10px;">
-    <a href="{{route('login')}}">login</a> | <a href="{{route('register')}}">Register</a>
+    <a href="{{route('login')}}">login</a> 
   </div>
   @endif
   <script src="{{ asset('template/js/plugins/toastr/toastr.min.js') }}"></script>

@@ -14,4 +14,16 @@ class ProductCategory extends Model
     {
         return $this->hasMany(ProductSubCategory::class, 'id');
     }
+
+    public function brands()
+    {
+        return $this->hasManyThrough(
+            'App\ProductBrand',
+            'App\ProductSubCategory',
+            'product_category_id',
+            'product_sub_category_id',
+            'id',
+            'id'
+        );
+    }
 }

@@ -15,8 +15,10 @@
     </div>
     <div class="col-sm-8">
         <div class="form-group text-lg-start float-lg-right mt-5">
+            @can('create subcategory')
             <a href="{{route('productsubcategory.create')}}" class="btn btn-dark m-t-n-xs">Create Product Sub
                 Category</a>
+                @endcan
         </div>
     </div>
 </div>
@@ -49,19 +51,16 @@
                                 </td>
                                 <td class="text-right">
                                     <div class="btn-group">
+                                        @can('edit subcategory')
                                         <button class="btn-white btn btn-sm">
                                             <a href="{{route('productsubcategory.edit',$subcat->id)}}"
                                                 class="text-dark">Edit</a>
                                         </button>
-                                        {{-- @can('delete users') --}}
-                                        {{-- @if (!$user->hasRole('admin')) --}}
-                                        {{-- <div class=""> --}}
+                                        @endcan
+                                        @can('delete subcategory')
                                             <button class="btn btn-white btn-sm text-dark"
                                                 onclick="deleteForm('{{route('productsubcategory.delete')}}', {{$subcat->id}})">delete</button>
-                                            {{--
-                                        </div> --}}
-                                        {{-- @endif --}}
-                                        {{-- @endcan --}}
+                                        @endcan
                                     </div>
                                 </td>
                             </tr>

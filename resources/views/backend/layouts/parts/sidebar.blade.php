@@ -1,10 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title> {{ generalSetting('title') }} | @yield('title') </title>
+    <link rel="shortcut icon" href="{{ asset('img/logo/' . generalSetting('logo')) }}" type="image/jpg">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="{{ asset('template/css/animate.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/frontend/appV3.css')}}">
+    <link rel="stylesheet" href="{{asset('css/frontend/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/main/fontawesome6.4/css/fontawesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/main/fontawesome6.4/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('template/css/plugins/toastr/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/css/plugins/sweetalert/sweetalert.min.css') }}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    @yield('style')
+</head>
+<body>
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav metismenu" id="side-menu">
             <li class="nav-header">
                 <div class="profile-element">
                     <div class=" d-flex justify-content-between align-items-center">
-                        <img src="{{asset(" image/logo/".generalSetting('logo'))}}" alt="" class="img-fluid w-100">
+                        <img src="{{asset("image/logo/".generalSetting('logo'))}}" alt="" class="img-fluid w-100">
                     </div>
                 </div>
                 <div class="logo-element">
@@ -20,7 +40,6 @@
                 <a href=""><i class="fa fa-shopping-cart"></i> <span class="nav-label"> Products </span><span
                         class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    {{-- @can('view permissions') --}}
                     <li class="{{ url()->current() == url('/admin/products/product') ? 'active' : '' }}">
                         <a href="{{ route('product.index') }}"><span class="nav-label">All Products</span></a>
                     </li>
@@ -36,9 +55,11 @@
                                 Category</span></a>
                     </li>
                     @endcan
-                    <li class="{{ url()->current() == url('/admin/products/Brands') ? 'active' : '' }}">
-                        <a href="{{ route('product.index') }}"> <span class="nav-label">Products Brands</span></a>
+                    @can('view brand')
+                    <li class="{{ url()->current() == url('/admin/products/product-brand') ? 'active' : '' }}">
+                        <a href="{{ route('productbrand.index') }}"> <span class="nav-label">Products Brands</span></a>
                     </li>
+                    @endcan
                     <li class="{{ url()->current() == url('/admin/products/Warranty') ? 'active' : '' }}">
                         <a href="{{ route('product.index') }}"> <span class="nav-label">Products Warranty</span></a>
                     </li>

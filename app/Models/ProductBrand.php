@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ProductSubCategory extends Model
+class ProductBrand extends Model
 {
     use HasFactory;
     protected $guarded = [];
@@ -15,8 +15,8 @@ class ProductSubCategory extends Model
         return $this->belongsTo(ProductCategory::class, 'product_category_id');
     }
 
-    public function brands()
+    public function subCategory()
     {
-        return $this->hasMany(ProductBrand::class, 'product_sub_category_id');
+        return $this->belongsTo(ProductSubCategory::class, 'product_sub_category_id');
     }
 }
