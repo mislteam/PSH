@@ -30,15 +30,10 @@ class PermissionSeeder extends Seeder
             'edit account setting',
             'view customers',
             'delete customers',
-            // 'view faq',
-            // 'create faq',
-            // 'edit faq',
-            // 'delete faq',
-            'view changePlan',
-            // 'view language',
-            // 'edit language',
-            // 'delete language',
+            'view changePlan',   
             'view admin',
+            'view category',
+            'view subcategory',
         ];
 
         foreach ($permissions as $permission) {

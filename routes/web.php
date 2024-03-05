@@ -1,8 +1,11 @@
 <?php
 
+use Faker\Guesser\Name;
+use App\Models\ProductCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Backend\FaqController;
 use App\Http\Controllers\Backend\UserController;
@@ -15,18 +18,18 @@ use App\Http\Controllers\Frontend\WalletController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\GetamountController;
 use App\Http\Controllers\Backend\HomebannerController;
 use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Backend\ServicesavingController;
 use App\Http\Controllers\Backend\GeneralSettingController;
-use App\Http\Controllers\Backend\GetamountController;
+use App\Http\Controllers\Backend\ProductCategoryController;
 use App\Http\Controllers\Backend\TradeAppointmentController;
+use App\Http\Controllers\Backend\ProductSubCategoryController;
 use App\Http\Controllers\Backend\TradeController as BackendTradeController;
 use App\Http\Controllers\Backend\TicketController as BackendTicketController;
 use App\Http\Controllers\Backend\WalletController as BackendWalletController;
 use App\Http\Controllers\Frontend\AccountController as FrontendAccountController;
-use App\Http\Controllers\ProductController;
-use Faker\Guesser\Name;
 
 // Home Page 
 // Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -54,63 +57,40 @@ Route::get('/email/verify/{id}', [VerificationController::class, 'verify'])->nam
 // Home Page 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Service and saving 
-Route::get('center/{param}', [HomeController::class, 'service_saving'])->name('service_saving');
-
-Route::middleware(['role:user', 'verified','auth', 'checkuserban'])->group(function () {
-    // Account 
-    Route::prefix('account')->group(function () {
-        Route::get('/setting', [FrontendAccountController::class, 'index'])->name('user.account');
-        Route::get('/edit', [FrontendAccountController::class, 'edit'])->name('user.accountEdit');
-        Route::post('/edit', [FrontendAccountController::class, 'update'])->name('user.accountUpdate');
-        // change password 
-        Route::get('/change-password', [FrontendAccountController::class, 'change_password'])->name('user.changePassword');
-        Route::post('/change-password', [FrontendAccountController::class, 'update_password'])->name('user.updatePassword');
-
-        // Notify 
-        Route::get('/notify/{id}', [FrontendAccountController::class, 'notify'])->name('user.notify');
-
-        // Transaction 
-        Route::get('/transaction', [FrontendAccountController::class, 'transaction'])->name('user.transaction');
-    });
-
-    // Support ticket 
-    Route::get('/support-ticket', [TicketController::class, 'index'])->name('user.ticket');
-    Route::get('/support-ticket/create', [TicketController::class, 'create'])->name('user.ticketCreate');
-    Route::post('/support-ticket/create', [TicketController::class, 'store'])->name('user.ticketStore');
-    Route::get('/support-ticket/{id}', [TicketController::class, 'show'])->name('user.ticketView');
-    Route::post('/support-ticket/reply/{id}', [TicketController::class, 'reply_ticket'])->name('user.ticketReply');
-    Route::post('/support-ticket/change-status/{id}', [TicketController::class, 'change_status'])->name('user.ticketStatusChange');
-
-    // Trade 
-    Route::get('/trade', [TradeController::class, 'index'])->name('user.trade');
-
-    // Wallet Setting 
-    Route::get('/wallet', [WalletController::class, 'index'])->name('user.wallet');
-
-    // Deposit 
-    Route::get('/wallet/buy/{symbol}', [WalletController::class, 'buy'])->name('user.buy');
-    Route::post('/wallet/deposit', [WalletController::class, 'deposit'])->name('user.createDeposit');
-    Route::get('/download/{walletAdd}', [WalletController::class, 'qrdownload'])->name('qrdownload');
-
-    // Withdraw 
-    Route::match(['get', 'post'], '/wallet/withdraw/{symbol}/auth', [WalletController::class, 'check_password'])->name('wallet.check_password');
-    Route::match(['get', 'post'], '/wallet/withdraw/{symbol}', [WalletController::class, 'withdraw'])->name('user.withdraw');
-    Route::match(['get', 'post'], '/wallet/withdraw/{symbol}/otpcode', [WalletController::class, 'check_otp'])->name('wallet.check_otp');
-
-    // Market 
-    Route::get('/market', [MarketController::class, 'index'])->name('user.market');
+Route::middleware(['role:user', 'verified', 'auth', 'checkuserban'])->group(function () {
 });
 
 
-// Backend 
+// Backend Route
 Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     // Products
-    Route::prefix('products')->group(function(){
-        Route::get('/product',[ProductController::class,'index'])->name('product.index');
+    Route::prefix('products')->group(function () {
+        Route::get('/product', [ProductController::class, 'index'])->name('product.index');
     });
+
+    // Products Categorys
+    Route::prefix('products')->group(function () {
+        Route::get('/product-category', [ProductCategoryController::class, 'index'])->name('productcategory.index');
+        Route::get('/product-category/create', [ProductCategoryController::class, 'create'])->name('productcategory.create');
+        Route::post('/product-category/store', [ProductCategoryController::class, 'store'])->name('productcategory.store');
+        Route::get('/product-category/edit/{id}', [ProductCategoryController::class, 'edit'])->name('productcategory.edit');
+        Route::post('/product-category/update/{id}', [ProductCategoryController::class, 'update'])->name('productcategory.update');
+        Route::post('/product-category/delete', [ProductCategoryController::class, 'delete'])->name('productcategory.delete');
+    });
+
+    // Products Sub Categorys
+    Route::prefix('products')->group(function () {
+        Route::get('/product-sub-category', [ProductSubCategoryController::class, 'index'])->name('productsubcategory.index');
+        Route::get('/product-sub-category/create', [ProductSubCategoryController::class, 'create'])->name('productsubcategory.create');
+        Route::post('/product-sub-category/store', [ProductSubCategoryController::class, 'store'])->name('productsubcategory.store');
+        Route::get('/product-sub-category/edit/{id}', [ProductSubCategoryController::class, 'edit'])->name('productsubcategory.edit');
+        Route::post('/product-sub-category/update/{id}', [ProductSubCategoryController::class, 'update'])->name('productsubcategory.update');
+        Route::post('/product-sub-category/delete', [ProductSubCategoryController::class, 'delete'])->name('productsubcategory.delete');
+    });
+
+
 
     // User 
     Route::prefix('user')->group(function () {

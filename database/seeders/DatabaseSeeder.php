@@ -1,6 +1,8 @@
 <?php
 
 namespace Database\Seeders;
+
+use App\Models\ProductCategory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,6 +20,8 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             GeneralSettingSeeder::class,
             UserSeeder::class,
+            ProductCategorySeeder::class,
+            ProductSubCategorySeeder::class,
         ]);
     }
 }
