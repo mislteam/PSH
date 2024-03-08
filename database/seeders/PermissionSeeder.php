@@ -44,6 +44,18 @@ class PermissionSeeder extends Seeder
             'edit brand',
             'delete brand',
             'create brand',
+            'view product',
+            'edit product',
+            'delete product',
+            'create product',
+            'view usersupp',
+            'edit usersupp',
+            'delete usersupp',
+            'create usersupp',
+            'view techsupp',
+            'edit techsupp',
+            'delete techsupp',
+            'create techsupp',
         ];
 
         foreach ($permissions as $permission) {

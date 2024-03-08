@@ -80,7 +80,7 @@ class ProductBrandController extends ResponseController
         }
 
         ProductBrand::where('id', $id)->update($brand);
-        return redirect()->route('productbrand.index')->with('message', 'Product Brand updated successfully');;
+        return redirect()->route('productbrand.index')->with('message', 'Product Brand updated successfully');
     }
 
     // product brand delete method

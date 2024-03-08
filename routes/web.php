@@ -1,39 +1,24 @@
 <?php
 
-use Faker\Guesser\Name;
-use App\Models\ProductCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Backend\FaqController;
+use App\Http\Controllers\Auth\LoginController;;
+
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Frontend\TradeController;
 use App\Http\Controllers\Backend\AccountController;
-use App\Http\Controllers\Frontend\MarketController;
-use App\Http\Controllers\Frontend\TicketController;
-use App\Http\Controllers\Frontend\WalletController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\Backend\GetamountController;
-use App\Http\Controllers\Backend\HomebannerController;
 use App\Http\Controllers\Backend\PermissionController;
+use App\Http\Controllers\Backend\UserSupportController;
 use App\Http\Controllers\Backend\ProductBrandController;
-use App\Http\Controllers\Backend\ServicesavingController;
 use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\ProductCategoryController;
-use App\Http\Controllers\Backend\TradeAppointmentController;
 use App\Http\Controllers\Backend\ProductSubCategoryController;
-use App\Http\Controllers\Backend\TradeController as BackendTradeController;
-use App\Http\Controllers\Backend\TicketController as BackendTicketController;
-use App\Http\Controllers\Backend\WalletController as BackendWalletController;
-use App\Http\Controllers\Frontend\AccountController as FrontendAccountController;
-
-// Home Page 
-// Route::get('/', [HomeController::class, 'index'])->name('home');
+use App\Http\Controllers\Backend\TechSupportController;
 
 // Frontend  Login 
 Auth::routes([
@@ -69,6 +54,10 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
     // Products
     Route::prefix('products')->group(function () {
         Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+        Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+        Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+        Route::get('/product/edit', [ProductController::class, 'edit'])->name('product.edit');
+        Route::post('/product/delete', [ProductController::class, 'delete'])->name('product.delete');
     });
 
     // Products Categorys
@@ -99,6 +88,26 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
         Route::get('/product-brand/edit/{id}', [ProductBrandController::class, 'edit'])->name('productbrand.edit');
         Route::post('/product-brand/update/{id}', [ProductBrandController::class, 'update'])->name('productbrand.update');
         Route::post('/product-brand/delete', [ProductBrandController::class, 'delete'])->name('productbrand.delete');
+    });
+
+    // Products User Support
+    Route::prefix('products')->group(function () {
+        Route::get('/user-support', [UserSupportController::class, 'index'])->name('usersupport.index');
+        Route::get('/usersupport/create', [UserSupportController::class, 'create'])->name('usersupport.create');
+        Route::post('/usersupport/store', [UserSupportController::class, 'store'])->name('usersupport.store');
+        Route::get('/usersupport/edit/{id}', [UserSupportController::class, 'edit'])->name('usersupport.edit');
+        Route::post('/usersupport/update/{id}', [UserSupportController::class, 'update'])->name('usersupport.update');
+        Route::post('/usersupport/delete', [UserSupportController::class, 'delete'])->name('usersupport.delete');
+    });
+
+    // Products Technical Support
+    Route::prefix('products')->group(function () {
+        Route::get('/tech-support', [TechSupportController::class, 'index'])->name('techsupport.index');
+        Route::get('/tech-support/create', [TechSupportController::class, 'create'])->name('techsupport.create');
+        Route::post('/tech-support/store', [TechSupportController::class, 'store'])->name('techsupport.store');
+        Route::get('/tech-support/edit/{id}', [TechSupportController::class, 'edit'])->name('techsupport.edit');
+        Route::post('/tech-support/update/{id}', [TechSupportController::class, 'update'])->name('techsupport.update');
+        Route::post('/tech-support/delete', [TechSupportController::class, 'delete'])->name('techsupport.delete');
     });
 
     // User 
