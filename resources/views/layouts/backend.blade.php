@@ -83,9 +83,7 @@
     <script src="{{ asset('template/js/ajax_method.js') }}"></script>
     <script src="{{ asset('template/js/script.js') }}"></script>
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-
     @yield('script')
-    {{-- @include('backend.wallet.createtranstion') --}}
     @include('backend.toastr_message')
     <script>
         $('.switchery').each(function() {
@@ -101,7 +99,7 @@
             $('#content').show();
         })
     </script>
-    <script>
+    {{-- <script>
         const pusher = new Pusher('79202227f88fad1bf3bb', {
             cluster: 'ap1',
         });
@@ -123,24 +121,6 @@
                 }
                 toastr.info("Trade Request from " + res.data.from);
             }
-        });
-    </script>
-    {{-- <script>
-        $(document).ready(function() {
-            $('#user').on('change', function() {
-                let userId = $(this).val();
-                if (userId) {
-                    $.ajax({
-                        type: 'GET',
-                        url: '/get-user-amount/' + userId, 
-                        success: function(data) {
-                            $('#amount').val(data.amount);
-                        }
-                    });
-                } else {
-                    $('#amount').val('');
-                }
-            });
         });
     </script> --}}
 </body>

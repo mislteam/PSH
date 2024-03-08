@@ -15,7 +15,7 @@
     </div>
     <div class="col-sm-8">
         <div class="form-group text-lg-start float-lg-right mt-5">
-            <a href="product.html" class="btn btn-primary m-t-n-xs">Back</a>
+            <a href="product.html" class="btn btn-dark m-t-n-xs">Back</a>
         </div>
     </div>
 </div>
@@ -31,14 +31,15 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"><strong>Product Name:</strong></label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" name="product_name" placeholder="Enter Product Name">
+                                        <input type="text" class="form-control" name="product_name"
+                                            placeholder="Enter Product Name" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"><strong>Prodcut Category</strong></label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" name="product_cat" >
-                                            <option selected>Select Product Cateory</option>
+                                        <select class="form-control" name="product_cat" required>
+                                            <option value="" selected disabled>Select Product Cateory</option>
                                             @foreach ($cat as $item)
                                             <option value="{{$item->id}}">{{$item->name}}</option>
                                             @endforeach
@@ -48,8 +49,8 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"><strong>Prodcut Sub Category</strong></label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" name="product_subcat">
-                                            <option selected>Select Product Sub Cateory</option>
+                                        <select class="form-control" name="product_subcat" required>
+                                            <option value="" selected disabled>Select Product Sub Cateory</option>
                                             @foreach ($subcat as $item)
                                             <option value="{{$item->id}}">{{$item->name}}</option>
                                             @endforeach
@@ -59,8 +60,8 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"><strong>Prodcut Brands</strong></label>
                                     <div class="col-sm-10">
-                                        <select class="form-control" name="product_brand">
-                                            <option selected>Select Brands</option>
+                                        <select class="form-control" name="product_brand" required>
+                                            <option value="" selected disabled>Select Brands</option>
                                             @foreach ($brand as $item)
                                             <option value="{{$item->id}}">{{$item->name}}</option>
                                             @endforeach
@@ -71,23 +72,28 @@
                                     <label class="col-sm-2 col-form-label"><strong>Prodcut
                                             Specification</strong></label>
                                     <div class="col-sm-10">
-                                        <div class="row">
-                                            <div class="col-sm-5 form-group">
-                                                <input type="text" class="form-control" placeholder="Title">
-                                            </div>
-                                            <div class="col-sm-5 form-group">
-                                                <input type="text" class="form-control" placeholder="Value">
-                                            </div>
-                                            <div class="col-sm-2 form-group">
-                                                <button class="form-control btn btn-sm btn-primary" type="submit"
-                                                    disabled><strong>Delete</strong></button>
+                                        <div id="dynamic-fields">
+                                            <div class="row field">
+                                                <div class="col-sm-5 form-group">
+                                                    <input type="text" class="form-control" name="title[]"
+                                                        placeholder="Title" required>
+                                                </div>
+                                                <div class="col-sm-5 form-group">
+                                                    <input type="text" class="form-control" name="value[]"
+                                                        placeholder="Value" required>
+                                                </div>
+                                                <div class="col-sm-2 form-group">
+                                                    <button class="form-control btn btn-sm btn-dark" type="submit"
+                                                        disabled><strong>Delete</strong></button>
+                                                </div>
                                             </div>
                                         </div>
+
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="form-group text-end float-right">
-                                                    <button class="btn btn-primary m-t-n-xs text-start float-right"
-                                                        type="submit"><strong>Add ++</strong></button>
+                                                    <button class="btn btn-dark m-t-n-xs text-start float-right"
+                                                        type="button" id="add-field"><strong>Add ++</strong></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -96,8 +102,8 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"><strong>Product Description:</strong></label>
                                     <div class="col-sm-10">
-                                        <textarea id="summernote" class="form-control mt-2" cols="20"
-                                            rows="5" placeholder="Enter Body" name="product_des"></textarea>
+                                        <textarea id="summernote" class="form-control mt-2" cols="20" rows="5"
+                                            placeholder="Enter Body" name="product_des" required></textarea>
                                     </div>
                                 </div>
                                 <label class="col-form-label"><strong>Document File:</strong></label>
@@ -106,7 +112,8 @@
                                     <div class="col-sm-10">
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input id="inputGroupFile01" type="file" class="custom-file-input" name="product_pdf">
+                                                <input id="inputGroupFile01" type="file" class="custom-file-input"
+                                                    name="product_pdf" accept=".pdf" required>
                                                 <label class="custom-file-label" for="inputGroupFile01">Choose
                                                     file</label>
                                             </div>
@@ -116,10 +123,11 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"><strong>Video Link:</strong></label>
                                     <div class="col-sm-10 form-group">
-                                        <input type="text" class="form-control" placeholder="Enter your youtube link" name="product_video_link">
+                                        <input type="text" class="form-control" placeholder="Enter your youtube link"
+                                            name="product_video_link" required>
                                     </div>
                                 </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -133,7 +141,9 @@
                 <div class="ibox-content">
                     <div class="input-group">
                         <div class="custom-file">
-                            <input id="inputGroupFile01" type="file" class="custom-file-input" name="product_guide_image">
+                            <input id="inputGroupFile01" type="file" class="custom-file-input"
+                                name="product_guide_image" accept="image/jpeg, image/png, image/webp, image/jpeg"
+                                required>
                             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                         </div>
                     </div>
@@ -146,7 +156,8 @@
                 <div class="ibox-content">
                     <div class="input-group">
                         <div class="custom-file">
-                            <input id="inputGroupFile01" type="file" class="custom-file-input" name="product_guide_pdf">
+                            <input id="inputGroupFile01" type="file" class="custom-file-input" name="product_guide_pdf"
+                                accept=".pdf" required>
                             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                         </div>
                     </div>
@@ -158,22 +169,83 @@
                 </div>
                 <div class="ibox-content">
                     <div class="form-group">
-                        <select class="form-control">
-                            <option selected>Select Video Type</option>
-                            <option>Youtube Link</option>
-                            <option>Video file Upload</option>
+                        <select class="form-control" id="source" name="source" required>
+                            {{-- <option value="type" selected>Select Video Type</option> --}}
+                            <option value="link">Youtube Link</option>
+                            <option value="file">Video file Upload</option>
                         </select>
+                    </div>
+
+                    <div id="linkInput" class="form-group">
+                        <label for="video_link">Enter Video Link:</label>
+                        <input type="text" class="form-control" id="video_link" name="video_link"
+                            placeholder="Enter Links">
+                    </div>
+
+                    <div id="fileInput" class="form-group" style="display:none;">
+                        <label for="video_file">Upload Video File:</label>
+                        <input type="file" class="form-control-file" id="video_file" name="video_file" accept="video/*">
                     </div>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-12">
-                    <button class="btn btn-sm btn-primary float-right text-start m-t-n-xs"
+                    <button class="btn btn-sm btn-dark float-right text-start m-t-n-xs"
                         type="submit"><strong>Save</strong></button>
                 </div>
             </div>
         </div>
-    </form>
+        </form>
     </div>
 </div>
 @endsection
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Function to add new label and input field pair
+        function addField() {
+            let fieldCount = document.querySelectorAll('.field').length + 1;
+            const newField = `
+            <div class="row field">
+                <div class="col-sm-5 form-group">
+                    <input type="text" class="form-control" name="title[]" placeholder="Title ${fieldCount}">
+                </div>
+                <div class="col-sm-5 form-group">
+                    <input type="text" class="form-control" name="value[]" placeholder="Value ${fieldCount}">
+                </div>
+                <div class="col-sm-2 form-group">
+                    <button class="form-control btn btn-sm btn-dark delete-field" type="button">
+                        Delete
+                    </button>
+                </div>
+            </div>`;
+            document.getElementById('dynamic-fields').insertAdjacentHTML('beforeend', newField);
+        }
+
+        // Add event listener to the button
+        document.getElementById('add-field').addEventListener('click', addField);
+
+        // Event delegation for dynamically added delete buttons
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('delete-field')) {
+                event.target.closest('.field').remove();
+            }
+        });
+
+        var sourceSelect = document.getElementById('source');
+        var linkInput = document.getElementById('linkInput');
+        var fileInput = document.getElementById('fileInput');
+
+        sourceSelect.addEventListener('change', function() {
+            if (this.value === 'link') {
+                linkInput.style.display = 'block';
+                fileInput.style.display = 'none';
+            } else if (this.value === 'file') {
+                linkInput.style.display = 'none';
+                fileInput.style.display = 'block';
+            }else if(this.value === 'type'){
+                linkInput.style.display = 'none';
+                fileInput.style.display = 'none';
+            }
+        });
+    });
+</script>

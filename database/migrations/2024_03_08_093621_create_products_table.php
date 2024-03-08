@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignId('product_brand_id')->constrained()->onDelete('cascade');
             // Add other columns for your product table
             $table->string('name');
-            $table->text('specification')->nullable();
+            $table->json('specification')->nullable();
             $table->longText('description');
             $table->string('product_pdf')->nullable();
             $table->string('product_video_link')->nullable();

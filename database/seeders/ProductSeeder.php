@@ -21,7 +21,7 @@ class ProductSeeder extends Seeder
             'product_sub_category_id' => 1,
             'product_brand_id'=>1,
             'name'=>'Product-1',
-            'specification'=>'specification-1',
+            'specification'=>null,
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
             'product_pdf'=> 'product-pdf',
             'product_video_link'=>'product_video_link',
