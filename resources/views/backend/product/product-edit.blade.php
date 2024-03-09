@@ -1,9 +1,12 @@
+@php
+$specification = json_decode($product->specification, true);
+@endphp
 @extends('layouts.backend')
-@section('title', 'Product Page')
+@section('title', 'Product Edit Page')
 @section('content')
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
-        <h2 class="mt-3 mb-2">Create Products</h2>
+        <h2 class="mt-3 mb-2">Edit Products</h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="dashboard.html">Home</a>
@@ -26,13 +29,14 @@
                 <div class="col-lg-12">
                     <div class="ibox">
                         <div class="ibox-content">
-                            <form action="{{route('product.store')}}" method="post" enctype="multipart/form-data">
+                            <form action="{{route('product.update',$product->id)}}" method="post"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"><strong>Product Name:</strong></label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" name="product_name"
-                                            placeholder="Enter Product Name" required>
+                                            placeholder="Enter Product Name" value="{{$product->name}}" required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -41,7 +45,9 @@
                                         <select class="form-control" name="product_cat" required>
                                             <option value="" selected disabled>Select Product Cateory</option>
                                             @foreach ($cat as $item)
-                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                            <option value="{{$item->id}}" {{ $item->id == $product->product_category_id
+                                                ?
+                                                'selected' : '' }}>{{$item->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -52,7 +58,9 @@
                                         <select class="form-control" name="product_subcat" required>
                                             <option value="" selected disabled>Select Product Sub Cateory</option>
                                             @foreach ($subcat as $item)
-                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                            <option value="{{$item->id}}" {{ $item->id ==
+                                                $product->product_sub_category_id ?
+                                                'selected' : '' }}>{{$item->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -63,7 +71,8 @@
                                         <select class="form-control" name="product_brand" required>
                                             <option value="" selected disabled>Select Brands</option>
                                             @foreach ($brand as $item)
-                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                            <option value="{{$item->id}}" {{ $item->id == $product->product_brand_id ?
+                                                'selected' : '' }}>{{$item->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -72,23 +81,24 @@
                                     <label class="col-sm-2 col-form-label"><strong>Prodcut
                                             Specification</strong></label>
                                     <div class="col-sm-10">
+                                        @foreach($specification as $title => $value)
                                         <div id="dynamic-fields">
                                             <div class="row field">
                                                 <div class="col-sm-5 form-group">
                                                     <input type="text" class="form-control" name="title[]"
-                                                        placeholder="Title" required>
+                                                        placeholder="Title" required value="{{$title}}">
                                                 </div>
                                                 <div class="col-sm-5 form-group">
                                                     <input type="text" class="form-control" name="value[]"
-                                                        placeholder="Value" required>
+                                                        placeholder="Value" value="{{$value}}" required>
                                                 </div>
                                                 <div class="col-sm-2 form-group">
-                                                    <button class="form-control btn btn-sm btn-dark" type="submit"
-                                                        disabled><strong>Delete</strong></button>
+                                                    <button class="form-control btn btn-sm btn-dark delete-field"
+                                                        type="button"><strong>Delete</strong></button>
                                                 </div>
                                             </div>
                                         </div>
-
+                                        @endforeach
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="form-group text-end float-right">
@@ -103,17 +113,26 @@
                                     <label class="col-sm-2 col-form-label"><strong>Product Description:</strong></label>
                                     <div class="col-sm-10">
                                         <textarea id="summernote" class="form-control mt-2" cols="20" rows="5"
-                                            placeholder="Enter Body" name="product_des" required></textarea>
+                                            placeholder="Enter Body" name="product_des"
+                                            required>{{$product->description}}</textarea>
                                     </div>
                                 </div>
                                 <label class="col-form-label"><strong>Document File:</strong></label>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"><strong>PDF File:</strong></label>
                                     <div class="col-sm-10">
+                                        @if($product->product_pdf)
+                                        <a href="{{ asset('storage/product_pdf/' . $product->product_pdf) }}"
+                                            target="_blank">
+                                            {{ $product->product_pdf }}
+                                        </a>
+                                        @else
+                                        <span>No PDF file uploaded</span>
+                                        @endif
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <input id="inputGroupFile01" type="file" class="custom-file-input"
-                                                    name="product_pdf" accept=".pdf" required>
+                                                    name="product_pdf" accept=".pdf">
                                                 <label class="custom-file-label" for="inputGroupFile01">Choose
                                                     file</label>
                                             </div>
@@ -124,7 +143,7 @@
                                     <label class="col-sm-2 col-form-label"><strong>Video Link:</strong></label>
                                     <div class="col-sm-10 form-group">
                                         <input type="text" class="form-control" placeholder="Enter your youtube link"
-                                            name="product_video_link" required>
+                                            name="product_video_link" value="{{$product->product_video_link}}" required>
                                     </div>
                                 </div>
 
@@ -139,11 +158,12 @@
                     <h5><b>Feature Image</b></h5>
                 </div>
                 <div class="ibox-content">
+                    <img src="{{asset('storage/product_guide_image/'. $product->product_feature_image) }}"
+                        class="rounded img-thumbnail shadow-sm" alt="brand_img" />
                     <div class="input-group">
                         <div class="custom-file">
                             <input id="inputGroupFile01" type="file" class="custom-file-input"
-                                name="product_guide_image" accept="image/jpeg, image/png, image/webp, image/jpeg"
-                                required>
+                                name="product_feature_image" accept="image/jpeg, image/png, image/webp, image/jpeg">
                             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                         </div>
                     </div>
@@ -154,10 +174,15 @@
                     <h5><b>Guide Document (PDF)</b></h5>
                 </div>
                 <div class="ibox-content">
+                    @if($product->product_pdf)
+                    <a href="{{ asset('storage/product_guide_pdf/' . $product->product_guide_pdf) }}" target="_blank">
+                        {{ $product->product_guide_pdf }}
+                    </a>
+                    @endif
                     <div class="input-group">
                         <div class="custom-file">
                             <input id="inputGroupFile01" type="file" class="custom-file-input" name="product_guide_pdf"
-                                accept=".pdf" required>
+                                accept=".pdf">
                             <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                         </div>
                     </div>
@@ -179,10 +204,14 @@
                     <div id="linkInput" class="form-group">
                         <label for="video_link">Enter Video Link:</label>
                         <input type="text" class="form-control" id="video_link" name="video_link"
-                            placeholder="Enter Links">
+                            placeholder="Enter Links" value="{{$product->product_guide_video}}">
                     </div>
 
                     <div id="fileInput" class="form-group" style="display:none;">
+                        <a href="{{ asset('storage/product_guide_video/' . $product->product_guide_video) }}"
+                            target="_blank">
+                            {{ $product->product_guide_video }}
+                        </a>
                         <label for="video_file">Upload Video File:</label>
                         <input type="file" class="form-control-file" id="video_file" name="video_file" accept="video/*">
                     </div>
@@ -191,7 +220,7 @@
             <div class="form-group row">
                 <div class="col-sm-12">
                     <button class="btn btn-sm btn-dark float-right text-start m-t-n-xs"
-                        type="submit"><strong>Save</strong></button>
+                        type="submit"><strong>Update</strong></button>
                 </div>
             </div>
         </div>
@@ -213,7 +242,7 @@
                     <input type="text" class="form-control" name="value[]" placeholder="Value ${fieldCount}">
                 </div>
                 <div class="col-sm-2 form-group">
-                    <button class="form-control btn btn-sm btn-dark delete-field" type="button">
+                    <button class="form-control btn btn-sm btn-dark delete-field${fieldCount}" type="button">
                         Delete
                     </button>
                 </div>
@@ -225,10 +254,11 @@
         document.getElementById('add-field').addEventListener('click', addField);
 
         // Event delegation for dynamically added delete buttons
-        document.addEventListener('click', function(event) {
-            if (event.target.classList.contains('delete-field')) {
-                event.target.closest('.field').remove();
-            }
+        document.querySelectorAll('.delete-field').forEach(button => {
+        button.addEventListener('click', function() {
+        // Find the closest field container and remove it
+        this.closest('.field').remove();
+        });
         });
 
         var sourceSelect = document.getElementById('source');

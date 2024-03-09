@@ -99,30 +99,6 @@
             $('#content').show();
         })
     </script>
-    {{-- <script>
-        const pusher = new Pusher('79202227f88fad1bf3bb', {
-            cluster: 'ap1',
-        });
-        const channel = pusher.subscribe('generate-keys');
-        channel.bind('generate-key', function(res) {
-            console.log(res)
-            if (res.data.to = 'admin') {
-                toastr.options = {
-                    "closeButton": true,
-                    'debug': true,
-                    "progressBar": true,
-                    "closeHtml": `<button> <a href="${res.data.href}"> <i class="fa fa-eye"> </i></a> </button>`,
-                    "positionClass": "toast-top-center",
-                }
-                toastr.options.timeOut = 0;
-                toastr.options.extendedTimeOut = 0;
-                toastr.options.onCloseClick = function() {
-                    console.log('close button clicked');
-                }
-                toastr.info("Trade Request from " + res.data.from);
-            }
-        });
-    </script> --}}
 </body>
 
 </html>
