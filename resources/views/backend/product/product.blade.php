@@ -1,6 +1,14 @@
 @extends('layouts.backend')
 @section('title', 'Product Page')
 @section('content')
+@php
+    if(session('filter')) {
+        $category = session('filter')['category'];
+        $productname = session('filter')['name'];
+        $subcat = session('filter')['subcat'];
+        $brand = session('filter')['brand'];
+    }
+@endphp
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-sm-4">
         <h2 class="mt-3 mb-2">All Products</h2>
@@ -21,57 +29,57 @@
 </div>
 <div class="wrapper wrapper-content animated fadeInRight ecommerce">
     <div class="ibox-content m-b-sm border-bottom">
+        <form action="" method="get" class="my-3">
         <div class="row">
             <div class="col">
                 <div class="form-group">
                     <label class="col-form-label"><strong>Product Name</strong></label>
-                    <input type="text" id="product_name" name="product_name" value="" placeholder="Product Name"
-                        class="form-control">
+                    <input type="text" id="product_name" name="name" value="" placeholder="Product Name"
+                        class="form-control" value="{{$productname}}">
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
                     <label class="col-form-label"><strong>Prodcut Category</strong></label>
-                    <select class="form-control">
-                        <option selected>Select Product Cateory</option>
-                        <option>Electronic Weighing Scale</option>
-                        <option>Category 2</option>
-                        <option>Category 3</option>
-                        <option>Category 4</option>
+                    <select class="form-control" name="category">
+                        <option value="">Select Product Cateory</option>
+                        @foreach ($cat as $category)
+                        <option value="{{$category->id}}"> {{$category->name}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
                     <label class="col-form-label"><strong>Prodcut Sub Category</strong></label>
-                    <select class="form-control">
-                        <option selected>Select Product Sub Category</option>
-                        <option>Truck Scale</option>
-                        <option>Sub Category 2</option>
-                        <option>Sub Category 3</option>
-                        <option>Sub Category 4</option>
+                    <select class="form-control" name="subcat">
+                        <option value="">Select Product Sub Category</option>
+                        @foreach ($subcategory as $subcat)
+                        <option value="{{$subcat->id}}"> {{$subcat->name}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
                     <label class="col-form-label"><strong>Brands</strong></label>
-                    <select class="form-control">
-                        <option selected>Select Brands</option>
-                        <option>Setra</option>
-                        <option>Brand 2</option>
-                        <option>Brand 3</option>
-                        <option>Brand 4</option>
+                    <select class="form-control" name="brand">
+                        <option value="">Select Brands</option>
+                        @foreach ($brands as $pro_brand)
+                        <option value="{{$pro_brand->id}}"> {{$pro_brand->name}}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
                     <label class="col-form-label" for="status"></label>
-                    <a href="#" class="form-control btn btn-dark btn-xs mt-2">Search</a>
+                    {{-- <a href="#" class="form-control btn btn-dark btn-xs mt-2">Search</a> --}}
+                    <button type="submit" class="form-control btn btn-dark btn-sm text-white mt-3">  Search </button>
                 </div>
             </div>
         </div>
+        </form>
     </div>
     <div class="row">
         <div class="col-lg-12">

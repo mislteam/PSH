@@ -52,7 +52,7 @@
                             <div class="col-sm-10">
                                 <textarea class="form-control" rows="9" name="subcat_description" maxlength="5000"
                                     placeholder="Enter the Category Description"
-                                    required>{{$subcategory->name}}</textarea>
+                                    required>{{$subcategory->description}}</textarea>
                             </div>
                         </div>
                         <div class="form-group row">

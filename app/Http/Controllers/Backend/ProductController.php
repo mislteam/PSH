@@ -7,16 +7,49 @@ use App\Models\ProductBrand;
 use Illuminate\Http\Request;
 use App\Models\ProductCategory;
 use App\Models\ProductSubCategory;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\ResponseController;
 
 class ProductController extends ResponseController
 {
     //product index page
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::paginate(10);
-        return view('backend.product.product', compact('products'));
+        $productname = $request->query('name');
+        $category = $request->query('category');
+        $subcat = $request->query('subcat');
+        $brand = $request->query('brand');
+        $sessionArray = [
+            'name' => $productname,
+            'category' => $category,
+            'subcat'=> $subcat,
+            'brand'=> $brand
+        ];
+        session()->put('filter', $sessionArray); 
+        $query = Product::with(['category','subCategory','brand']);
+
+        if($category) {
+            $query->where('product_category_id', $category);
+        }
+
+        if($subcat) {
+            $query->where('product_sub_category_id', $subcat);
+        }
+
+        if($brand) {
+            $query->where('product_brand_id', $brand);
+        }
+
+        if($productname) {
+            // $query->whereHas('user', function($q) use ($productname) { 
+                $query->where('name', 'like', '%'.$productname.'%');
+            // });
+        }
+        // $orders = $query->paginate($perpage)->appends($request->except('page'));
+        $products = $query->paginate(10);
+        $cat = ProductCategory::all();
+        $subcategory = ProductSubCategory::all();
+        $brands = ProductBrand::all();
+        return view('backend.product.product', compact('products','cat','subcategory','brands'));
     }
 
     //product create page
@@ -150,6 +183,7 @@ class ProductController extends ResponseController
         $product['product_sub_category_id'] = $request->product_subcat;
         $product['product_brand_id'] = $request->product_brand;
         $product['name'] = $request->product_name;
+        $product['description'] = $request->product_des;
         $product['specification'] = json_encode($dynamicFields);
         $product['product_video_link'] = $request->product_video_link;
         $product['product_guide_video'] = $product_guide_video;

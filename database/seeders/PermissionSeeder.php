@@ -56,6 +56,18 @@ class PermissionSeeder extends Seeder
             'edit techsupp',
             'delete techsupp',
             'create techsupp',
+            'view projectcategory',
+            'edit projectcategory',
+            'delete projectcategory',
+            'create projectcategory',
+            'view project',
+            'edit project',
+            'delete project',
+            'create project',
+            'view newcategory',
+            'edit newcategory',
+            'delete newcategory',
+            'create newcategory',
         ];
 
         foreach ($permissions as $permission) {

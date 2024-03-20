@@ -9,16 +9,19 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\AccountController;
 use App\Http\Controllers\Backend\ProductController;
+use App\Http\Controllers\Backend\ProjectController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PermissionController;
+use App\Http\Controllers\Backend\NewCategoryController;
+use App\Http\Controllers\Backend\TechSupportController;
 use App\Http\Controllers\Backend\UserSupportController;
 use App\Http\Controllers\Backend\ProductBrandController;
 use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\ProductCategoryController;
+use App\Http\Controllers\Backend\ProjectCategoryController;
 use App\Http\Controllers\Backend\ProductSubCategoryController;
-use App\Http\Controllers\Backend\TechSupportController;
 
 // Frontend  Login 
 Auth::routes([
@@ -53,7 +56,7 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
 
     // Products
     Route::prefix('products')->group(function () {
-        Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+        Route::match(['get', 'post'], '/product', [ProductController::class, 'index'])->name('product.index');
         Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
         Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
         Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
@@ -109,6 +112,37 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
         Route::get('/tech-support/edit/{id}', [TechSupportController::class, 'edit'])->name('techsupport.edit');
         Route::post('/tech-support/update/{id}', [TechSupportController::class, 'update'])->name('techsupport.update');
         Route::post('/tech-support/delete', [TechSupportController::class, 'delete'])->name('techsupport.delete');
+    });
+
+    // Project category
+    Route::prefix('project')->group(function () {
+        // Route::get('/project-category', [ProjectController::class, 'index'])->name('project-category.index');
+        Route::match(['get', 'post'], '/project-category', [ProjectCategoryController::class, 'index'])->name('project-category.index');
+        Route::get('/project-category/create', [ProjectCategoryController::class, 'create'])->name('project-category.create');
+        Route::post('/project-category/store', [ProjectCategoryController::class, 'store'])->name('project-category.store');
+        Route::get('/project-category/edit/{id}', [ProjectCategoryController::class, 'edit'])->name('project-category.edit');
+        Route::post('/project-category/update/{id}', [ProjectCategoryController::class, 'update'])->name('project-category.update');
+        Route::post('/project-category/delete', [ProjectCategoryController::class, 'delete'])->name('project-category.delete');
+    });
+
+     // Projects
+     Route::prefix('projects')->group(function () {
+        Route::match(['get', 'post'], '/project', [ProjectController::class, 'index'])->name('project.index');
+        Route::get('/project/create', [ProjectController::class, 'create'])->name('project.create');
+        Route::post('/project/store', [ProjectController::class, 'store'])->name('project.store');
+        Route::get('/project/edit/{id}', [ProjectController::class, 'edit'])->name('project.edit');
+        Route::post('/project/update/{id}', [ProjectController::class, 'update'])->name('project.update');
+        Route::post('/project/delete', [ProjectController::class, 'delete'])->name('project.delete');
+    });
+
+    // news category
+    Route::prefix('news')->group(function () {
+        Route::match(['get', 'post'], '/new-category', [NewCategoryController::class, 'index'])->name('new-category.index');
+        Route::get('/new-category/create', [NewCategoryController::class, 'create'])->name('new-category.create');
+        Route::post('/new-category/store', [NewCategoryController::class, 'store'])->name('new-category.store');
+        Route::get('/new-category/edit/{id}', [NewCategoryController::class, 'edit'])->name('new-category.edit');
+        Route::post('/new-category/update/{id}', [NewCategoryController::class, 'update'])->name('new-category.update');
+        Route::post('/new-category/delete', [NewCategoryController::class, 'delete'])->name('new-category.delete');
     });
 
     // User 

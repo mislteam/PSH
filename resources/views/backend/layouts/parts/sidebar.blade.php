@@ -4,7 +4,7 @@
             <li class="nav-header">
                 <div class="profile-element">
                     <div class=" d-flex justify-content-between align-items-center">
-                        <img src="{{asset("image/logo/".generalSetting('logo'))}}" alt="" class="img-fluid w-100">
+                        <img src="{{asset(" image/logo/".generalSetting('logo'))}}" alt="" class="img-fluid w-100">
                     </div>
                 </div>
                 <div class="logo-element">
@@ -16,6 +16,7 @@
                         class="nav-label">Dashboards</span></a>
             </li>
 
+            @can('view product')
             <li class="{{ request()->is('admin/products*') ? 'active' : '' }}">
                 <a href=""><i class="fa fa-shopping-cart"></i> <span class="nav-label"> Products </span><span
                         class="fa arrow"></span></a>
@@ -51,6 +52,48 @@
                     </li>
                 </ul>
             </li>
+            @endcan
+
+            @can('view projectcategory')
+            <li class="{{ request()->is('admin/projects*') ? 'active' : '' }}">
+                <a href=""><i class="fa fa-diamond"></i> <span class="nav-label"> Projects </span><span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    @can('view project')
+                    <li class="{{ url()->current() == url('/admin/projects/project') ? 'active' : '' }}">
+                        <a href="{{route('project.index')}}"><span class="nav-label">All Projects</span></a>
+                    </li>
+                    @endcan
+                    @can('view category')
+                    <li class="{{ url()->current() == url('/admin/projects/project-category') ? 'active' : '' }}">
+                        <a href="{{ route('project-category.index') }}"> <span class="nav-label">Project
+                                Category</span></a>
+                    </li>
+                    @endcan
+                </ul>
+            </li>
+            @endcan
+
+            @can('view newcategory')
+            <li class="{{ request()->is('admin/news*') ? 'active' : '' }}">
+                <a href=""><i class="fa fa-list-alt"></i> <span class="nav-label"> News </span><span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    @can('view project')
+                    <li class="{{ url()->current() == url('/admin/news/new') ? 'active' : '' }}">
+                        <a href="{{route('project.index')}}"><span class="nav-label">All News</span></a>
+                    </li>
+                    @endcan
+                    @can('view newcategory')
+                    <li class="{{ url()->current() == url('/admin/news/new-category') ? 'active' : '' }}">
+                        <a href="{{ route('new-category.index') }}"> <span class="nav-label">News
+                                Category</span></a>
+                    </li>
+                    @endcan
+                </ul>
+            </li>
+            @endcan
+
             @can('view customers')
             <li class="{{request()->is('admin/customer*') ? 'active' : ''}}">
                 <a href="{{ route('customer.index') }}"><i class="fa fa-users"></i> <span class="nav-label">All
@@ -66,6 +109,7 @@
                     href="{{ route('accountShow', auth()->id()) }}"> <i class="fa fa-cog" aria-hidden="true"></i>
                     <span class="nav-label">Account Setting</span> </a></li>
             @endcan
+
             @can('view setting')
             <li class="{{ request()->is('admin/setting*') ? 'active' : '' }}">
                 <a href=""><i class="fa fa-cogs"></i> <span class="nav-label"> Page Setting </span><span

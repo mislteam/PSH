@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\NewCategory;
 use App\Models\ProductCategory;
+use App\Models\ProjectCategory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -26,6 +28,9 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             UserSupportSeeder::class,
             TechSupportSeeder::class,
+            ProjectCategorySeeder::class,
+            ProjectSeeder::class,
+            NewCategorySeeder::class
         ]);
     }
 }

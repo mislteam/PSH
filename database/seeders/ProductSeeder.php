@@ -17,9 +17,9 @@ class ProductSeeder extends Seeder
     {
         $product = Product::create([
             'name' => 'Brand-1', 
-            'product_category_id' => 1,
+            'product_category_id' => 3,
             'product_sub_category_id' => 1,
-            'product_brand_id'=>1,
+            'product_brand_id'=> 4,
             'name'=>'Product-1',
             'specification'=>null,
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
@@ -29,5 +29,5 @@ class ProductSeeder extends Seeder
             'product_guide_pdf'=>null,
             'product_guide_video'=>null
         ]);
-    }
+     }
 }

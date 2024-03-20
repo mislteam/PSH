@@ -195,9 +195,8 @@ $specification = json_decode($product->specification, true);
                 <div class="ibox-content">
                     <div class="form-group">
                         <select class="form-control" id="source" name="source" required>
-                            {{-- <option value="type" selected>Select Video Type</option> --}}
-                            <option value="link">Youtube Link</option>
-                            <option value="file">Video file Upload</option>
+                            <option value="link" >Youtube Link</option>
+                            <option value="file" >Video file Upload</option>
                         </select>
                     </div>
 
@@ -208,11 +207,12 @@ $specification = json_decode($product->specification, true);
                     </div>
 
                     <div id="fileInput" class="form-group" style="display:none;">
+                        
+                        <label for="video_file">Upload Video File:</label>
                         <a href="{{ asset('storage/product_guide_video/' . $product->product_guide_video) }}"
                             target="_blank">
                             {{ $product->product_guide_video }}
                         </a>
-                        <label for="video_file">Upload Video File:</label>
                         <input type="file" class="form-control-file" id="video_file" name="video_file" accept="video/*">
                     </div>
                 </div>
@@ -264,6 +264,8 @@ $specification = json_decode($product->specification, true);
         var sourceSelect = document.getElementById('source');
         var linkInput = document.getElementById('linkInput');
         var fileInput = document.getElementById('fileInput');
+        var link = document.getElementById('link');
+        var file = document.getElementById('file');
 
         sourceSelect.addEventListener('change', function() {
             if (this.value === 'link') {
