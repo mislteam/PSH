@@ -44,20 +44,20 @@ class UserController extends ResponseController
         ]);
 
         $user = User::create([
-            'idNumber'=> '',
-            'user_id'=> User::latest('user_id')->first()->user_id + 1,
+            'idNumber' => '',
+            'user_id' => User::latest('user_id')->first()->user_id + 1,
             'name' => $request->name,
             'email' => $request->email,
-            'email_verified_at'=> Carbon::now(),
-            'front_img'=>'front-img.png',
-            'back_img'=>'back-img.png',
+            'email_verified_at' => Carbon::now(),
+            'front_img' => 'front-img.png',
+            'back_img' => 'back-img.png',
             'password' => bcrypt($request->password),
         ]);
         $user->assignRole($request->role);
-        if($request->role == 3 || $request->role == 4){
+        if ($request->role == 3) {
             return redirect()->route('customer.index')->with('message', 'User created successfully');
         }
-        
+
         return redirect()->route('userIndex')->with('message', 'User created successfully');
     }
 
@@ -110,7 +110,7 @@ class UserController extends ResponseController
     public function delete(Request $request)
     {
         $user = User::find($request->id);
-        if($user) {
+        if ($user) {
             $user->delete();
             return $this->successMessage('', 'User Deleted Successfully');
         } else {

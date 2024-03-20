@@ -34,7 +34,7 @@ class GeneralSettingController extends Controller
 
                     // Upload Image 
                     $file = $request->generalSetting;
-                    $value = time() . '_' . $file->getClientOriginalName();
+                    $value = time().'_'.$file->getClientOriginalName();
                     $path = public_path('image/logo');
                     $file->move($path, $value);
                 }

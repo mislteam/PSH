@@ -13,13 +13,13 @@
 @endphp
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-10">
-            <h2>All Users </h2>
+            <h2>Members </h2>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="{{ route('admin.dashboard') }}">Home</a>
                 </li>
                 <li class="breadcrumb-item active">
-                    <a> Users </a>
+                    <a> Members </a>
                 </li>
             </ol>
         </div>
@@ -56,6 +56,7 @@
                                         <th> User Id </th>
                                         <th> Customer Name </th>
                                         <th> Email </th>
+                                        <th> Phone Number </th>
                                         <th> Date </th>
                                         <th>status</th>
                                         <th>Action</th>
@@ -72,6 +73,11 @@
                                        <td> {{ $user->user_id }} </td>
                                        <td> {{ $user->name }}</td>
                                        <td> {{ $user->email }} </td>
+                                        @if ($user->phone)
+                                        <td>{{ $user->phone }} </td>
+                                       @else 
+                                       <td> - </td>
+                                       @endif
                                        <td> {{ $user->created_at }} </td>
                                        <td>
                                           @if ($user->status == 0)
@@ -130,6 +136,7 @@
                                         <th> User Id </th>
                                         <th> Customer Name </th>
                                         <th> Email </th>
+                                        <th> Phone </th>
                                         <th> Date </th>
                                         <th>status</th>
                                         <th>Action</th>

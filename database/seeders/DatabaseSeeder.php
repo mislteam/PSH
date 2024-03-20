@@ -30,7 +30,8 @@ class DatabaseSeeder extends Seeder
             TechSupportSeeder::class,
             ProjectCategorySeeder::class,
             ProjectSeeder::class,
-            NewCategorySeeder::class
+            NewCategorySeeder::class,
+            NewSeeder::class
         ]);
     }
 }

@@ -8,7 +8,7 @@
                     </div>
                 </div>
                 <div class="logo-element">
-                    <img src="{{asset(" image/logo/".generalSetting('logo'))}}" alt="" class="img-fluid p-2">
+                    <img src="{{asset("image/logo/".generalSetting('logo'))}}" alt="" class="img-fluid p-2">
                 </div>
             </li>
             <li class="{{ url()->current() == url('/admin/dashboard') ? 'active' : '' }}">
@@ -79,9 +79,9 @@
                 <a href=""><i class="fa fa-list-alt"></i> <span class="nav-label"> News </span><span
                         class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    @can('view project')
-                    <li class="{{ url()->current() == url('/admin/news/new') ? 'active' : '' }}">
-                        <a href="{{route('project.index')}}"><span class="nav-label">All News</span></a>
+                    @can('view new')
+                    <li class="{{ url()->current() == url('/admin/news/news') ? 'active' : '' }}">
+                        <a href="{{route('news.index')}}"><span class="nav-label">All News</span></a>
                     </li>
                     @endcan
                     @can('view newcategory')
@@ -95,33 +95,41 @@
             @endcan
 
             @can('view customers')
-            <li class="{{request()->is('admin/customer*') ? 'active' : ''}}">
-                <a href="{{ route('customer.index') }}"><i class="fa fa-users"></i> <span class="nav-label">All
-                        Users</span></a>
-                @endcan
-                @can('view admin')
+            <li class="{{ request()->is('admin/customer*') ? 'active' : '' }}">
+                <a href=""><i class="fa fa-users"></i> <span class="nav-label"> Members </span><span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    @can('view customers')
+                    <li class="{{request()->is('admin/customer*') ? 'active' : ''}}">
+                        <a href="{{ route('customer.index') }}"> <span class="nav-label">All Members</span></a>
+                        @endcan
+                </ul>
+            </li>
+            @endcan
+
+            @can('view admin')
             <li class="{{request()->is('admin/user*') ? 'active' : ''}}">
-                <a href="{{ route('userIndex') }}"><i class="fa fa-user-secret" aria-hidden="true"></i> <span
-                        class="nav-label">All Admin</span></a>
-                @endcan
-                @can('view account setting')
-            <li class="{{ request()->is('admin/account*') ? 'active' : '' }}"><a
-                    href="{{ route('accountShow', auth()->id()) }}"> <i class="fa fa-cog" aria-hidden="true"></i>
-                    <span class="nav-label">Account Setting</span> </a></li>
+                <a href="{{ route('userIndex') }}"><i class="fa fa-user-o"></i> <span class="nav-label">Admin
+                        Users</span></a>
             @endcan
 
             @can('view setting')
             <li class="{{ request()->is('admin/setting*') ? 'active' : '' }}">
-                <a href=""><i class="fa fa-cogs"></i> <span class="nav-label"> Page Setting </span><span
+                <a href=""><i class="fa fa-cogs"></i> <span class="nav-label"> Settings </span><span
                         class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    @can('view permissions')
-                    <li class="{{ request()->is('admin/setting/permission*') ? 'active' : '' }}"><a
-                            href="{{ route('permissionIndex') }}"> Permissions </a></li>
-                    @endcan
                     @can('view general setting')
                     <li class="{{ request()->is('admin/setting/general*') ? 'active' : '' }}"><a
                             href="{{ route('generalIndex') }}"> General Setting </a></li>
+                    @endcan
+                    @can('view account setting')
+                    <li class="{{ request()->is('admin/account*') ? 'active' : '' }}"><a
+                            href="{{ route('accountShow', auth()->id()) }}">
+                            <span class="nav-label">Account Setting</span> </a></li>
+                    @endcan
+                    @can('view permissions')
+                    <li class="{{ request()->is('admin/setting/permission*') ? 'active' : '' }}"><a
+                            href="{{ route('permissionIndex') }}"> Admin Role </a></li>
                     @endcan
                 </ul>
             </li>

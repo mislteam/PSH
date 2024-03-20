@@ -68,6 +68,10 @@ class PermissionSeeder extends Seeder
             'edit newcategory',
             'delete newcategory',
             'create newcategory',
+            'view new',
+            'edit new',
+            'delete new',
+            'create new',
         ];
 
         foreach ($permissions as $permission) {

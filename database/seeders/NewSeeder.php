@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Project;
+use App\Models\News;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ProjectSeeder extends Seeder
+class NewSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,13 +15,11 @@ class ProjectSeeder extends Seeder
      */
     public function run()
     {
-        $project = Project::create([
-            'name' => 'Project-1',
-            'project_category_id'=> 1,
+        $new = News::create([
+            'name' => 'New-1',
+            'new_category_id'=> 1,
             'description' => "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
             'feature_image'=> "test-img",
-            'gallery_image'=>null
-
         ]);
     }
 }

@@ -19,6 +19,7 @@ use App\Http\Controllers\Backend\TechSupportController;
 use App\Http\Controllers\Backend\UserSupportController;
 use App\Http\Controllers\Backend\ProductBrandController;
 use App\Http\Controllers\Backend\GeneralSettingController;
+use App\Http\Controllers\Backend\NewController;
 use App\Http\Controllers\Backend\ProductCategoryController;
 use App\Http\Controllers\Backend\ProjectCategoryController;
 use App\Http\Controllers\Backend\ProductSubCategoryController;
@@ -125,8 +126,8 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
         Route::post('/project-category/delete', [ProjectCategoryController::class, 'delete'])->name('project-category.delete');
     });
 
-     // Projects
-     Route::prefix('projects')->group(function () {
+    // All Projects
+    Route::prefix('projects')->group(function () {
         Route::match(['get', 'post'], '/project', [ProjectController::class, 'index'])->name('project.index');
         Route::get('/project/create', [ProjectController::class, 'create'])->name('project.create');
         Route::post('/project/store', [ProjectController::class, 'store'])->name('project.store');
@@ -143,6 +144,16 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
         Route::get('/new-category/edit/{id}', [NewCategoryController::class, 'edit'])->name('new-category.edit');
         Route::post('/new-category/update/{id}', [NewCategoryController::class, 'update'])->name('new-category.update');
         Route::post('/new-category/delete', [NewCategoryController::class, 'delete'])->name('new-category.delete');
+    });
+
+    // All News
+    Route::prefix('news')->group(function () {
+        Route::match(['get', 'post'], '/news', [NewController::class, 'index'])->name('news.index');
+        Route::get('/news/create', [NewController::class, 'create'])->name('news.create');
+        Route::post('/news/store', [NewController::class, 'store'])->name('news.store');
+        Route::get('/news/edit/{id}', [NewController::class, 'edit'])->name('news.edit');
+        Route::post('/news/update/{id}', [NewController::class, 'update'])->name('news.update');
+        Route::post('/news/delete', [NewController::class, 'delete'])->name('news.delete');
     });
 
     // User 

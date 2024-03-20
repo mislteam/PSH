@@ -9,14 +9,14 @@
                 <a href="{{ route('admin.dashboard') }}">Home</a>
             </li>
             <li class="breadcrumb-item active">
-                <a> User </a>
+                <a> Admin User </a>
             </li>
         </ol>
     </div>
     <div class="col-lg-2">
         @can('create users')
         <div class="mt-4 text-right">
-            <a href="{{ route('userCreate') }}" class="btn bg-custom btn-sm text-white"> Add Admin </a>
+            <a href="{{ route('userCreate') }}" class="btn bg-custom btn-sm text-white"> Create </a>
         </div>
     @endcan
     </div>
@@ -37,8 +37,9 @@
                         <thead>
                         <tr>
                             <th> Id </th>
-                            <th> User Name </th>
-                            <th> User Role </th>
+                            <th> Name </th>
+                            <th> Email </th>
+                            <th> Role </th>
                             <th> Date </th>
                             <th> Action </th>
                         </tr>
@@ -51,6 +52,7 @@
                                 <tr class="gradeU">
                                     <td> {{ $id++ }} </td>
                                     <td> {{ $user->name }}</td>
+                                    <td> {{ $user->email }}</td>
                                     <td> 
                                         @foreach ($user->getRoleNames() as $role)
                                             <span class="badge text-bg-custom">{{$role}}</span>
