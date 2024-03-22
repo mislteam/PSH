@@ -9,6 +9,15 @@
     <link href="{{asset('template/css/animate.css')}}" rel="stylesheet">
     <link href="{{asset('template/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('template/css/plugins/bootstrapSocial/bootstrap-social.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="{{asset('assets/font-awesome/css/fontawesome-all.min.css')}}">
+		<!-- Flaticon CSS -->
+		<link rel="stylesheet" href="{{asset('assets/font/flaticon.css')}}">
+		<!-- Google Web Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     @yield('style')
     <style>
       
@@ -48,8 +57,19 @@
     <script src="{{asset('template/js/jquery-3.1.1.min.js')}}"></script>
     <script src="{{asset('template/js/popper.min.js')}}"></script>
     <script src="{{asset('js/main/bootstrap4.3.min.js')}}"></script>
+    <!-- jquery-->
+		<script src="{{asset('assets/js/jquery.min.js')}}"></script>
+		<!-- Bootstrap js -->
+		<script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+		<!-- Imagesloaded js -->
+		<script src="{{asset('assets/js/imagesloaded.pkgd.min.js')}}"></script>
+		<!-- Validator js -->
+		<script src="{{asset('asset/js/validator.min.js')}}"></script>
+		<!-- Custom Js -->
+		<script src="{{asset('assets/js/main.js')}}"></script>
     {{-- <script src="https://www.google.com/recaptcha/api.js"></script> --}}
     @yield('script')
+
     <script>
         $(document).ready(function () {
           $(".input-file").change(function () {
@@ -85,6 +105,7 @@
             form.show();
           });
         });
-      </script>
+    </script>
+    
 </body>
 </html>

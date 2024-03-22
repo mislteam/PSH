@@ -23,6 +23,7 @@ use App\Http\Controllers\Backend\NewController;
 use App\Http\Controllers\Backend\ProductCategoryController;
 use App\Http\Controllers\Backend\ProjectCategoryController;
 use App\Http\Controllers\Backend\ProductSubCategoryController;
+use App\Http\Controllers\Frontend\UserloginController;
 
 // Frontend  Login 
 Auth::routes([
@@ -43,9 +44,16 @@ Route::get('/admin/login', [LoginController::class, 'adminLogin'])->name('login.
 Route::get('/email/verify/{id}', [VerificationController::class, 'verify'])->name('verification.verify');
 
 // FrontEnd 
-
 // Home Page 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/products', [HomeController::class, 'products'])->name('products');
+Route::get('/projects', [HomeController::class, 'projects'])->name('projects');
+Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+
+// user login
+Route::get('/userlogin', [UserloginController::class, 'userlogin'])->name('user-login');
 
 Route::middleware(['role:user', 'verified', 'auth', 'checkuserban'])->group(function () {
 });
@@ -197,8 +205,9 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
     // change State 
     Route::post('/changeUserState', [UserController::class, 'change_state'])->name('changeUserState');
 });
+// Backend Route
 
 // test 
 Route::get('/test', function () {
-    return view('test.index')->with('message', 'test');
+    return view('layouts.adminlogin')->with('message', 'test');
 });

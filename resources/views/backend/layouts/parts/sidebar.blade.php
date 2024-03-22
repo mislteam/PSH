@@ -4,7 +4,7 @@
             <li class="nav-header">
                 <div class="profile-element">
                     <div class=" d-flex justify-content-between align-items-center">
-                        <img src="{{asset(" image/logo/".generalSetting('logo'))}}" alt="" class="img-fluid w-100">
+                        <img src="{{asset('image/logo/'.generalSetting('logo'))}}" alt="" class="img-fluid w-100">
                     </div>
                 </div>
                 <div class="logo-element">
