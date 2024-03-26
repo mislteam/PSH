@@ -7,7 +7,7 @@
                     Myanmar. Company changed to corporate identy by the merger of Pyei Sone Hein Company Limited and ZIN
                     9 Company Limited in 2009.</p>
                 <a href="index.html" class="text-decoration-none">
-                    <img src="{{asset('frontend/img/psh-website-logo.png')}}" class="img-fluid" alt="" />
+                    <img src="{{asset('image/logo/'.generalSetting('logo'))}}" class="img-fluid" alt="" />
                 </a>
             </div>
             <div class="col-lg-3 mb-5 mb-lg-0">
@@ -19,7 +19,7 @@
                     <li class="mb-2"><a href="forum.html">Forum Systems</a></li>
                     <li class="mb-2"><a href="product-warranty.html">Product Warranty</a></li>
                     <li class="mb-2"><a href="client-testimonial.html">Client Testimonial</a></li>
-                    <li class="mb-2"><a href="service-form.html">Customer Feedback Form</a></li>
+                    <li class="mb-2"><a href="{{route('serviceView')}}">Customer Feedback Form</a></li>
                     <li class="mb-2"><a href="user-guide.html">User Guide</a></li>
                     <li class="mb-0"><a href="tech-guide.html">Technical Guide</a></li>
                 </ul>

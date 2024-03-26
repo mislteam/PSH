@@ -72,6 +72,8 @@ class PermissionSeeder extends Seeder
             'edit new',
             'delete new',
             'create new',
+            'view service',
+            'delete service',
         ];
 
         foreach ($permissions as $permission) {

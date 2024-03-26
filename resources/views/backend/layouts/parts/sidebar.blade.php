@@ -107,6 +107,19 @@
             </li>
             @endcan
 
+            @can('view service')
+            <li class="{{ request()->is('admin/feedback*') ? 'active' : '' }}">
+                <a href=""><i class="fa fa-users"></i> <span class="nav-label"> Service/ Survey Form </span><span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    @can('view service')
+                    <li class="{{request()->is('admin/feedback*') ? 'active' : ''}}">
+                        <a href="{{ route('feedback.index') }}"> <span class="nav-label">Customer Feedback Form</span></a>
+                        @endcan
+                </ul>
+            </li>
+            @endcan
+
             @can('view admin')
             <li class="{{request()->is('admin/user*') ? 'active' : ''}}">
                 <a href="{{ route('userIndex') }}"><i class="fa fa-user-o"></i> <span class="nav-label">Admin

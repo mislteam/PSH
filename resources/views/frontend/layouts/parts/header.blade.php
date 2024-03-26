@@ -54,7 +54,7 @@
                     <div class="header-row">
                         <div class="header-logo">
                             <a href="{{route('home')}}">
-                                <img src="{{asset('frontend/img/psh-website-logo.png')}}" class="img-fluid"
+                                <img src="{{asset('image/logo/'.generalSetting('logo'))}}" class="img-fluid"
                                     alt="PSH Global" />
                             </a>
                         </div>
@@ -68,27 +68,27 @@
                                 <nav class="collapse">
                                     <ul class="nav nav-pills" id="mainNav">
                                         <li>
-                                            <a href="{{route('home')}}" class="nav-link active">Home</a>
+                                            <a href="{{route('home')}}" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Home</a>
                                         </li>
                                         <li>
-                                            <a href="{{route('about')}}" class="nav-link">About</a>
+                                            <a href="{{route('about')}}" class="nav-link {{ request()->is('about') ? 'active' : '' }}">About</a>
                                         </li>
                                         <li class="dropdown">
-                                            <a href="#" class="dropdown-item dropdown-toggle">Our Products</a>
+                                            <a href="#" class="dropdown-item dropdown-toggle {{ request()->is('products') ? 'active' : '' }}">Our Products</a>
                                             <ul class="dropdown-menu border-radius-0">
                                                 <li>
-                                                    <a href="{{route('products')}}" class="nav-link">All Products</a>
+                                                    <a href="{{route('products')}}" class="nav-link ">All Products</a>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="{{route('projects')}}" class="nav-link">Our Projects</a>
+                                            <a href="{{route('projects')}}" class="nav-link {{ request()->is('projects') ? 'active' : '' }}">Our Projects</a>
                                         </li>
                                         <li>
-                                            <a href="{{route('blog')}}" class="nav-link">News</a>
+                                            <a href="{{route('blog')}}" class="nav-link {{ request()->is('blog') ? 'active' : '' }}">News</a>
                                         </li>
                                         <li>
-                                            <a href="{{route('contact')}}" class="nav-link">Contact</a>
+                                            <a href="{{route('contact')}}" class="nav-link {{ request()->is('contact') ? 'active' : '' }}">Contact</a>
                                         </li>
                                     </ul>
                                 </nav>

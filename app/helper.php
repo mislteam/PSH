@@ -79,3 +79,21 @@ function extractUSDT($name) {
   $formatName = $name == "usdt" ? "USDT" : strtoupper(substr($name, 0, strpos($name, 'usdt')));
   return $formatName;
 }
+
+// form status
+function mapCommunication($value) {
+  switch ($value) {
+      case 0:
+          return 'Very Good';
+      case 1:
+          return 'Good';
+      case 2:
+          return 'Normal';
+      case 3:
+          return 'Bad';
+      case 4:
+          return 'Very Bad';
+      default:
+          return 'Unknown';
+  }
+}

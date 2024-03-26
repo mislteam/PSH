@@ -25,9 +25,7 @@
                                     data-appear-animation="blurIn" data-appear-animation-delay="1300"
                                     data-plugin-options="{'minWindowWidth': 0}"><span class="text-color-primary">PYEI
                                         SONE HEINGROUP OF COMPANIES</span></h2>
-                                <p class="text-color-light opacity-6 text-3-5 mb-4" data-plugin-animated-letters
-                                    data-plugin-options="{'startDelay': 2200, 'minWindowWidth': 0}">More Than 50 Years
-                                    Combined Experience Serving Businesses</p>
+<p class="text-color-light opacity-6 text-3-5 mb-4" data-plugin-animated-letters data-plugin-options="{'startDelay': 2200, 'minWindowWidth': 0}">More Than 50 Years Combined Experience Serving Businesses</p>
                                 <a href="about.html"
                                     class="btn btn-primary font-weight-bold text-3-5 px-5 py-3 mt-3 appear-animation"
                                     data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="3300">About
@@ -55,9 +53,7 @@
                                     data-appear-animation="blurIn" data-appear-animation-delay="1300"
                                     data-plugin-options="{'minWindowWidth': 0}"><span class="opacity-9">Our
                                         Products</span></h2>
-                                <p class="text-color-light opacity-6 text-3-5 mb-4" data-plugin-animated-letters
-                                    data-plugin-options="{'startDelay': 2200, 'minWindowWidth': 0}">More Than 50 Years
-                                    Combined Experience Serving Businesses</p>
+<p class="text-color-light opacity-6 text-3-5 mb-4" data-plugin-animated-letters data-plugin-options="{'startDelay': 2200, 'minWindowWidth': 0}">More Than 50 Years Combined Experience Serving Businesses</p>
                                 <a href="#"
                                     class="btn btn-primary font-weight-bold text-3-5 px-5 py-3 mt-3 appear-animation"
                                     data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="3300">More
@@ -320,54 +316,16 @@
                 data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="600" style="height: 373px;">
                 <div class="owl-carousel owl-theme dots-horizontal-center custom-dots-style-1 mb-0"
                     data-plugin-options="{'responsive': {'576': {'items': 2}, '768': {'items': 2}, '992': {'items': 3}, '1200': {'items': 4}, '1440': {'items': 5}}, 'margin': 20, 'stagePadding': 20, 'loop': true, 'nav': false, 'dots': true, 'autoplay': true, 'autoplayTimeout': 7000}">
+                    @foreach ($brands as $brand)
                     <div class="py-5">
                         <a href="#" class="text-decoration-none">
                             <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
-                                <img src="{{asset('frontend/img/brands/setra.jpg')}}"
+                                <img src="{{asset('storage/brand_image/'. $brand->brand_image) }}"
                                     class="card-img-top border-radius-0" alt="John Doe Image" />
                             </div>
                         </a>
                     </div>
-                    <div class="py-5">
-                        <a href="#" class="text-decoration-none">
-                            <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
-                                <img src="{{asset('frontend/img/brands/metro.jpg')}}"
-                                    class="card-img-top border-radius-0" alt="John Doe Image" />
-                            </div>
-                        </a>
-                    </div>
-                    <div class="py-5">
-                        <a href="#" class="text-decoration-none">
-                            <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
-                                <img src="{{asset('frontend/img/brands/shinpo.jpg')}}"
-                                    class="card-img-top border-radius-0" alt="John Doe Image" />
-                            </div>
-                        </a>
-                    </div>
-                    <div class="py-5">
-                        <a href="#" class="text-decoration-none">
-                            <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
-                                <img src="{{asset('frontend/img/brands/tqm.jpg')}}" class="card-img-top border-radius-0"
-                                    alt="John Doe Image" />
-                            </div>
-                        </a>
-                    </div>
-                    <div class="py-5">
-                        <a href="#" class="text-decoration-none">
-                            <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
-                                <img src="{{asset('frontend/img/brands/setra-scale.jpg')}}"
-                                    class="card-img-top border-radius-0" alt="John Doe Image" />
-                            </div>
-                        </a>
-                    </div>
-                    <div class="py-5">
-                        <a href="#" class="text-decoration-none">
-                            <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
-                                <img src="{{asset('frontend/img/brands/zin.jpg')}}" class="card-img-top border-radius-0"
-                                    alt="John Doe Image" />
-                            </div>
-                        </a>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -390,16 +348,17 @@
                 </div>
             </div>
             <div class="row mt-4">
-                <div class="col-lg-4 d-flex align-items-stretch">
+                @foreach ($product_category as $cat)
+                <div class="col-lg-4 d-flex align-items-stretch my-3">
                     <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1 appear-animation animated fadeInUp appear-animation-visible"
                         data-appear-animation="blurIn" data-appear-animation-delay="0" style="animation-delay: 0ms;">
                         <div class="card-body text-center px-4 py-4">
                             <img class="img-fluid card-img-top border mb-4"
-                                src="{{asset('frontend/img/products/electronic-weighing-scale.jpg')}}" alt="" />
+                                src="{{asset('storage/category_images/'.$cat->category_image) }}" alt="" />
                             <h2
                                 class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
-                                Electronic Weighing Scale</h2>
-                            <a href="#">
+                                {{$cat->name}}</h2>
+                            <a href="{{route('subcategory',['id' => $cat->id])}}">
                                 <span
                                     class="custom-read-more d-inline-flex justify-content-center align-items-center text-3 font-weight-medium svg-fill-color-primary">
                                     More Detail
@@ -415,185 +374,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1 appear-animation animated fadeInUp appear-animation-visible"
-                        data-appear-animation="blurIn" data-appear-animation-delay="0" style="animation-delay: 0ms;">
-                        <div class="card-body text-center px-4 py-4">
-                            <img class="img-fluid card-img-top border mb-4"
-                                src="{{asset('frontend/img/products/petroleun-equipments.jpg')}}" alt="" />
-                            <h2
-                                class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
-                                Petroleum Equipment</h2>
-                            <a href="#">
-                                <span
-                                    class="custom-read-more d-inline-flex justify-content-center align-items-center text-3 font-weight-medium svg-fill-color-primary">
-                                    More Detail
-                                    <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17"
-                                        xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink">
-                                        <polygon stroke="#777" stroke-width="0.1" fill="#777"
-                                            points="11.354,0 10.646,0.706 13.786,3.853 0,3.853 0,4.853 13.786,4.853 10.646,8 11.354,8.706 15.698,4.353 ">
-                                        </polygon>
-                                    </svg>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1 appear-animation animated fadeInUp appear-animation-visible"
-                        data-appear-animation="blurIn" data-appear-animation-delay="0" style="animation-delay: 0ms;">
-                        <div class="card-body text-center px-4 py-4">
-                            <img class="img-fluid card-img-top border mb-4"
-                                src="{{asset('frontend/img/products/toll-management.jpg')}}" alt="" />
-                            <h2
-                                class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
-                                Toll Plaza & Management System</h2>
-                            <a href="#">
-                                <span
-                                    class="custom-read-more d-inline-flex justify-content-center align-items-center text-3 font-weight-medium svg-fill-color-primary">
-                                    More Detail
-                                    <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17"
-                                        xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink">
-                                        <polygon stroke="#777" stroke-width="0.1" fill="#777"
-                                            points="11.354,0 10.646,0.706 13.786,3.853 0,3.853 0,4.853 13.786,4.853 10.646,8 11.354,8.706 15.698,4.353 ">
-                                        </polygon>
-                                    </svg>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1 appear-animation animated fadeInUp appear-animation-visible"
-                        data-appear-animation="blurIn" data-appear-animation-delay="0" style="animation-delay: 0ms;">
-                        <div class="card-body text-center px-4 py-4">
-                            <img class="img-fluid card-img-top border mb-4"
-                                src="{{asset('frontend/img/products/software.jpg')}}" alt="" />
-                            <h2
-                                class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
-                                Software Solutions</h2>
-                            <a href="#">
-                                <span
-                                    class="custom-read-more d-inline-flex justify-content-center align-items-center text-3 font-weight-medium svg-fill-color-primary">
-                                    More Detail
-                                    <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17"
-                                        xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink">
-                                        <polygon stroke="#777" stroke-width="0.1" fill="#777"
-                                            points="11.354,0 10.646,0.706 13.786,3.853 0,3.853 0,4.853 13.786,4.853 10.646,8 11.354,8.706 15.698,4.353 ">
-                                        </polygon>
-                                    </svg>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1 appear-animation animated fadeInUp appear-animation-visible"
-                        data-appear-animation="blurIn" data-appear-animation-delay="0" style="animation-delay: 0ms;">
-                        <div class="card-body text-center px-4 py-4">
-                            <img class="img-fluid card-img-top border mb-4"
-                                src="{{asset('frontend/img/products/gate-automation-system.jpg')}}" alt="" />
-                            <h2
-                                class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
-                                Door & Gate Automation</h2>
-                            <a href="#">
-                                <span
-                                    class="custom-read-more d-inline-flex justify-content-center align-items-center text-3 font-weight-medium svg-fill-color-primary">
-                                    More Detail
-                                    <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17"
-                                        xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink">
-                                        <polygon stroke="#777" stroke-width="0.1" fill="#777"
-                                            points="11.354,0 10.646,0.706 13.786,3.853 0,3.853 0,4.853 13.786,4.853 10.646,8 11.354,8.706 15.698,4.353 ">
-                                        </polygon>
-                                    </svg>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1 appear-animation animated fadeInUp appear-animation-visible"
-                        data-appear-animation="blurIn" data-appear-animation-delay="0" style="animation-delay: 0ms;">
-                        <div class="card-body text-center px-4 py-4">
-                            <img class="img-fluid card-img-top border mb-4"
-                                src="{{asset('frontend/img/products/digitalization-equipment.jpg')}}" alt="" />
-                            <h2
-                                class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
-                                Digitalization Equipment</h2>
-                            <a href="#">
-                                <span
-                                    class="custom-read-more d-inline-flex justify-content-center align-items-center text-3 font-weight-medium svg-fill-color-primary">
-                                    More Detail
-                                    <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17"
-                                        xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink">
-                                        <polygon stroke="#777" stroke-width="0.1" fill="#777"
-                                            points="11.354,0 10.646,0.706 13.786,3.853 0,3.853 0,4.853 13.786,4.853 10.646,8 11.354,8.706 15.698,4.353 ">
-                                        </polygon>
-                                    </svg>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1 appear-animation animated fadeInUp appear-animation-visible"
-                        data-appear-animation="blurIn" data-appear-animation-delay="0" style="animation-delay: 0ms;">
-                        <div class="card-body text-center px-4 py-4">
-                            <img class="img-fluid card-img-top border mb-4"
-                                src="{{asset('frontend/img/products/counting-machine.jpg')}}" alt="" />
-                            <h2
-                                class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
-                                Money Counting Machine</h2>
-                            <a href="#">
-                                <span
-                                    class="custom-read-more d-inline-flex justify-content-center align-items-center text-3 font-weight-medium svg-fill-color-primary">
-                                    More Detail
-                                    <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17"
-                                        xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink">
-                                        <polygon stroke="#777" stroke-width="0.1" fill="#777"
-                                            points="11.354,0 10.646,0.706 13.786,3.853 0,3.853 0,4.853 13.786,4.853 10.646,8 11.354,8.706 15.698,4.353 ">
-                                        </polygon>
-                                    </svg>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1 appear-animation animated fadeInUp appear-animation-visible"
-                        data-appear-animation="blurIn" data-appear-animation-delay="0" style="animation-delay: 0ms;">
-                        <div class="card-body text-center px-4 py-4">
-                            <img class="img-fluid card-img-top border mb-4"
-                                src="{{asset('frontend/img/products/industrial-boiler.jpg')}}" alt="" />
-                            <h2
-                                class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
-                                Industrial Boiler</h2>
-                            <a href="#">
-                                <span
-                                    class="custom-read-more d-inline-flex justify-content-center align-items-center text-3 font-weight-medium svg-fill-color-primary">
-                                    More Detail
-                                    <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17"
-                                        xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink">
-                                        <polygon stroke="#777" stroke-width="0.1" fill="#777"
-                                            points="11.354,0 10.646,0.706 13.786,3.853 0,3.853 0,4.853 13.786,4.853 10.646,8 11.354,8.706 15.698,4.353 ">
-                                        </polygon>
-                                    </svg>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         <!-- END OUR PRODUCT CATEGORY -->
@@ -699,28 +480,28 @@
             </div>
             <div class="row row-gutter-sm pb-2 mb-5 appear-animation" data-appear-animation="fadeInUpShorterPlus"
                 data-appear-animation-delay="600">
+                @foreach ($news->sortByDesc('created_at')->take(2) as $new)
                 <div class="col-lg-6 mb-4 mb-lg-0 d-flex align-items-center">
                     <article>
                         <div class="card border-0 border-radius-0 custom-box-shadow-1">
                             <div class="card-img-top">
                                 <a href="#">
                                     <img class="card-img-top border-radius-0 hover-effect-2"
-                                        src="{{asset('frontend/img/home-slide-01.jpg')}}" alt="Card Image">
+                                        src="{{asset('storage/new_feature_image/'. $new->feature_image) }}" alt="Card Image">
                                 </a>
                             </div>
                             <div class="card-body bg-light p-4 z-index-1">
                                 <p class="text-uppercase text-color-default text-1 mb-1 pt-1">
-                                    <time pubdate datetime="2024-01-10">10 Jan 2024</time>
+                                     <time pubdate datetime="2024-01-10">{{$new->created_at->format('d M Y')}}</time> {{--10 Jan 2024 --}}
                                     <span class="opacity-3 d-inline-block px-2">|</span>
                                     News
                                 </p>
                                 <div class="card-body p-0">
                                     <h4 class="card-title alternative-font-4 font-weight-semibold text-5 mb-3"><a
                                             class="text-color-dark text-color-hover-primary text-decoration-none font-weight-bold text-3"
-                                            href="#">Lorem ipsum dolor sit a met</a></h4>
-                                    <p class="card-text mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Nunc viverra lorem ipsum erat orci, ac auctor...</p>
-                                    <a href="blog-detail.html"
+                                            href="#">{{$new->name}}</a></h4>
+                                    <p class="card-text mb-2">{!! strlen($new->description) > 100 ? substr($new->description, 0, 100) . '...' : $new->description !!}</p>
+                                    <a href="{{route('newdetail',['id' => $new->id])}}"
                                         class="custom-read-more-link d-inline-flex align-items-center font-weight-semibold text-3 text-decoration-none svg-fill-color-primary svg-stroke-color-primary ps-0">
                                         READ MORE
                                         <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17"
@@ -735,47 +516,12 @@
                         </div>
                     </article>
                 </div>
-                <div class="col-lg-6 mb-4 mb-lg-0 d-flex align-items-center">
-                    <article>
-                        <div class="card border-0 border-radius-0 custom-box-shadow-1">
-                            <div class="card-img-top">
-                                <a href="#">
-                                    <img class="card-img-top border-radius-0 hover-effect-2"
-                                        src="{{asset('frontend/img/home-slide-01.jpg')}}" alt="Card Image">
-                                </a>
-                            </div>
-                            <div class="card-body bg-light p-4 z-index-1">
-                                <p class="text-uppercase text-color-default text-1 mb-1 pt-1">
-                                    <time pubdate datetime="2024-01-10">10 Jan 2024</time>
-                                    <span class="opacity-3 d-inline-block px-2">|</span>
-                                    CSR Activity
-                                </p>
-                                <div class="card-body p-0">
-                                    <h4 class="card-title alternative-font-4 font-weight-semibold text-5 mb-3"><a
-                                            class="text-color-dark text-color-hover-primary text-decoration-none font-weight-bold text-3"
-                                            href="#">Lorem ipsum dolor sit a met</a></h4>
-                                    <p class="card-text mb-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                        Nunc viverra lorem ipsum erat orci, ac auctor...</p>
-                                    <a href="#"
-                                        class="custom-read-more-link d-inline-flex align-items-center font-weight-semibold text-3 text-decoration-none svg-fill-color-primary svg-stroke-color-primary ps-0">
-                                        READ MORE
-                                        <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17"
-                                            xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                                            xmlns:xlink="http://www.w3.org/1999/xlink">
-                                            <polygon stroke="#777" stroke-width="0.1" fill="#777"
-                                                points="11.354,0 10.646,0.706 13.786,3.853 0,3.853 0,4.853 13.786,4.853 10.646,8 11.354,8.706 15.698,4.353 " />
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </div>
+                @endforeach
             </div>
             <div class="row">
                 <div class="col text-center appear-animation" data-appear-animation="fadeInUpShorterPlus"
                     data-appear-animation-delay="600" data-plugin-options="{'accY': -250}">
-                    <a href="blog.html" class="btn btn-primary font-weight-bold px-5 btn-py-3">VIEW BLOG</a>
+                    <a href="{{route('blog')}}" class="btn btn-primary font-weight-bold px-5 btn-py-3">VIEW BLOG</a>
                 </div>
             </div>
         </div>

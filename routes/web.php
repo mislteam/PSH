@@ -5,25 +5,27 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;;
 
+use App\Http\Controllers\Backend\NewController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\Frontend\FormController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\AccountController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProjectController;
 use App\Http\Controllers\Backend\CustomerController;
+use App\Http\Controllers\Backend\FeedbackController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PermissionController;
+use App\Http\Controllers\Frontend\UserloginController;
 use App\Http\Controllers\Backend\NewCategoryController;
 use App\Http\Controllers\Backend\TechSupportController;
 use App\Http\Controllers\Backend\UserSupportController;
 use App\Http\Controllers\Backend\ProductBrandController;
 use App\Http\Controllers\Backend\GeneralSettingController;
-use App\Http\Controllers\Backend\NewController;
 use App\Http\Controllers\Backend\ProductCategoryController;
 use App\Http\Controllers\Backend\ProjectCategoryController;
 use App\Http\Controllers\Backend\ProductSubCategoryController;
-use App\Http\Controllers\Frontend\UserloginController;
 
 // Frontend  Login 
 Auth::routes([
@@ -43,7 +45,7 @@ Route::get('/admin/login', [LoginController::class, 'adminLogin'])->name('login.
 // email 
 Route::get('/email/verify/{id}', [VerificationController::class, 'verify'])->name('verification.verify');
 
-// FrontEnd 
+// start FrontEnd 
 // Home Page 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
@@ -52,13 +54,28 @@ Route::get('/projects', [HomeController::class, 'projects'])->name('projects');
 Route::get('/blog', [HomeController::class, 'blog'])->name('blog');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
+// Detail page
+Route::get('/projects/detail/{id}', [HomeController::class, 'projectdetail'])->name('projectdetail');
+Route::get('/news/detail/{id}', [HomeController::class, 'newdetail'])->name('newdetail');
+
+// all product page 
+Route::get('/sub-category/{id}', [HomeController::class, 'subcategory'])->name('subcategory');
+Route::get('/brand/{id}', [HomeController::class, 'brand'])->name('brand');
+Route::get('/product/{id}', [HomeController::class, 'product'])->name('product');
+
+// client form
+Route::get('/service-form/view', [FormController::class, 'serviceView'])->name('serviceView');
+Route::post('/service-form/store', [FormController::class, 'servicestore'])->name('servicestore');
+
+
+
 // user login
 Route::get('/userlogin', [UserloginController::class, 'userlogin'])->name('user-login');
 
 Route::middleware(['role:user', 'verified', 'auth', 'checkuserban'])->group(function () {
 });
-
-
+// End FrontEnd 
+// **************************************************************************************************************************
 // Backend Route
 Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
@@ -162,6 +179,13 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
         Route::get('/news/edit/{id}', [NewController::class, 'edit'])->name('news.edit');
         Route::post('/news/update/{id}', [NewController::class, 'update'])->name('news.update');
         Route::post('/news/delete', [NewController::class, 'delete'])->name('news.delete');
+    });
+
+    // Customer Feedback Form 
+    Route::prefix('feedback')->group(function () {
+        Route::match(['get', 'post'], '/feedback', [FeedbackController::class, 'index'])->name('feedback.index');
+        Route::get('/feedback/view/{id}', [FeedbackController::class, 'view'])->name('feedback.view');
+        Route::post('/feedback/delete', [FeedbackController::class, 'delete'])->name('feedback.delete');
     });
 
     // User 

@@ -201,9 +201,18 @@
 @endsection
 <script>
     document.addEventListener("DOMContentLoaded", function() {
+        // Maximum number of fields allowed
+        const maxFields = 6;
+    
         // Function to add new label and input field pair
         function addField() {
             let fieldCount = document.querySelectorAll('.field').length + 1;
+            // Check if maximum limit has been reached
+            if (fieldCount >= maxFields) {
+                alert("The maximum limit is 5 fields.");
+                return;
+            }
+       
             const newField = `
             <div class="row field">
                 <div class="col-sm-5 form-group">
