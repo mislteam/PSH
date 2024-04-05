@@ -120,6 +120,12 @@
             </li>
             @endcan
 
+            @can('view testimonial')
+            <li class="{{ request()->is('admin/testimonial*') ? 'active' : '' }}">
+                <a href="{{route('testimonial.index')}}"><i class="fa fa-users"></i> <span class="nav-label"> Client /Testimonial </span></a>
+            </li>
+            @endcan
+
             @can('view admin')
             <li class="{{request()->is('admin/user*') ? 'active' : ''}}">
                 <a href="{{ route('userIndex') }}"><i class="fa fa-user-o"></i> <span class="nav-label">Admin

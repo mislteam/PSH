@@ -6,19 +6,19 @@
                 <p class="text-3-5">We duly incorporated under the Myanmar Citizen's Investment Law of the Uion of
                     Myanmar. Company changed to corporate identy by the merger of Pyei Sone Hein Company Limited and ZIN
                     9 Company Limited in 2009.</p>
-                <a href="index.html" class="text-decoration-none">
+                <a href="{{route('home')}}" class="text-decoration-none">
                     <img src="{{asset('image/logo/'.generalSetting('logo'))}}" class="img-fluid" alt="" />
                 </a>
             </div>
             <div class="col-lg-3 mb-5 mb-lg-0">
                 <h5 class="text-transform-none font-weight-bold text-color-light text-5-5 mb-4">Useful Links</h5>
                 <ul class="list list-unstyled text-3-5 mb-0">
-                    <li class="mb-2"><a href="#">About Us</a></li>
+                    <li class="mb-2"><a href="{{route('about')}}">About Us</a></li>
                     <li class="mb-2"><a href="#">Member</a></li>
-                    <li class="mb-2"><a href="project.html">Our Projects</a></li>
+                    <li class="mb-2"><a href="{{route('projects')}}">Our Projects</a></li>
                     <li class="mb-2"><a href="forum.html">Forum Systems</a></li>
                     <li class="mb-2"><a href="product-warranty.html">Product Warranty</a></li>
-                    <li class="mb-2"><a href="client-testimonial.html">Client Testimonial</a></li>
+                    <li class="mb-2"><a href="{{route('testimonialView')}}">Client Testimonial</a></li>
                     <li class="mb-2"><a href="{{route('serviceView')}}">Customer Feedback Form</a></li>
                     <li class="mb-2"><a href="user-guide.html">User Guide</a></li>
                     <li class="mb-0"><a href="tech-guide.html">Technical Guide</a></li>

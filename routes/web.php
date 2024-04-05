@@ -26,6 +26,9 @@ use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\ProductCategoryController;
 use App\Http\Controllers\Backend\ProjectCategoryController;
 use App\Http\Controllers\Backend\ProductSubCategoryController;
+use App\Http\Controllers\Frontend\TestimonialController;
+use App\Http\Controllers\Backend\TestimonialController as BackendTestimonialController;
+use App\Models\Testimonial;
 
 // Frontend  Login 
 Auth::routes([
@@ -63,9 +66,13 @@ Route::get('/sub-category/{id}', [HomeController::class, 'subcategory'])->name('
 Route::get('/brand/{id}', [HomeController::class, 'brand'])->name('brand');
 Route::get('/product/{id}', [HomeController::class, 'product'])->name('product');
 
-// client form
+// client servey form
 Route::get('/service-form/view', [FormController::class, 'serviceView'])->name('serviceView');
 Route::post('/service-form/store', [FormController::class, 'servicestore'])->name('servicestore');
+
+// client testimonial form
+Route::get('/client-testimonial/view', [TestimonialController::class, 'testimonialView'])->name('testimonialView');
+Route::post('/client-testimonial/store', [TestimonialController::class, 'testimonialstore'])->name('testimonialstore');
 
 
 
@@ -186,6 +193,12 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
         Route::match(['get', 'post'], '/feedback', [FeedbackController::class, 'index'])->name('feedback.index');
         Route::get('/feedback/view/{id}', [FeedbackController::class, 'view'])->name('feedback.view');
         Route::post('/feedback/delete', [FeedbackController::class, 'delete'])->name('feedback.delete');
+    });
+
+    // Customer testimonial Form 
+    Route::prefix('testimonial')->group(function () {
+        Route::match(['get', 'post'], '/testimonial', [BackendTestimonialController::class, 'index'])->name('testimonial.index');
+        Route::post('/testimonial/update/{id}', [BackendTestimonialController::class, 'update'])->name('testimonial.update');
     });
 
     // User 

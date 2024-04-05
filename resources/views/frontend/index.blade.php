@@ -440,7 +440,7 @@
                     <div class="py-5">
                         <a href="#" class="text-decoration-none">
                             <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
-                                <img src="img/customers/mmtm.jpg" class="card-img-top border-radius-0" alt="" />
+                                <img src="{{asset('frontend/img/customers/mmtm.jpg')}}" class="card-img-top border-radius-0" alt="" />
                             </div>
                         </a>
                     </div>
