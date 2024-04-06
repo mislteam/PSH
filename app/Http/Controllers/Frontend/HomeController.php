@@ -11,6 +11,7 @@ use App\Models\ProductCategory;
 use App\Models\ProductSubCategory;
 use App\Models\Project;
 use App\Models\ProjectCategory;
+use App\Models\Testimonial;
 
 class HomeController extends Controller
 {
@@ -26,7 +27,8 @@ class HomeController extends Controller
     // frontend about page
     public function about()
     {
-        return view('frontend.about');
+        $testimonials = Testimonial::all();
+        return view('frontend.about',compact('testimonials'));
     }
 
     // frontend products category page

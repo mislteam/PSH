@@ -199,6 +199,7 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
     Route::prefix('testimonial')->group(function () {
         Route::match(['get', 'post'], '/testimonial', [BackendTestimonialController::class, 'index'])->name('testimonial.index');
         Route::post('/testimonial/update/{id}', [BackendTestimonialController::class, 'update'])->name('testimonial.update');
+        Route::post('/changetestimonialState', [BackendTestimonialController::class, 'testimonial_change_state'])->name('changeTestimonialState');
     });
 
     // User 

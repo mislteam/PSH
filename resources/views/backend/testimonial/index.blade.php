@@ -34,7 +34,7 @@
                             @foreach ($testimonials as $testimonial)
                             <tr>
                                 <td>
-                                 {{$testimonial->fullname}}
+                                    {{$testimonial->fullname}}
                                 </td>
                                 <td>
                                     {{$testimonial->companyname}}
@@ -43,18 +43,42 @@
                                 <td>
                                     @if ($testimonial->status == 0)
                                     Disable
-                                    @else 
+                                    @else
                                     Active
                                     @endif
                                 </td>
                                 <td class="text-right">
                                     <div class="btn-group">
                                         @if ($testimonial->status == 0)
-                                        <a href="" class="btn-white btn btn-xs disabled"><i class="fa fa-check"></i></a>
-                                        <a href="#" class="btn-white btn btn-xs"><i class="fa fa-ban"></i></a>
-                                        @else 
-                                        <a href="#" class="btn-white btn btn-xs "><i class="fa fa-check"></i></a>
-                                        <a href="#" class="btn-white btn btn-xs disabled"><i class="fa fa-ban"></i></a>
+                                        <div class="mr-2">
+                                            <button class="btn btn-outline-light text-dark shadow-lg"
+                                                onclick="changeState('{{ route('changeTestimonialState') }}', {{ $testimonial->id }})">
+                                                <i class="fa fa-check"></i>
+                                            </button>
+                                        </div>
+                                        <div class="mr-2">
+                                            <button class="btn btn-outline-light text-dark btn-sm"
+                                                onclick="changeState('{{ route('changeTestimonialState') }}', {{ $testimonial->id }})"
+                                                disabled>
+                                                <i class="fa fa-ban" aria-hidden="true" data-toggle="tooltip"
+                                                    data-placement="top" title="ban"></i>
+                                            </button>
+                                        </div>
+                                        @else
+                                        <div class="mr-2">
+                                            <button class="btn btn-outline-light text-dark shadow-lg"
+                                                onclick="changeState('{{ route('changeTestimonialState') }}', {{ $testimonial->id }})"
+                                                disabled>
+                                                <i class="fa fa-check"></i>
+                                            </button>
+                                        </div>
+                                        <div class="mr-2">
+                                            <button class="btn btn-outline-light text-dark btn-sm"
+                                                onclick="changeState('{{ route('changeTestimonialState') }}', {{ $testimonial->id }})">
+                                                <i class="fa fa-ban" aria-hidden="true" data-toggle="tooltip"
+                                                    data-placement="top" title="ban"></i>
+                                            </button>
+                                        </div>
                                         @endif
                                     </div>
                                 </td>
