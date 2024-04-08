@@ -36,7 +36,7 @@
                         <div class="card-body text-center">
                             <h2 class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-1 line-height-4">SETRA WeighbridgeTon-30 Scale (I Beam)</h2>
                             <p class="text-color-grey positive-ls-3 mb-3">Electronic Weighing Scale | Truck Scale | Setra</p>
-                            <a href="product-detail.html">
+                            <a href="{{route('productDetail',['id' => $item->id])}}">
                                 <span class="custom-read-more d-inline-flex justify-content-center align-items-center text-3 font-weight-medium svg-fill-color-primary">
                                     VIEW More
                                     <svg class="ms-2" version="1.1" viewBox="0 0 15.698 8.706" width="17" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

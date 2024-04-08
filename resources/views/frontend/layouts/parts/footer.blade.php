@@ -20,8 +20,8 @@
                     <li class="mb-2"><a href="product-warranty.html">Product Warranty</a></li>
                     <li class="mb-2"><a href="{{route('testimonialView')}}">Client Testimonial</a></li>
                     <li class="mb-2"><a href="{{route('serviceView')}}">Customer Feedback Form</a></li>
-                    <li class="mb-2"><a href="user-guide.html">User Guide</a></li>
-                    <li class="mb-0"><a href="tech-guide.html">Technical Guide</a></li>
+                    <li class="mb-2"><a href="{{route('userguide')}}">User Guide</a></li>
+                    <li class="mb-0"><a href="{{route('techguide')}}">Technical Guide</a></li>
                 </ul>
             </div>
             <div class="col-lg-3 mb-5 mb-lg-0">

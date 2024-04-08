@@ -11,7 +11,9 @@ use App\Models\ProductCategory;
 use App\Models\ProductSubCategory;
 use App\Models\Project;
 use App\Models\ProjectCategory;
+use App\Models\TechSupport;
 use App\Models\Testimonial;
+use App\Models\UserSupport;
 
 class HomeController extends Controller
 {
@@ -28,7 +30,7 @@ class HomeController extends Controller
     public function about()
     {
         $testimonials = Testimonial::all();
-        return view('frontend.about',compact('testimonials'));
+        return view('frontend.about', compact('testimonials'));
     }
 
     // frontend products category page
@@ -74,6 +76,18 @@ class HomeController extends Controller
         return view('frontend.product', compact('products'));
     }
 
+    // product detail page
+    public function productDetail($id)
+    {
+        $productdetail = Product::findOrFail($id);
+        $product_category = ProductCategory::all();
+        $product_sub_category = ProductSubCategory::all();
+        $brand = ProductBrand::all();
+        $user_supp = UserSupport::find($id);
+        $tech_supp = TechSupport::find($id);
+        return view('frontend.detail.product.productdetail', compact('productdetail', 'product_category', 'product_sub_category', 'brand', 'user_supp', 'tech_supp'));
+    }
+
     // frontend projects page
     public function projects()
     {
@@ -108,5 +122,37 @@ class HomeController extends Controller
         $new_detail = News::find($id);
         $newcategory = NewCategory::all();
         return view('frontend.detail.news.newdetail', compact('new_detail', 'newcategory'));
+    }
+
+    // user guide 
+    public function userguide()
+    {
+        $userguide = UserSupport::get();
+        $products = Product::get();
+        return view('frontend.userguide', compact('userguide', 'products'));
+    }
+
+    // user guide detail
+    public function userguidedetail($id)
+    {
+        $userguidedetail = UserSupport::find($id);
+        $productdetail = Product::find($id);
+        return view('frontend.detail.userguidedetail.userguidedetail', compact('userguidedetail', 'productdetail'));
+    }
+
+    // tech guide 
+    public function techguide()
+    {
+        $techguide = TechSupport::get();
+        $products = Product::get();
+        return view('frontend.techguide', compact('techguide', 'products'));
+    }
+
+    // tech guide detail
+    public function techguidedetail($id)
+    {
+        $techguidedetail = UserSupport::find($id);
+        $productdetail = Product::find($id);
+        return view('frontend.detail.techguidedetail.techguidedetail', compact('techguidedetail', 'productdetail'));
     }
 }

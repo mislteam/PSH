@@ -65,6 +65,7 @@ Route::get('/news/detail/{id}', [HomeController::class, 'newdetail'])->name('new
 Route::get('/sub-category/{id}', [HomeController::class, 'subcategory'])->name('subcategory');
 Route::get('/brand/{id}', [HomeController::class, 'brand'])->name('brand');
 Route::get('/product/{id}', [HomeController::class, 'product'])->name('product');
+Route::get('/product/detail/{id}', [HomeController::class, 'productDetail'])->name('productDetail');
 
 // client servey form
 Route::get('/service-form/view', [FormController::class, 'serviceView'])->name('serviceView');
@@ -73,6 +74,12 @@ Route::post('/service-form/store', [FormController::class, 'servicestore'])->nam
 // client testimonial form
 Route::get('/client-testimonial/view', [TestimonialController::class, 'testimonialView'])->name('testimonialView');
 Route::post('/client-testimonial/store', [TestimonialController::class, 'testimonialstore'])->name('testimonialstore');
+
+// User guide and technical guide
+Route::get('/userguide', [HomeController::class, 'userguide'])->name('userguide');
+Route::get('/userguide/detail/{id}', [HomeController::class, 'userguidedetail'])->name('userguidedetail');
+Route::get('/techguide', [HomeController::class, 'techguide'])->name('techguide');
+Route::get('/techguide/detail/{id}', [HomeController::class, 'techguidedetail'])->name('techguidedetail');
 
 
 
