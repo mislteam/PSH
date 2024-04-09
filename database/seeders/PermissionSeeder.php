@@ -75,6 +75,10 @@ class PermissionSeeder extends Seeder
             'view service',
             'delete service',
             'view testimonial',
+            'create projectsubcategory',
+            'view projectsubcategory',
+            'delete projectsubcategory',
+            'edit projectsubcategory',
         ];
 
         foreach ($permissions as $permission) {

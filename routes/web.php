@@ -1,10 +1,11 @@
 <?php
 
+use App\Models\Testimonial;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;;
 
+use App\Http\Controllers\Auth\LoginController;;
 use App\Http\Controllers\Backend\NewController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\FormController;
@@ -22,13 +23,13 @@ use App\Http\Controllers\Backend\NewCategoryController;
 use App\Http\Controllers\Backend\TechSupportController;
 use App\Http\Controllers\Backend\UserSupportController;
 use App\Http\Controllers\Backend\ProductBrandController;
+use App\Http\Controllers\Frontend\TestimonialController;
 use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\ProductCategoryController;
 use App\Http\Controllers\Backend\ProjectCategoryController;
 use App\Http\Controllers\Backend\ProductSubCategoryController;
-use App\Http\Controllers\Frontend\TestimonialController;
+use App\Http\Controllers\Backend\ProjectSubCategoryController;
 use App\Http\Controllers\Backend\TestimonialController as BackendTestimonialController;
-use App\Models\Testimonial;
 
 // Frontend  Login 
 Auth::routes([
@@ -163,6 +164,16 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
         Route::get('/project-category/edit/{id}', [ProjectCategoryController::class, 'edit'])->name('project-category.edit');
         Route::post('/project-category/update/{id}', [ProjectCategoryController::class, 'update'])->name('project-category.update');
         Route::post('/project-category/delete', [ProjectCategoryController::class, 'delete'])->name('project-category.delete');
+    });
+
+    // Project sub category
+    Route::prefix('project')->group(function () {
+        Route::match(['get', 'post'], '/project-sub-category', [ProjectSubCategoryController::class, 'index'])->name('project-sub-category.index');
+        Route::get('/project-sub-category/create', [ProjectSubCategoryController::class, 'create'])->name('project-sub-category.create');
+        Route::post('/project-sub-category/store', [ProjectSubCategoryController::class, 'store'])->name('project-sub-category.store');
+        Route::get('/project-sub-category/edit/{id}', [ProjectSubCategoryController::class, 'edit'])->name('project-sub-category.edit');
+        Route::post('/project-sub-category/update/{id}', [ProjectSubCategoryController::class, 'update'])->name('project-sub-category.update');
+        Route::post('/project-sub-category/delete', [ProjectSubCategoryController::class, 'delete'])->name('project-sub-category.delete');
     });
 
     // All Projects

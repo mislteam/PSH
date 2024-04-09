@@ -70,6 +70,12 @@
                                 Category</span></a>
                     </li>
                     @endcan
+                    @can('view projectsubcategory')
+                    <li class="{{ url()->current() == url('/admin/projects/project-sub-category') ? 'active' : '' }}">
+                        <a href="{{ route('project-sub-category.index') }}"> <span class="nav-label">Project
+                                Sub Category</span></a>
+                    </li>
+                    @endcan
                 </ul>
             </li>
             @endcan
