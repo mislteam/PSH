@@ -17,6 +17,6 @@ class ProjectSubCategory extends Model
 
     public function project()
     {
-        return $this->hasMany(Project::class, 'project_sub_category_id');
+        return $this->hasMany(Project::class, 'id');
     }
 }

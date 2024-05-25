@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Models\ProjectCategory;
+use App\Models\ProjectSubCategory;
 use App\Http\Controllers\ResponseController;
 
 class ProjectController extends ResponseController
@@ -20,13 +21,15 @@ class ProjectController extends ResponseController
     public function create()
     {
         $procat = ProjectCategory::all();
+        $prosubcat = ProjectSubCategory::all();
         $project = Project::select('id', 'name')->get();
-        return view('backend.project.project-create', compact('project', 'procat'));
+        return view('backend.project.project-create', compact('project', 'procat','prosubcat'));
     }
 
     // project store method
     public function store(Request $request)
     {
+        
         $imagefileName = uniqid() . $request->file('feature_image')->getClientOriginalName();
         $request->file('feature_image')->storeAs('public/project_feature_image/', $imagefileName);
         $data['feature_image'] = $imagefileName;
@@ -39,14 +42,15 @@ class ProjectController extends ResponseController
         }
 
 
-        Project::create([
+        $project = Project::create([
             'name' => $request->project_name,
             'project_category_id' => intval($request->project_category_id),
+            'project_sub_category_id' => intval($request->project_sub_category_id),
             'description' => $request->project_description,
             'feature_image' => $imagefileName,
             'gallery_image' =>  json_encode($galleryImages),
-
         ]);
+        // dd($project);
         return redirect()->route('project.index')->with('message', 'Project created successfully');
     }
 
@@ -54,9 +58,10 @@ class ProjectController extends ResponseController
     public function edit($id)
     {
         $procat = ProjectCategory::select('id', 'name')->get();
+        $prosubcat = ProjectSubCategory::select('id', 'name')->get();
         $project = Project::find($id);
         // dd($project);
-        return view('backend.project.project-edit', compact('project', 'procat'));
+        return view('backend.project.project-edit', compact('project', 'procat','prosubcat'));
     }
 
     // project update method
@@ -65,6 +70,7 @@ class ProjectController extends ResponseController
         $project = [
             'name' => $request->project_name,
             'project_category_id' => intval($request->project_category_id),
+            'project_sub_category_id' => intval($request->project_sub_category_id),
             'description' => $request->project_description,
         ];
 

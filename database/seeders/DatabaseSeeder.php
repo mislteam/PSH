@@ -1,10 +1,6 @@
 <?php
 
 namespace Database\Seeders;
-
-use App\Models\NewCategory;
-use App\Models\ProductCategory;
-use App\Models\ProjectCategory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -32,7 +28,8 @@ class DatabaseSeeder extends Seeder
             ProjectSubCategorySeeder::class,
             ProjectSeeder::class,
             NewCategorySeeder::class,
-            NewSeeder::class,   
+            NewSeeder::class,
+            ProductTypeSeeder::class  
         ]);
     }
 }

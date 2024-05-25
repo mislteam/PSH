@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->unsignedBigInteger('project_category_id');
             $table->foreign('project_category_id')->references('id')->on('project_categories')->onDelete('cascade');
+            $table->integer('project_sub_category_id')->constrained()->onDelete('cascade');
             $table->longText('description');
             $table->string('feature_image');
             $table->json('gallery_image')->nullable();

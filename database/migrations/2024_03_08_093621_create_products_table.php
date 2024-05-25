@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('product_feature_image')->nullable();
             $table->string('product_guide_pdf')->nullable();
             $table->string('product_guide_video')->nullable();
+            $table->integer('product_type_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

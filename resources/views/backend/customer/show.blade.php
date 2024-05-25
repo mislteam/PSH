@@ -6,7 +6,7 @@
         <h2> Trades </h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="{{ url('wallet/{wallet}') }}">Trades</a>
+                <a href="{{ url('wallet/{wallet}') }}">Customer</a>
             </li>
             <li class="breadcrumb-item active">
                 <a> View </a>
@@ -36,7 +36,8 @@
                         Phone Number :   -
                         @endif  
                         </p>
-                        <p class="font-weight-bold">NRC/Passport/Driving License : {{$user->idNumber}}</p>
+                        <p class="font-weight-bold">
+                        {{$user->productType->name}}</p>
                         <div class="mb-3 row p-1">
                             <span class="col-6 font-weight-bold">Approve Date: {{$user->created_at->toFormattedDateString() }}</span> 
                             <span class="col-6 text-right font-weight-bold">

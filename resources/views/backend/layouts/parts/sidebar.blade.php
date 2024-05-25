@@ -21,6 +21,11 @@
                 <a href=""><i class="fa fa-shopping-cart"></i> <span class="nav-label"> Products </span><span
                         class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
+                    @can('view producttype')
+                    <li class="{{ url()->current() == url('/admin/products/producttype') ? 'active' : '' }}">
+                        <a href="{{ route('producttype.index') }}"><span class="nav-label">Product Type</span></a>
+                    </li>
+                    @endcan
                     <li class="{{ url()->current() == url('/admin/products/product') ? 'active' : '' }}">
                         <a href="{{ route('product.index') }}"><span class="nav-label">All Products</span></a>
                     </li>

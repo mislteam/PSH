@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\User;
+use App\Models\ProductType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -18,7 +19,9 @@ class CustomerController extends Controller
 
         $query = User::orderBy('created_at','desc')->whereHas('roles', function ($q) {
             $q->where('name', 'user');
+            
         });
+        // dd($query);
 
         if ($name) {
             $query->where('name', 'like', '%' . $name . '%');
@@ -42,10 +45,8 @@ class CustomerController extends Controller
         $customer = $query->whereHas('roles', function ($q) {
             $q->where('name', 'user');
         })->paginate($perpage)->appends($request->except('page'));
-        
         return view('backend.customer.index', compact('customer'));
     }
-
 
     // customer Delete
     public function delete(Request $request)

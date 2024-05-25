@@ -69,6 +69,17 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label"><strong>Prodcut Type</strong></label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="product_type" required>
+                                            <option value="" selected disabled>Select Prodcut Type</option>
+                                            @foreach ($producttype as $item)
+                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"><strong>Prodcut
                                             Specification</strong></label>
                                     <div class="col-sm-10">
@@ -188,6 +199,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="form-group row">
                 <div class="col-sm-12">
                     <button class="btn btn-sm btn-dark float-right text-start m-t-n-xs"

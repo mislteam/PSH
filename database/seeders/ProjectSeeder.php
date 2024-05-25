@@ -18,6 +18,7 @@ class ProjectSeeder extends Seeder
         $project = Project::create([
             'name' => 'Project-1',
             'project_category_id'=> 1,
+            'project_sub_category_id'=> 1,
             'description' => "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
             'feature_image'=> "test-img",
             'gallery_image'=>null

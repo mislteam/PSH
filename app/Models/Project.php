@@ -19,5 +19,4 @@ class Project extends Model
     {
         return $this->belongsTo(ProjectSubCategory::class,'project_sub_category_id');
     }
-
 }

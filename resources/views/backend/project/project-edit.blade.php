@@ -18,7 +18,7 @@ $info = collect(json_decode($project->gallery_image));
     </div>
     <div class="col-sm-8">
         <div class="form-group text-lg-start float-lg-right mt-5">
-            <a href="projects.html" class="btn btn-dark m-t-n-xs">Back</a>
+            <a href="{{url()->previous()}}" class="btn btn-dark m-t-n-xs">Back</a>
         </div>
     </div>
 </div>
@@ -47,6 +47,18 @@ $info = collect(json_decode($project->gallery_image));
                                             <option value="{{$item->id}}" {{ $item->id == $project->project_category_id
                                                 ?
                                                 'selected' : '' }}>{{$item->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label"><strong>Project Sub Category</strong></label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="project_sub_category_id">
+                                            <option value="">Select Project Cateory</option>
+                                            @foreach ($prosubcat as $item)
+                                            <option value="{{$item->id}}" {{ $item->id == $project->project_sub_category_id
+                                                ? 'selected' : '' }}>{{$item->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>

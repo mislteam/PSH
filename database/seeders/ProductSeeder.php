@@ -27,7 +27,8 @@ class ProductSeeder extends Seeder
             'product_video_link'=>'product_video_link',
             'product_feature_image'=>null,
             'product_guide_pdf'=>null,
-            'product_guide_video'=>null
+            'product_guide_video'=>null,
+            'product_type_id'=> 1
         ]);
      }
 }

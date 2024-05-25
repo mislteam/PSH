@@ -61,7 +61,7 @@ class ProjectCategoryController extends ResponseController
          ];
  
          ProjectCategory::where('id', $id)->update($projectcategory);
-         return redirect()->route('project-category.index')->with('message', 'Project-category updated successfully');;
+         return redirect()->route('project-category.index')->with('message', 'Project-category updated successfully');
      }
  
      // projectcategory delete method

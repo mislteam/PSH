@@ -112,6 +112,7 @@
                             <th> Id </th>
                             <th> User Name </th>
                             <th> User Role </th>
+                            <th> Role </th>
                             <th> Date </th>
                             <th> Action </th>
                         </tr>

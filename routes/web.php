@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\LoginController;;
+
 use App\Http\Controllers\Backend\NewController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\FormController;
@@ -28,6 +29,7 @@ use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\ProductCategoryController;
 use App\Http\Controllers\Backend\ProjectCategoryController;
 use App\Http\Controllers\Backend\ProductSubCategoryController;
+use App\Http\Controllers\Backend\ProductTypeController;
 use App\Http\Controllers\Backend\ProjectSubCategoryController;
 use App\Http\Controllers\Backend\TestimonialController as BackendTestimonialController;
 
@@ -103,6 +105,16 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
         Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
         Route::post('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
         Route::post('/product/delete', [ProductController::class, 'delete'])->name('product.delete');
+    });
+
+    // Products Type
+    Route::prefix('products')->group(function () {
+        Route::match(['get', 'post'], '/producttype', [ProductTypeController::class, 'index'])->name('producttype.index');
+        Route::get('/producttype/create', [ProductTypeController::class, 'create'])->name('producttype.create');
+        Route::post('/producttype/store', [ProductTypeController::class, 'store'])->name('producttype.store');
+        Route::get('/producttype/edit/{id}', [ProductTypeController::class, 'edit'])->name('producttype.edit');
+        Route::post('/producttype/update/{id}', [ProductTypeController::class, 'update'])->name('producttype.update');
+        Route::post('/producttype/delete', [ProductTypeController::class, 'delete'])->name('producttype.delete');
     });
 
     // Products Categorys

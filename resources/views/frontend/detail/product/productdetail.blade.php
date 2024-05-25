@@ -56,7 +56,7 @@ $specification = json_decode($productdetail['specification'], true);
                     </ul>
                     <h3 class="text-transform-none alternative-font-4 text-4-5 font-weight-bold mb-2">Product Detail
                     </h3>
-                    <p class="pb-3">{{$productdetail->description}}</p>
+                    <p class="pb-3">{!!$productdetail->description!!}</p>
                     {{-- <div class="lightbox"
                         data-plugin-options="{'delegate': 'a', 'type': 'image', 'gallery': {'enabled': true}}">
                         <div class="row pb-3">

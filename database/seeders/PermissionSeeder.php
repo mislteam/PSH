@@ -79,6 +79,10 @@ class PermissionSeeder extends Seeder
             'view projectsubcategory',
             'delete projectsubcategory',
             'edit projectsubcategory',
+            'create producttype',
+            'view producttype',
+            'delete producttype',
+            'edit producttype',
         ];
 
         foreach ($permissions as $permission) {

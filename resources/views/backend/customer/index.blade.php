@@ -59,6 +59,7 @@
                                         <th> Phone Number </th>
                                         <th> Date </th>
                                         <th>status</th>
+                                        <th>Product Type</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -86,6 +87,9 @@
                                             Ban
                                           @endif
                                        </td>
+                                       <td>
+                                        {{$user->productType->name}}
+                                     </td>
                                        <td>
                                            <div class="d-flex align-items-center">
                                                @can('view users')
@@ -123,7 +127,7 @@
                                            </div>
                                        </td>
                                    </tr>
-                               @endforeach
+                                    @endforeach
                                     @else
                                     <tr>
                                         <td colspan="100%" class="text-danger text-center"> No Data</td>
@@ -139,6 +143,7 @@
                                         <th> Phone </th>
                                         <th> Date </th>
                                         <th>status</th>
+                                        <th>Product Type</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>

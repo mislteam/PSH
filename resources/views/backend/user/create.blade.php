@@ -70,6 +70,17 @@
                             <p class="text-danger my-2"> {{$message}} </p>
                         @enderror
                     </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label"><strong>Prodcut Type</strong></label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="product_type" required>
+                                <option value="" selected disabled>Select Prodcut Type</option>
+                                @foreach ($producttype as $item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-12">
                     <button type="submit" class="btn bg-custom btn-sm float-right"> Save</button>

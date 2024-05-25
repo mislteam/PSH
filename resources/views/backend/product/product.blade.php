@@ -92,6 +92,7 @@
                                 <th data-hide="phone">Product Category</th>
                                 <th data-hide="phone">Product Sub Category</th>
                                 <th data-hide="phone,tablet">Brands</th>
+                                <th data-hide="phone,tablet">Product Type</th>
                                 <th class="text-right" data-sort-ignore="true">Action</th>
                             </tr>
                         </thead>
@@ -110,6 +111,9 @@
                                 </td>
                                 <td>
                                     {{$product->brand->name}}
+                                </td>
+                                <td>
+                                    {{$product->productType->name}}
                                 </td>
                                 <td class="text-right">
                                     <div class="btn-group">

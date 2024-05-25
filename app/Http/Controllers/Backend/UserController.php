@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\ProductType;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
@@ -30,7 +31,8 @@ class UserController extends ResponseController
     public function create()
     {
         $roles = Role::where('name', '!=', 'admin')->get();
-        return view('backend.user.create', compact('roles'));
+        $producttype = ProductType::all();
+        return view('backend.user.create', compact('roles','producttype'));
     }
 
     public function store(Request $request)
@@ -48,14 +50,17 @@ class UserController extends ResponseController
             'user_id' => User::latest('user_id')->first()->user_id + 1,
             'name' => $request->name,
             'email' => $request->email,
+            'product_type_id' => intval($request->product_type),
             'email_verified_at' => Carbon::now(),
             'front_img' => 'front-img.png',
             'back_img' => 'back-img.png',
             'password' => bcrypt($request->password),
         ]);
+        
         $user->assignRole($request->role);
+        
         if ($request->role == 3) {
-            return redirect()->route('customer.index')->with('message', 'User created successfully');
+            return redirect()->route('customer.index')->with('message', 'Customer created successfully');
         }
 
         return redirect()->route('userIndex')->with('message', 'User created successfully');

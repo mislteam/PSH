@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Product;
+use App\Models\ProductType;
 use App\Models\ProductBrand;
 use Illuminate\Http\Request;
 use App\Models\ProductCategory;
@@ -49,7 +50,8 @@ class ProductController extends ResponseController
         $cat = ProductCategory::all();
         $subcategory = ProductSubCategory::all();
         $brands = ProductBrand::all();
-        return view('backend.product.product', compact('products','cat','subcategory','brands'));
+        $product_type = ProductType::all();
+        return view('backend.product.product', compact('products','cat','subcategory','brands','product_type'));
     }
 
     //product create page
@@ -59,7 +61,8 @@ class ProductController extends ResponseController
         $cat = ProductCategory::all();
         $subcat = ProductSubCategory::all();
         $products = Product::select('id', 'name')->get();
-        return view('backend.product.product-create', compact('products', 'brand', 'cat', 'subcat'));
+        $producttype = ProductType::all();
+        return view('backend.product.product-create', compact('products', 'brand', 'cat', 'subcat','producttype'));
     }
 
     //product store method
@@ -99,7 +102,7 @@ class ProductController extends ResponseController
             $data['video_file'] = $product_guide_video;
         }
 
-        Product::create([
+       $products = Product::create([
             'name' => $request->product_name,
             'product_category_id' => intval($request->product_cat),
             'product_sub_category_id' => intval($request->product_subcat),
@@ -111,7 +114,9 @@ class ProductController extends ResponseController
             'product_feature_image' => $imagefileName,
             'product_guide_pdf' => $feature_pdf_fileName,
             'product_guide_video' => $product_guide_video,
+            'product_type_id' => intval($request->product_type),
         ]);
+        
         return redirect()->route('product.index')->with('message', 'Product created successfully');
     }
 
@@ -122,8 +127,9 @@ class ProductController extends ResponseController
         $brand = ProductBrand::select('id', 'name')->get();
         $cat = ProductCategory::select('id', 'name')->get();
         $subcat = ProductSubCategory::select('id', 'name')->get();
+        $producttype = ProductType::select('id', 'name')->get();
         //  dd($product);
-        return view('backend.product.product-edit', compact('brand', 'subcat', 'cat', 'product'));
+        return view('backend.product.product-edit', compact('brand', 'subcat', 'cat', 'product','producttype'));
     }
 
     // product update method
@@ -187,6 +193,7 @@ class ProductController extends ResponseController
         $product['specification'] = json_encode($dynamicFields);
         $product['product_video_link'] = $request->product_video_link;
         $product['product_guide_video'] = $product_guide_video;
+        $product['product_type_id'] = $request->product_type;
 
         // Update the product in the database
         Product::where('id', $id)->update($product);

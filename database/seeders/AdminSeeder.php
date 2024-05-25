@@ -25,6 +25,7 @@ class AdminSeeder extends Seeder
             'idNumber' => '123456789',
             'front_img' => 'front-img.png',
             'back_img' => 'back-img.png',
+            'product_type_id'=> 1
         ]);
 
     
