@@ -14,22 +14,25 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Backend\AccountController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProjectController;
+use App\Http\Controllers\Backend\SpecialController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\FeedbackController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Frontend\UserloginController;
+use App\Http\Controllers\Backend\LandingPageController;
 use App\Http\Controllers\Backend\NewCategoryController;
+use App\Http\Controllers\Backend\ProductTypeController;
 use App\Http\Controllers\Backend\TechSupportController;
 use App\Http\Controllers\Backend\UserSupportController;
 use App\Http\Controllers\Backend\ProductBrandController;
 use App\Http\Controllers\Frontend\TestimonialController;
 use App\Http\Controllers\Backend\GeneralSettingController;
+use App\Http\Controllers\Backend\OurCustomerController;
 use App\Http\Controllers\Backend\ProductCategoryController;
 use App\Http\Controllers\Backend\ProjectCategoryController;
 use App\Http\Controllers\Backend\ProductSubCategoryController;
-use App\Http\Controllers\Backend\ProductTypeController;
 use App\Http\Controllers\Backend\ProjectSubCategoryController;
 use App\Http\Controllers\Backend\TestimonialController as BackendTestimonialController;
 
@@ -247,6 +250,41 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
     Route::prefix('customer')->group(function () {
         Route::match(['get', 'post'], '/', [CustomerController::class, 'index'])->name('customer.index');
         Route::get('/show/{id}', [CustomerController::class, 'show'])->name('customer.show');
+    });
+
+    // All Page
+    Route::prefix('allpage')->group(function(){
+        // home page slide
+        Route::get('home',[LandingPageController::class,'index'])->name('home.index');
+        Route::get('home/create',[LandingPageController::class,'create'])->name('home.create');
+        Route::post('home/store',[LandingPageController::class,'store'])->name('home.store');
+        Route::get('home/edit/{id}',[LandingPageController::class,'edit'])->name('home.edit');
+        Route::post('home/edit/{id}',[LandingPageController::class,'update'])->name('home.update');
+
+        // home about page
+        Route::get('home/aboutedit/{id}',[LandingPageController::class,'homeaboutedit'])->name('homeabout.edit');
+        Route::post('home/aboutedit/{id}',[LandingPageController::class,'homeaboutupdate'])->name('homeabout.update');
+
+        // home about counter
+        Route::get('home/aboutcounter/edit/{id}',[LandingPageController::class,'aboutcounteredit'])->name('aboutcounter.edit');
+        Route::post('home/aboutcounter/update/{id}',[LandingPageController::class,'aboutcounterupdate'])->name('aboutcounter.update');
+
+        // specialization
+        Route::get('specialization',[SpecialController::class,'index'])->name('special.index');
+        Route::get('specialization/edit/{id}',[SpecialController::class,'edit'])->name('special.edit');
+        Route::post('specialization/update/{id}',[SpecialController::class,'update'])->name('special.update');
+
+        // specialization card
+        Route::get('specialization/card/edit/{id}',[SpecialController::class,'cardEdit'])->name('card.edit');
+        Route::post('specialization/card/update/{id}',[SpecialController::class,'cardUpdate'])->name('card.update');
+
+        // Our customer
+        Route::get('ourcustomer',[OurCustomerController::class,'index'])->name('ourcustomer.index');
+        Route::get('ourcustomer/create',[OurCustomerController::class,'create'])->name('ourcustomer.create');
+        Route::post('ourcustomer/store',[OurCustomerController::class,'store'])->name('ourcustomer.store');
+        Route::get('ourcustomer/edit/{id}',[OurCustomerController::class,'edit'])->name('ourcustomer.edit');
+        Route::post('ourcustomer/edit/{id}',[OurCustomerController::class,'update'])->name('ourcustomer.update');
+        Route::post('ourcustomer/delete', [OurCustomerController::class, 'delete'])->name('ourcustomer.delete');
     });
 
     // Account 

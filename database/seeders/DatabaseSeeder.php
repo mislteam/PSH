@@ -1,6 +1,8 @@
 <?php
 
 namespace Database\Seeders;
+
+use App\Models\HomeaboutCounter;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -29,7 +31,11 @@ class DatabaseSeeder extends Seeder
             ProjectSeeder::class,
             NewCategorySeeder::class,
             NewSeeder::class,
-            ProductTypeSeeder::class  
+            ProductTypeSeeder::class,
+            HomeaboutSeeder::class, 
+            HomeaboutCounterSeeder::class,
+            SpecialSeeder::class,
+            SpecialCardSeeder::class,
         ]);
     }
 }

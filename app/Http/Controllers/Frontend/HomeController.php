@@ -2,18 +2,24 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\NewCategory;
 use App\Models\News;
 use App\Models\Product;
-use App\Models\ProductBrand;
-use App\Models\ProductCategory;
-use App\Models\ProductSubCategory;
 use App\Models\Project;
-use App\Models\ProjectCategory;
+use App\Models\Homeabout;
+use App\Models\LandingPage;
+use App\Models\NewCategory;
 use App\Models\TechSupport;
 use App\Models\Testimonial;
 use App\Models\UserSupport;
+use App\Models\ProductBrand;
+use App\Models\ProductCategory;
+use App\Models\ProjectCategory;
+use App\Models\HomeaboutCounter;
+use App\Models\ProductSubCategory;
+use App\Http\Controllers\Controller;
+use App\Models\OurCustomer;
+use App\Models\Special;
+use App\Models\SpecialCard;
 
 class HomeController extends Controller
 {
@@ -23,7 +29,13 @@ class HomeController extends Controller
         $brands = ProductBrand::all();
         $news = News::all();
         $product_category = ProductCategory::all();
-        return view('frontend.index', compact('brands', 'news', 'product_category'));
+        $homepage = LandingPage::all();
+        $homeabout = Homeabout::all();
+        $aboutcounter = HomeaboutCounter::all();
+        $special = Special::all();
+        $specialcard = SpecialCard::all();
+        $ourcustomers = OurCustomer::all();
+        return view('frontend.index', compact('brands', 'news', 'product_category','homepage','homeabout','aboutcounter','special','specialcard','ourcustomers'));
     }
 
     // frontend about page

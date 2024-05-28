@@ -83,6 +83,18 @@ class PermissionSeeder extends Seeder
             'view producttype',
             'delete producttype',
             'edit producttype',
+            'view allpage',
+            'edit allpage',
+            'create allpage',
+            'delete allpage',
+            'view special',
+            'edit special',
+            'create special',
+            'delete special',
+            'view ourcustomer',
+            'edit ourcustomer',
+            'create ourcustomer',
+            'delete ourcustomer'
         ];
 
         foreach ($permissions as $permission) {

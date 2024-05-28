@@ -143,6 +143,30 @@
                         Users</span></a>
             @endcan
 
+            @can('view allpage')
+            <li class="{{ request()->is('admin/allpage*') ? 'active' : '' }}">
+                <a href=""><i class="fa fa-users"></i> <span class="nav-label"> All Page </span><span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    @can('view allpage')
+                    <li class="{{request()->is('admin/allpage/home*') ? 'active' : ''}}">
+                        <a href="{{ route('home.index') }}"> <span class="nav-label">Home Page</span></a>
+                    </li>
+                    @endcan
+                    @can('view special')
+                    <li class="{{request()->is('admin/allpage/specialization*') ? 'active' : ''}}">
+                        <a href="{{ route('special.index') }}"> <span class="nav-label">Specialization Page</span></a>
+                    </li>
+                    @endcan
+                    @can('view ourcustomer')
+                    <li class="{{request()->is('admin/allpage/ourcustomer*') ? 'active' : ''}}">
+                        <a href="{{ route('ourcustomer.index') }}"> <span class="nav-label">Our Customer Page</span></a>
+                    </li>
+                    @endcan
+                </ul>
+            </li>
+            @endcan
+
             @can('view setting')
             <li class="{{ request()->is('admin/setting*') ? 'active' : '' }}">
                 <a href=""><i class="fa fa-cogs"></i> <span class="nav-label"> Settings </span><span

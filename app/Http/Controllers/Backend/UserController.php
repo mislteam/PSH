@@ -70,7 +70,8 @@ class UserController extends ResponseController
     {
         $user = User::findOrFail($id);
         $roles = Role::where('name', '!=', 'admin')->get();
-        return view('backend.user.edit', compact('user', 'roles'));
+        $producttype = ProductType::all();
+        return view('backend.user.edit', compact('user', 'roles','producttype'));
     }
 
     public function update(Request $request, $id)
@@ -88,6 +89,7 @@ class UserController extends ResponseController
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
+            'product_type_id' => intval($request->product_type)
         ]);
 
         $user->assignRole($request->role);

@@ -4,81 +4,50 @@
     <div role="main" class="main">
         <!-- START HOME SLIDER -->
         <div class="owl-carousel-wrapper" style="height: 845px;">
-            <div class="owl-carousel dots-inside dots-horizontal-center show-dots-hover show-dots-xs show-dots-sm show-dots-md nav-style-1 nav-inside nav-inside-plus nav-light nav-lg nav-font-size-lg show-nav-hover mb-0"
+        <div class="owl-carousel dots-inside dots-horizontal-center show-dots-hover show-dots-xs show-dots-sm show-dots-md nav-style-1 nav-inside nav-inside-plus nav-light nav-lg nav-font-size-lg show-nav-hover mb-0"
                 data-plugin-options="{'responsive': {'0': {'items': 1, 'dots': true, 'nav': false}, '479': {'items': 1, 'dots': true}, '768': {'items': 1, 'dots': true}, '979': {'items': 1}, '1199': {'items': 1}}, 'loop': false, 'autoHeight': false, 'margin': 0, 'dots': false, 'dotsVerticalOffset': '-235px', 'nav': true, 'navVerticalOffset': '70px', 'animateIn': 'fadeIn', 'animateOut': 'fadeOut', 'mouseDrag': false, 'touchDrag': false, 'pullDrag': false, 'autoplay': true, 'autoplayTimeout': 7000, 'autoplayHoverPause': true, 'rewind': true}">
 
                 <!-- Carousel Slide 1 -->
+                @foreach ($homepage as $home)
                 <div class="position-relative overlay overlay-show overlay-op-9 overflow-hidden pt-4"
-                    data-dynamic-height="['845px','845px','845px','750px','750px']" style="height: 845px;">
-                    <div class="background-image-wrapper position-absolute top-0 left-0 right-0 bottom-0"
-                        data-appear-animation="kenBurnsToLeft" data-appear-animation-duration="30s"
-                        data-plugin-options="{'minWindowWidth': 0}" data-carousel-onchange-show
-                        style="background-image: url(/frontend/img/home-slide-01.jpg); background-size: cover; background-position: center;">
-                    </div>
-                    <div class="container position-relative z-index-3 h-100">
-                        <div class="row justify-content-center align-items-center h-100">
-                            <div class="col-lg-8 text-center">
-                                <h1 class="text-color-light font-weight-bold line-height-1 text-12 text-md-14 positive-ls-3 mb-3 appear-animation"
-                                    data-appear-animation="blurIn" data-appear-animation-delay="1000"
-                                    data-plugin-options="{'minWindowWidth': 0}">PSH Global</h1>
-                                <h2 class="alternative-font-4 text-color-light font-weight-semibold line-height-3 text-5 positive-ls-1 mb-2 appear-animation"
-                                    data-appear-animation="blurIn" data-appear-animation-delay="1300"
-                                    data-plugin-options="{'minWindowWidth': 0}"><span class="text-color-primary">PYEI
-                                        SONE HEINGROUP OF COMPANIES</span></h2>
-<p class="text-color-light opacity-6 text-3-5 mb-4" data-plugin-animated-letters data-plugin-options="{'startDelay': 2200, 'minWindowWidth': 0}">More Than 50 Years Combined Experience Serving Businesses</p>
-                                <a href="about.html"
-                                    class="btn btn-primary font-weight-bold text-3-5 px-5 py-3 mt-3 appear-animation"
-                                    data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="3300">About
-                                    Us</a>
-                            </div>
+                data-dynamic-height="['845px','845px','845px','750px','750px']" style="height: 845px;">
+                <div class="background-image-wrapper position-absolute top-0 left-0 right-0 bottom-0"
+                    data-appear-animation="kenBurnsToLeft" data-appear-animation-duration="30s"
+                    data-plugin-options="{'minWindowWidth': 0}" data-carousel-onchange-show
+                    style="background-image: url({{asset('storage/home-bg-image/'.$home->bg_image)}}); background-size: cover; background-position: center;">
+                </div>
+                <div class="container position-relative z-index-3 h-100">
+                    <div class="row justify-content-center align-items-center h-100">
+                        <div class="col-lg-8 text-center">
+                            <h1 class="text-color-light font-weight-bold line-height-1 text-12 text-md-14 positive-ls-3 mb-3 appear-animation"
+                                data-appear-animation="blurIn" data-appear-animation-delay="1000"
+                                data-plugin-options="{'minWindowWidth': 0}">{{$home->title}}</h1>
+                            <h2 class="alternative-font-4 text-color-light font-weight-semibold line-height-3 text-5 positive-ls-1 mb-2 appear-animation"
+                                data-appear-animation="blurIn" data-appear-animation-delay="1300"
+                                data-plugin-options="{'minWindowWidth': 0}"><span class="text-color-primary">{{$home->sub_title}}</span></h2>
+                            <p class="text-color-light opacity-6 text-3-5 mb-4" data-plugin-animated-letters data-plugin-options="{'startDelay': 2200, 'minWindowWidth': 0}">{!!$home->description!!}</p>
+                            <a href="{{url($home->link)}}"
+                                class="btn btn-primary font-weight-bold text-3-5 px-5 py-3 mt-3 appear-animation"
+                                data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="3300">{{$home->btn_text}}</a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Carousel Slide 2 -->
-                <div class="position-relative overlay overlay-show overlay-op-9 overflow-hidden pt-4"
-                    data-dynamic-height="['845px','845px','845px','750px','750px']" style="height: 845px;">
-                    <div class="background-image-wrapper position-absolute top-0 left-0 right-0 bottom-0"
-                        data-appear-animation="kenBurnsToLeft" data-appear-animation-duration="30s"
-                        data-plugin-options="{'minWindowWidth': 0}" data-carousel-onchange-show
-                        style="background-image: url(/frontend/img/home-slide-01.jpg); background-size: cover; background-position: center;">
-                    </div>
-                    <div class="container position-relative z-index-3 h-100">
-                        <div class="row justify-content-center align-items-center h-100">
-                            <div class="col-lg-8 text-center">
-                                <h1 class="text-color-light font-weight-bold line-height-1 text-12 text-md-14 positive-ls-3 mb-3 appear-animation"
-                                    data-appear-animation="blurIn" data-appear-animation-delay="1000"
-                                    data-plugin-options="{'minWindowWidth': 0}">PSH Global</h1>
-                                <h2 class="alternative-font-4 text-color-light font-weight-semibold line-height-3 text-5 positive-ls-1 mb-2 appear-animation"
-                                    data-appear-animation="blurIn" data-appear-animation-delay="1300"
-                                    data-plugin-options="{'minWindowWidth': 0}"><span class="opacity-9">Our
-                                        Products</span></h2>
-<p class="text-color-light opacity-6 text-3-5 mb-4" data-plugin-animated-letters data-plugin-options="{'startDelay': 2200, 'minWindowWidth': 0}">More Than 50 Years Combined Experience Serving Businesses</p>
-                                <a href="#"
-                                    class="btn btn-primary font-weight-bold text-3-5 px-5 py-3 mt-3 appear-animation"
-                                    data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="3300">More
-                                    Detail</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+            </div>
+                @endforeach
             </div>
         </div>
         <!-- END HOME SLIDER -->
         <!-- START ABOUT SECTION -->
+        @foreach ($homeabout as $item)
         <div class="container py-5 my-5">
             <div class="row align-items-center justify-content-center">
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <h2 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-2">About Us</h2>
                     <h2 class="text-color-dark font-weight-extra-bold text-10 mb-4 appear-animation"
-                        data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200"><em>Pyi Sone Hein
-                            Group Of Companies</em></h2>
+                        data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200"><em>{{$item->title}}</em></h2>
                     <p class="font-weight-light text-color-dark mb-4 appear-animation"
-                        data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">We duly incorporated
-                        under the Myanmar Citizen's Investment Law of the Uion of Myanmar. Company changed to corporate
-                        identy by the merger of Pyei Sone Hein Company Limited and ZIN 9 Company Limited in 2009.</p>
-                    <a href="about.html" class="btn btn-primary font-weight-bold text-3-5 px-5 py-3 appear-animation"
+                        data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">{{$item->description}}</p>
+                    <a href="{{url($item->link)}}" class="btn btn-primary font-weight-bold text-3-5 px-5 py-3 appear-animation"
                         data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="600">About Us</a>
                 </div>
                 <div class="col-md-9 col-lg-6 ps-lg-5">
@@ -92,7 +61,7 @@
                         </div>
                         <div data-plugin-float-element
                             data-plugin-options="{'startPos': 'top', 'speed': 0.3, 'transition': true, 'transitionDuration': 1000, 'isInsideSVG': true}">
-                            <img src="{{asset('frontend/img/psh-about.jpg')}}"
+                            <img src="{{asset('storage/home-about-image/'.$item->about_img)}}"
                                 class="img-fluid position-relative z-index-1 appear-animation"
                                 data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="900" alt="" />
                         </div>
@@ -100,6 +69,7 @@
                 </div>
             </div>
         </div>
+        @endforeach    
         <!-- END ABOUT SECTION -->
         <!-- START ABOUT COUNTER SECTION -->
         <section class="section overlay overlay-show overlay-op-9 border-0 m-0 appear-animation"
@@ -107,38 +77,16 @@
             style="background-image: url({{asset('frontend/img/home-slide-01.jpg')}}); background-size: cover; background-position: center;">
             <div class="container py-1">
                 <div class="row counters counters-sm">
+                    @foreach ($aboutcounter as $item)
                     <div class="col-sm-6 col-lg-3 mb-5 mb-lg-0">
                         <div class="counter">
-                            <strong class="text-color-light font-weight-bold line-height-1 text-13 mb-1" data-to="50"
+                            <strong class="text-color-light font-weight-bold line-height-1 text-13 mb-1" data-to="{{$item->value}}"
                                 data-append="+"
                                 data-plugin-options="{'appendWrapper': '<span class=text-color-primary></span>'}">0</strong>
-                            <label class="text-color-light font-weight-bold text-4 mb-0">Dealers</label>
+                            <label class="text-color-light font-weight-bold text-4 mb-0">{{$item->title}}</label>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-3 mb-5 mb-lg-0">
-                        <div class="counter">
-                            <strong class="text-color-light font-weight-bold line-height-1 text-13 mb-1" data-to="250"
-                                data-append="+"
-                                data-plugin-options="{'appendWrapper': '<span class=text-color-primary></span>'}">0</strong>
-                            <label class="text-color-light font-weight-bold text-4 mb-0">Staff Members</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 mb-5 mb-sm-0">
-                        <div class="counter">
-                            <strong class="text-color-light font-weight-bold line-height-1 text-13 mb-1" data-to="5000"
-                                data-append="+"
-                                data-plugin-options="{'appendWrapper': '<span class=text-color-primary></span>'}">0</strong>
-                            <label class="text-color-light font-weight-bold text-4 mb-0">Satiesfied Clients</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3">
-                        <div class="counter">
-                            <strong class="text-color-light font-weight-bold line-height-1 text-13 mb-1" data-to="100"
-                                data-append="+"
-                                data-plugin-options="{'appendWrapper': '<span class=text-color-primary></span>'}">0</strong>
-                            <label class="text-color-light font-weight-bold text-4 mb-0">Products</label>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
@@ -150,150 +98,30 @@
                     <div class="appear-animation" data-appear-animation="blurIn" data-appear-animation-delay="0">
                         <h2 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-2">PSH Global
                         </h2>
+                        @foreach ($special as $item)
                         <h2 class="text-color-dark font-weight-extra-bold text-10 mb-4 appear-animation"
-                            data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200"><em>Our
-                                Specializations</em></h2>
-                        <p class="font-weight-light text-color-dark mb-4 appear-animation"
-                            data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">We are providing
-                            end to end industrial solutions for Retail Fueling & Petroleum Equipment sector, Electronic
-                            Weighing System, Toll Management System, Industrial Software Solutions and System
-                            Integration Engineering. Our engineering team is organized with experienced and systematic
-                            well trained engineers and technicians. We are delivering quality products, latest
-                            technologies and innovative solutions to our clients.</p>
+                        data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200"><em>{{$item->title}}</em></h2>
+                    <p class="font-weight-light text-color-dark mb-4 appear-animation"
+                        data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">{{$item->description}}</p>
+                        @endforeach
                     </div>
                 </div>
             </div>
             <div class="row mt-4">
-                <div class="col-lg-4 d-flex align-items-stretch">
+                @foreach ($specialcard as $card)
+                <div class="col-lg-4 d-flex align-items-stretch mb-4">
                     <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1 appear-animation animated fadeInUp appear-animation-visible"
                         data-appear-animation="blurIn" data-appear-animation-delay="0" style="animation-delay: 0ms;">
                         <div class="card-body text-center px-4 py-5">
-                            <i class="fa-3x fa-solid fa-chart-line pb-4"></i>
-                            <h2
-                                class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
-                                Trading - Electronic Weighing Scales</h2>
-                            <p class="font-weight-light text-color-dark line-height-7 mb-2">Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
+                            {{-- <i class="fa-3x fa-solid fa-chart-line pb-4"></i> --}}
+                            <img class="img-fluid w-25 pb-3" src="{{asset('storage/card_img/'.$card->card_img)}}" alt="">
+                            <h2 class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
+                                {{$card->title}}</h2>
+                            <p class="font-weight-light text-color-dark line-height-7 mb-2">{{Str::limit($card->description, 100, '...')}}</p>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1 appear-animation animated fadeInUp appear-animation-visible"
-                        data-appear-animation="blurIn" data-appear-animation-delay="0" style="animation-delay: 0ms;">
-                        <div class="card-body text-center px-4 py-5">
-                            <i class="fa-3x fa-solid fa-chart-line pb-4"></i>
-                            <h2
-                                class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
-                                Trading - Digitalization Equipments</h2>
-                            <p class="font-weight-light text-color-dark line-height-7 mb-2">Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1 appear-animation animated fadeInUp appear-animation-visible"
-                        data-appear-animation="blurIn" data-appear-animation-delay="0" style="animation-delay: 0ms;">
-                        <div class="card-body text-center px-4 py-5">
-                            <i class="fa-3x fa-solid fa-chart-line pb-4"></i>
-                            <h2
-                                class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
-                                Trading - Road Safety Materials</h2>
-                            <p class="font-weight-light text-color-dark line-height-7 mb-2">Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1 appear-animation animated fadeInUp appear-animation-visible"
-                        data-appear-animation="blurIn" data-appear-animation-delay="300"
-                        style="animation-delay: 300ms;">
-                        <div class="card-body text-center px-4 py-5">
-                            <i class="fa-3x fa-solid fa-chart-line pb-4"></i>
-                            <h2
-                                class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
-                                Trading - Petroleum Equipments</h2>
-                            <div class="d-block d-md-flex">
-                                <p class="font-weight-light text-color-dark line-height-7 mb-2">Lorem ipsum dolor sit
-                                    amet, consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt
-                                    ut...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1 appear-animation animated fadeInUp appear-animation-visible"
-                        data-appear-animation="blurIn" data-appear-animation-delay="300"
-                        style="animation-delay: 300ms;">
-                        <div class="card-body text-center px-4 py-5">
-                            <i class="fa-3x fa-solid fa-scale-balanced pb-4"></i>
-                            <h2
-                                class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
-                                Electronic Weighing Scales</h2>
-                            <p class="font-weight-light text-color-dark line-height-7 mb-2">Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1 appear-animation animated fadeInUp appear-animation-visible"
-                        data-appear-animation="blurIn" data-appear-animation-delay="300"
-                        style="animation-delay: 300ms;">
-                        <div class="card-body text-center px-4 py-5">
-                            <i class="fa-3x fa-solid fa-briefcase pb-4"></i>
-                            <h2
-                                class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
-                                Electronic Toll Management System</h2>
-                            <p class="font-weight-light text-color-dark line-height-7 mb-2">Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1 appear-animation animated fadeInUp appear-animation-visible"
-                        data-appear-animation="blurIn" data-appear-animation-delay="600"
-                        style="animation-delay: 600ms;">
-                        <div class="card-body text-center px-4 py-5">
-                            <i class="fa-3x fa-solid fa-briefcase pb-4"></i>
-                            <h2
-                                class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
-                                Software & System Engineering</h2>
-                            <p class="font-weight-light text-color-dark line-height-7 mb-2">Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1 appear-animation animated fadeInUp appear-animation-visible"
-                        data-appear-animation="blurIn" data-appear-animation-delay="600"
-                        style="animation-delay: 600ms;">
-                        <div class="card-body text-center px-4 py-5">
-                            <i class="fa-3x fa-solid fa-briefcase pb-4"></i>
-                            <h2
-                                class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
-                                Electronic & Electrical Engineering</h2>
-                            <p class="font-weight-light text-color-dark line-height-7 mb-2">Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1 appear-animation animated fadeInUp appear-animation-visible"
-                        data-appear-animation="blurIn" data-appear-animation-delay="600"
-                        style="animation-delay: 600ms;">
-                        <div class="card-body text-center px-4 py-5">
-                            <i class="fa-3x fa-solid fa-briefcase pb-4"></i>
-                            <h2
-                                class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
-                                Renewable Energy and Energy Solutions</h2>
-                            <p class="font-weight-light text-color-dark line-height-7 mb-2">Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
-                        </div>
-                    </div>
-                </div>
+                </div>   
+                @endforeach
             </div>
         </div>
         <!-- END OUR SPECIALIZATIONS -->
@@ -397,69 +225,16 @@
                 data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="600" style="height: 373px;">
                 <div class="owl-carousel owl-theme dots-horizontal-center custom-dots-style-1 mb-0"
                     data-plugin-options="{'responsive': {'576': {'items': 2}, '768': {'items': 2}, '992': {'items': 3}, '1200': {'items': 4}, '1440': {'items': 5}}, 'margin': 20, 'stagePadding': 20, 'loop': true, 'nav': false, 'dots': true, 'autoplay': true, 'autoplayTimeout': 7000}">
+                    @foreach ($ourcustomers as $item)
                     <div class="py-5">
-                        <a href="#" class="text-decoration-none">
+                        <a href="{{url($item->link)}}" class="text-decoration-none">
                             <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
-                                <img src="{{asset('frontend/img/customers/ag.jpg')}}"
+                                <img src="{{asset('storage/customer_img/'.$item->customer_img)}}"
                                     class="card-img-top border-radius-0" alt="John Doe Image" />
                             </div>
                         </a>
-                    </div>
-                    <div class="py-5">
-                        <a href="#" class="text-decoration-none">
-                            <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
-                                <img src="{{asset('frontend/img/customers/kyal-sin-win.jpg')}}"
-                                    class="card-img-top border-radius-0" alt="" />
-                            </div>
-                        </a>
-                    </div>
-                    <div class="py-5">
-                        <a href="#" class="text-decoration-none">
-                            <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
-                                <img src="{{asset('frontend/img/customers/max-cement.jpg')}}"
-                                    class="card-img-top border-radius-0" alt="" />
-                            </div>
-                        </a>
-                    </div>
-                    <div class="py-5">
-                        <a href="#" class="text-decoration-none">
-                            <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
-                                <img src="{{asset('frontend/img/customers/max-engery.jpg')}}"
-                                    class="card-img-top border-radius-0" alt="" />
-                            </div>
-                        </a>
-                    </div>
-                    <div class="py-5">
-                        <a href="#" class="text-decoration-none">
-                            <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
-                                <img src="{{asset('frontend/img/customers/mcs.jpg')}}"
-                                    class="card-img-top border-radius-0" alt="" />
-                            </div>
-                        </a>
-                    </div>
-                    <div class="py-5">
-                        <a href="#" class="text-decoration-none">
-                            <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
-                                <img src="{{asset('frontend/img/customers/mmtm.jpg')}}" class="card-img-top border-radius-0" alt="" />
-                            </div>
-                        </a>
-                    </div>
-                    <div class="py-5">
-                        <a href="#" class="text-decoration-none">
-                            <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
-                                <img src="{{asset('frontend/img/customers/mnt.jpg')}}"
-                                    class="card-img-top border-radius-0" alt="" />
-                            </div>
-                        </a>
-                    </div>
-                    <div class="py-5">
-                        <a href="#" class="text-decoration-none">
-                            <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1">
-                                <img src="{{asset('frontend/img/customers/scg.jpg')}}"
-                                    class="card-img-top border-radius-0" alt="" />
-                            </div>
-                        </a>
-                    </div>
+                    </div>  
+                    @endforeach
                 </div>
             </div>
         </section>
