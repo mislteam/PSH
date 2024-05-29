@@ -3,23 +3,28 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\News;
+use App\Models\Company;
 use App\Models\Product;
 use App\Models\Project;
+use App\Models\Special;
 use App\Models\Homeabout;
 use App\Models\LandingPage;
 use App\Models\NewCategory;
+use App\Models\OurCustomer;
+use App\Models\SpecialCard;
 use App\Models\TechSupport;
 use App\Models\Testimonial;
 use App\Models\UserSupport;
 use App\Models\ProductBrand;
+use App\Models\CompanyDetail;
+use App\Models\CompanyPoilcy;
 use App\Models\ProductCategory;
 use App\Models\ProjectCategory;
 use App\Models\HomeaboutCounter;
 use App\Models\ProductSubCategory;
 use App\Http\Controllers\Controller;
-use App\Models\OurCustomer;
-use App\Models\Special;
-use App\Models\SpecialCard;
+use App\Models\CompanyFounder;
+use App\Models\Milestone;
 
 class HomeController extends Controller
 {
@@ -35,14 +40,19 @@ class HomeController extends Controller
         $special = Special::all();
         $specialcard = SpecialCard::all();
         $ourcustomers = OurCustomer::all();
-        return view('frontend.index', compact('brands', 'news', 'product_category','homepage','homeabout','aboutcounter','special','specialcard','ourcustomers'));
+        return view('frontend.index', compact('brands', 'news', 'product_category','homepage','homeabout','aboutcounter','special','specialcard','ourcustomers',));
     }
 
     // frontend about page
     public function about()
     {
         $testimonials = Testimonial::all();
-        return view('frontend.about', compact('testimonials'));
+        $companypolicy = CompanyPoilcy::all();
+        $company = Company::all();
+        $companydetail = CompanyDetail::all();
+        $companyfounder = CompanyFounder::all();
+        $milestone = Milestone::all();
+        return view('frontend.about', compact('testimonials','companypolicy','company','companydetail','companyfounder','milestone'));
     }
 
     // frontend products category page

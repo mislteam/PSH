@@ -21,7 +21,87 @@ class ProductSeeder extends Seeder
             'product_sub_category_id' => 1,
             'product_brand_id'=> 4,
             'name'=>'Product-1',
-            'specification'=>null,
+            'specification'=>'{"Dolorem et sunt fug":"Fugiat porro dolore"}',
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
+            'product_pdf'=> 'product-pdf',
+            'product_video_link'=>'product_video_link',
+            'product_feature_image'=>null,
+            'product_guide_pdf'=>null,
+            'product_guide_video'=>null,
+            'product_type_id'=> 1
+        ]);
+
+        $product = Product::create([
+            'name' => 'Brand-1', 
+            'product_category_id' => 3,
+            'product_sub_category_id' => 1,
+            'product_brand_id'=> 4,
+            'name'=>'Product-1',
+            'specification'=>'{"Dolorem et sunt fug":"Fugiat porro dolore"}',
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
+            'product_pdf'=> 'product-pdf',
+            'product_video_link'=>'product_video_link',
+            'product_feature_image'=>null,
+            'product_guide_pdf'=>null,
+            'product_guide_video'=>null,
+            'product_type_id'=> 1
+        ]);
+
+        $product = Product::create([
+            'name' => 'Brand-1', 
+            'product_category_id' => 3,
+            'product_sub_category_id' => 1,
+            'product_brand_id'=> 4,
+            'name'=>'Product-1',
+            'specification'=>'{"Dolorem et sunt fug":"Fugiat porro dolore"}',
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
+            'product_pdf'=> 'product-pdf',
+            'product_video_link'=>'product_video_link',
+            'product_feature_image'=>null,
+            'product_guide_pdf'=>null,
+            'product_guide_video'=>null,
+            'product_type_id'=> 1
+        ]);
+
+        $product = Product::create([
+            'name' => 'Brand-1', 
+            'product_category_id' => 3,
+            'product_sub_category_id' => 1,
+            'product_brand_id'=> 4,
+            'name'=>'Product-1',
+            'specification'=>'{"Dolorem et sunt fug":"Fugiat porro dolore"}',
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
+            'product_pdf'=> 'product-pdf',
+            'product_video_link'=>'product_video_link',
+            'product_feature_image'=>null,
+            'product_guide_pdf'=>null,
+            'product_guide_video'=>null,
+            'product_type_id'=> 1
+        ]);
+
+        $product = Product::create([
+            'name' => 'Brand-1', 
+            'product_category_id' => 3,
+            'product_sub_category_id' => 1,
+            'product_brand_id'=> 4,
+            'name'=>'Product-1',
+            'specification'=>'{"Dolorem et sunt fug":"Fugiat porro dolore"}',
+            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
+            'product_pdf'=> 'product-pdf',
+            'product_video_link'=>'product_video_link',
+            'product_feature_image'=>null,
+            'product_guide_pdf'=>null,
+            'product_guide_video'=>null,
+            'product_type_id'=> 1
+        ]);
+
+        $product = Product::create([
+            'name' => 'Brand-1', 
+            'product_category_id' => 3,
+            'product_sub_category_id' => 1,
+            'product_brand_id'=> 4,
+            'name'=>'Product-1',
+            'specification'=>'{"Dolorem et sunt fug":"Fugiat porro dolore"}',
             'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit',
             'product_pdf'=> 'product-pdf',
             'product_video_link'=>'product_video_link',

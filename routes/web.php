@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\SpecialController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\FeedbackController;
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\Backend\AboutUsController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Frontend\UserloginController;
@@ -253,38 +254,68 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
     });
 
     // All Page
-    Route::prefix('allpage')->group(function(){
+    Route::prefix('allpage')->group(function () {
         // home page slide
-        Route::get('home',[LandingPageController::class,'index'])->name('home.index');
-        Route::get('home/create',[LandingPageController::class,'create'])->name('home.create');
-        Route::post('home/store',[LandingPageController::class,'store'])->name('home.store');
-        Route::get('home/edit/{id}',[LandingPageController::class,'edit'])->name('home.edit');
-        Route::post('home/edit/{id}',[LandingPageController::class,'update'])->name('home.update');
+        Route::get('home', [LandingPageController::class, 'index'])->name('home.index');
+        Route::get('home/create', [LandingPageController::class, 'create'])->name('home.create');
+        Route::post('home/store', [LandingPageController::class, 'store'])->name('home.store');
+        Route::get('home/edit/{id}', [LandingPageController::class, 'edit'])->name('home.edit');
+        Route::post('home/edit/{id}', [LandingPageController::class, 'update'])->name('home.update');
 
         // home about page
-        Route::get('home/aboutedit/{id}',[LandingPageController::class,'homeaboutedit'])->name('homeabout.edit');
-        Route::post('home/aboutedit/{id}',[LandingPageController::class,'homeaboutupdate'])->name('homeabout.update');
+        Route::get('home/aboutedit/{id}', [LandingPageController::class, 'homeaboutedit'])->name('homeabout.edit');
+        Route::post('home/aboutedit/{id}', [LandingPageController::class, 'homeaboutupdate'])->name('homeabout.update');
 
         // home about counter
-        Route::get('home/aboutcounter/edit/{id}',[LandingPageController::class,'aboutcounteredit'])->name('aboutcounter.edit');
-        Route::post('home/aboutcounter/update/{id}',[LandingPageController::class,'aboutcounterupdate'])->name('aboutcounter.update');
+        Route::get('home/aboutcounter/edit/{id}', [LandingPageController::class, 'aboutcounteredit'])->name('aboutcounter.edit');
+        Route::post('home/aboutcounter/update/{id}', [LandingPageController::class, 'aboutcounterupdate'])->name('aboutcounter.update');
 
         // specialization
-        Route::get('specialization',[SpecialController::class,'index'])->name('special.index');
-        Route::get('specialization/edit/{id}',[SpecialController::class,'edit'])->name('special.edit');
-        Route::post('specialization/update/{id}',[SpecialController::class,'update'])->name('special.update');
+        Route::get('specialization', [SpecialController::class, 'index'])->name('special.index');
+        Route::get('specialization/edit/{id}', [SpecialController::class, 'edit'])->name('special.edit');
+        Route::post('specialization/update/{id}', [SpecialController::class, 'update'])->name('special.update');
 
         // specialization card
-        Route::get('specialization/card/edit/{id}',[SpecialController::class,'cardEdit'])->name('card.edit');
-        Route::post('specialization/card/update/{id}',[SpecialController::class,'cardUpdate'])->name('card.update');
+        Route::get('specialization/card/edit/{id}', [SpecialController::class, 'cardEdit'])->name('card.edit');
+        Route::post('specialization/card/update/{id}', [SpecialController::class, 'cardUpdate'])->name('card.update');
 
         // Our customer
-        Route::get('ourcustomer',[OurCustomerController::class,'index'])->name('ourcustomer.index');
-        Route::get('ourcustomer/create',[OurCustomerController::class,'create'])->name('ourcustomer.create');
-        Route::post('ourcustomer/store',[OurCustomerController::class,'store'])->name('ourcustomer.store');
-        Route::get('ourcustomer/edit/{id}',[OurCustomerController::class,'edit'])->name('ourcustomer.edit');
-        Route::post('ourcustomer/edit/{id}',[OurCustomerController::class,'update'])->name('ourcustomer.update');
+        Route::get('ourcustomer', [OurCustomerController::class, 'index'])->name('ourcustomer.index');
+        Route::get('ourcustomer/create', [OurCustomerController::class, 'create'])->name('ourcustomer.create');
+        Route::post('ourcustomer/store', [OurCustomerController::class, 'store'])->name('ourcustomer.store');
+        Route::get('ourcustomer/edit/{id}', [OurCustomerController::class, 'edit'])->name('ourcustomer.edit');
+        Route::post('ourcustomer/edit/{id}', [OurCustomerController::class, 'update'])->name('ourcustomer.update');
         Route::post('ourcustomer/delete', [OurCustomerController::class, 'delete'])->name('ourcustomer.delete');
+
+        // About => Company Policy
+        Route::get('companypolicy', [AboutUsController::class, 'index'])->name('about.companypolicy');
+        Route::get('companypolicy/edit/{id}', [AboutUsController::class, 'edit'])->name('about.companypolicyedit');
+        Route::post('companypolicy/edit/{id}', [AboutUsController::class, 'update'])->name('about.companypolicyupdate');
+
+        // About => Company
+        Route::get('companys', [AboutUsController::class, 'companyindex'])->name('about.company');
+        Route::get('companys/create', [AboutUsController::class, 'companycreate'])->name('companys.create');
+        Route::post('companys/store', [AboutUsController::class, 'companystore'])->name('companys.store');
+        Route::get('companys/edit/{id}', [AboutUsController::class, 'companyedit'])->name('about.companyedit');
+        Route::post('companys/edit/{id}', [AboutUsController::class, 'companyupdate'])->name('about.companyupdate');
+
+        // About => Company Detail
+        Route::get('companydetail', [AboutUsController::class, 'companydetailindex'])->name('about.companydetail');
+        Route::get('companydetail/edit/{id}', [AboutUsController::class, 'companydetailedit'])->name('about.companydetailedit');
+        Route::post('companydetail/edit/{id}', [AboutUsController::class, 'companydetailupdate'])->name('about.companydetailupdate');
+
+        // About => Company founder
+        Route::get('companyfounder', [AboutUsController::class, 'companyfounderindex'])->name('about.companyfounder');
+        Route::get('companyfounder/edit/{id}', [AboutUsController::class, 'companyfounderedit'])->name('about.companyfounderedit');
+        Route::post('companyfounder/edit/{id}', [AboutUsController::class, 'companyfounderupdate'])->name('about.companyfounderupdate');
+
+        // About => Company milestone
+        Route::get('milestone', [AboutUsController::class, 'milestoneindex'])->name('milestone.index');
+        Route::get('milestone/create', [AboutUsController::class, 'milestonecreate'])->name('milestone.create');
+        Route::post('milestone/store', [AboutUsController::class, 'milestonestore'])->name('milestone.store');
+        Route::get('milestone/edit/{id}', [AboutUsController::class, 'milestoneedit'])->name('milestone.edit');
+        Route::post('milestone/edit/{id}', [AboutUsController::class, 'milestoneupdate'])->name('milestone.update');
+        // Route::post('milestone/delete', [AboutUsController::class, 'milestonedelete'])->name('milestone.delete');
     });
 
     // Account 

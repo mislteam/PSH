@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\CompanyDetail;
 use App\Models\HomeaboutCounter;
+use App\Models\Milestone;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -36,6 +38,11 @@ class DatabaseSeeder extends Seeder
             HomeaboutCounterSeeder::class,
             SpecialSeeder::class,
             SpecialCardSeeder::class,
+            CompanyPolicySeeder::class,
+            CompanySeeder::class,
+            CompanyDetailSeeder::class,
+            CompanyFounderSeeder::class,
+            MilestoneSeeder::class,
         ]);
     }
 }
