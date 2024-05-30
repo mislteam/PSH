@@ -209,6 +209,26 @@
                     @endcan
                     {{-- all about end --}}
 
+                     {{-- all contact start--}}
+                     @can('view contact')
+                     <li class="{{request()->is('admin/allpage/contact*') ? 'active' : ''}}">
+                         <a href=""><i class="fa fa-folder"></i> <span class="nav-label"> Contact Us Page </span><span
+                                 class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level collapse">
+                             @can('view contact')
+                             <li class="{{request()->is('admin/allpage/contact*') ? 'active' : ''}}">
+                                 <a href="{{route('contact.index')}}"> <span class="nav-label">Head Office Page</span></a>
+                             </li>
+                             @endcan
+                             @can('view ourbranch')
+                             <li class="{{request()->is('admin/allpage/ourbranch*') ? 'active' : ''}}">
+                                 <a href="{{route('ourbranch.index')}}"> <span class="nav-label">Our Branch </span></a>
+                             </li>
+                             @endcan
+                         </ul>
+                     </li>
+                     @endcan
+                     {{-- all contact us end --}}
                 </ul>
             </li>
             @endcan

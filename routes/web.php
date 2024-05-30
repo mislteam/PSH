@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\NewController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\FormController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Backend\AboutUsController;
 use App\Http\Controllers\Backend\AccountController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProjectController;
@@ -18,19 +19,19 @@ use App\Http\Controllers\Backend\SpecialController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\FeedbackController;
 use App\Http\Controllers\Auth\VerificationController;
-use App\Http\Controllers\Backend\AboutUsController;
+use App\Http\Controllers\Backend\ContactUsController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Frontend\UserloginController;
 use App\Http\Controllers\Backend\LandingPageController;
 use App\Http\Controllers\Backend\NewCategoryController;
+use App\Http\Controllers\Backend\OurCustomerController;
 use App\Http\Controllers\Backend\ProductTypeController;
 use App\Http\Controllers\Backend\TechSupportController;
 use App\Http\Controllers\Backend\UserSupportController;
 use App\Http\Controllers\Backend\ProductBrandController;
 use App\Http\Controllers\Frontend\TestimonialController;
 use App\Http\Controllers\Backend\GeneralSettingController;
-use App\Http\Controllers\Backend\OurCustomerController;
 use App\Http\Controllers\Backend\ProductCategoryController;
 use App\Http\Controllers\Backend\ProjectCategoryController;
 use App\Http\Controllers\Backend\ProductSubCategoryController;
@@ -315,7 +316,16 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
         Route::post('milestone/store', [AboutUsController::class, 'milestonestore'])->name('milestone.store');
         Route::get('milestone/edit/{id}', [AboutUsController::class, 'milestoneedit'])->name('milestone.edit');
         Route::post('milestone/edit/{id}', [AboutUsController::class, 'milestoneupdate'])->name('milestone.update');
-        // Route::post('milestone/delete', [AboutUsController::class, 'milestonedelete'])->name('milestone.delete');
+
+        // contact us 
+        Route::get('contact', [ContactUsController::class, 'contactindex'])->name('contact.index');
+        Route::get('contact/edit/{id}', [ContactUsController::class, 'contactedit'])->name('contact.edit');
+        Route::post('contact/edit/{id}', [ContactUsController::class, 'contactupdate'])->name('contact.update');
+
+        // our branch 
+        Route::get('ourbranch', [ContactUsController::class, 'ourbranchindex'])->name('ourbranch.index');
+        Route::get('ourbranch/edit/{id}', [ContactUsController::class, 'ourbranchedit'])->name('ourbranch.edit');
+        Route::post('ourbranch/edit/{id}', [ContactUsController::class, 'ourbranchupdate'])->name('ourbranch.update');
     });
 
     // Account 

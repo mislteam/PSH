@@ -43,6 +43,8 @@ class DatabaseSeeder extends Seeder
             CompanyDetailSeeder::class,
             CompanyFounderSeeder::class,
             MilestoneSeeder::class,
+            ContactUsSeeder::class,
+            OurBranchSeeder::class,
         ]);
     }
 }

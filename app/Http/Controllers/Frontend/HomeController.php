@@ -7,7 +7,10 @@ use App\Models\Company;
 use App\Models\Product;
 use App\Models\Project;
 use App\Models\Special;
+use App\Models\ContactUs;
 use App\Models\Homeabout;
+use App\Models\Milestone;
+use App\Models\OurBranch;
 use App\Models\LandingPage;
 use App\Models\NewCategory;
 use App\Models\OurCustomer;
@@ -18,13 +21,12 @@ use App\Models\UserSupport;
 use App\Models\ProductBrand;
 use App\Models\CompanyDetail;
 use App\Models\CompanyPoilcy;
+use App\Models\CompanyFounder;
 use App\Models\ProductCategory;
 use App\Models\ProjectCategory;
 use App\Models\HomeaboutCounter;
 use App\Models\ProductSubCategory;
 use App\Http\Controllers\Controller;
-use App\Models\CompanyFounder;
-use App\Models\Milestone;
 
 class HomeController extends Controller
 {
@@ -127,7 +129,9 @@ class HomeController extends Controller
     // frontend contact page
     public function contact()
     {
-        return view('frontend.contact');
+        $contact = ContactUs::all();
+        $ourbranch = OurBranch::all();
+        return view('frontend.contact',compact('contact','ourbranch'));
     }
 
     // frontend project detail page

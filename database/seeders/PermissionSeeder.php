@@ -119,6 +119,14 @@ class PermissionSeeder extends Seeder
             'create milestone',
             'edit milestone',
             'delete milestone',
+            'view contact',
+            'create contact',
+            'edit contact',
+            'delete contact',
+            'view ourbranch',
+            'create ourbranch',
+            'edit ourbranch',
+            'delete ourbranch',
         ];
 
         foreach ($permissions as $permission) {

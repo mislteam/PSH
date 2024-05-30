@@ -26,29 +26,39 @@
                             <h2 class="font-weight-bold text-color-dark text-6 text-lg-5 text-xl-7 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">Get In Touch</h2>
                             <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">
                                 <h3 class="alternative-font-4 font-weight-bold text-color-dark text-transform-none text-4 mb-0">Work Inquiries</h3>
+                                @foreach ($contact as $item)
                                 <div class="mb-4">
-                                    <a href="#" class="text-color-dark text-decoration-none text-4">(+95) 9-4431 35270</a>,<br>
-                                    <a href="#" class="text-color-dark text-decoration-none text-4">(+95) 9-4431 45270</a>,<br>
+                                    <a href="#" class="text-color-dark text-decoration-none text-4">{{$item->phone}}</a>,<br>
+                                    {{-- <a href="#" class="text-color-dark text-decoration-none text-4">(+95) 9-4431 45270</a>,<br>
                                     <a href="#" class="text-color-dark text-decoration-none text-4">(+95) 1 515203</a>,<br>
-                                    <a href="#" class="text-color-dark text-decoration-none text-4">(+95 ) 1537530</a>
+                                    <a href="#" class="text-color-dark text-decoration-none text-4">(+95 ) 1537530</a> --}}
                                 </div>
+                                @endforeach
                             </div>
                             <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="700">
                                 <h3 class="alternative-font-4 font-weight-bold text-color-dark text-transform-none text-4 mb-0">Assistance Hours</h3>
-                                <p>Mon - Sat 9:00am - 8:00pm<br> Sunday - CLOSED</p>
+                                @foreach ($contact as $item)
+                                <p>{{$item->hours}}</p>
+                                {{-- <p>Mon - Sat 9:00am - 8:00pm<br> Sunday - CLOSED</p> --}}
+                                @endforeach
                             </div>
                         </div>
                         <div class="col-md-6">
                             <h2 class="font-weight-bold text-color-dark text-6 text-lg-5 text-xl-7 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="900">Head Office</h2>
                             <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1300">
                                 <h3 class="alternative-font-4 font-weight-bold text-color-dark text-transform-none text-4 mb-0">Address</h3>
+                                @foreach ($contact as $item)
                                 <p>
-                                    No.(29), Shwe Padauk Yeikmon, Bayintnaung Main Road, Kamayut Tsp, Yangon (11041), Union of Myanmar
+                                  {{$item->address}}
                                 </p>
+                                @endforeach
                             </div>
                             <div class="appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1100">
                                 <h3 class="alternative-font-4 font-weight-bold text-color-dark text-transform-none text-4 mb-0">Email</h3>
-                                <a href="#" class="text-color-default text-color-hover-primary text-decoration-underline mb-4">info@yourcompany.com</a>
+                                @foreach ($contact as $item)
+                                <a href="#" class="text-color-default text-color-hover-primary text-decoration-underline mb-4">{{$item->email}}</a>
+                                @endforeach
+                               
                             </div>
                         </div>
                     </div>
@@ -109,14 +119,15 @@
             </div>
         </div>
     </div>
-    <section class="section m-0 border-0 py-2">
+    @foreach ($ourbranch as $item)
+    <section class=" @if($loop->odd) section @endif" m-0 border-0 py-2">
         <div class="container py-5 my-3">
             <div class="row">
                 <div class="col text-center">
                     <div class="appear-animation" data-appear-animation="blurIn" data-appear-animation-delay="0">
                         <h2 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-2">Our Branch</h2>
-                        <h2 class="text-color-dark font-weight-extra-bold text-10 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200"><em>SINT OH DAN (YANGON)</em></h2>
-                        <p class="font-weight-light text-color-dark mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra lorem ipsum erat orci, ac auctor</p>
+                        <h2 class="text-color-dark font-weight-extra-bold text-10 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200"><em>{{$item->title}}</em></h2>
+                        <p class="font-weight-light text-color-dark mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">{{$item->description}}</p>
                     </div>
                 </div>
             </div>
@@ -130,7 +141,7 @@
                                 </div>
                                 <div class="feature-box-info">
                                     <h4 class="mb-2">Address</h4>
-                                    <p class="mb-0">No.(49+1), Sin Ooe Dan Street, La Thar Township, Yangon</p>
+                                    <p class="mb-0">{{$item->address}}</p>
                                 </div>
                             </div>
                         </div>
@@ -146,8 +157,7 @@
                                 <div class="feature-box-info">
                                     <h4 class="mb-2">Phone Number</h4>
                                     <p class="mb-0">
-                                    01-374594 , <br>
-                                    (+95) 09-73901925</p>
+                                        {{$item->phone}}</p>
                                 </div>
                             </div>
                         </div>
@@ -163,7 +173,7 @@
                                 <div class="feature-box-info">
                                     <h4 class="mb-2">E-mail Address</h4>
                                     <p class="mb-0">
-                                        setra.sales@zinnine.com
+                                        {{$item->email}}
                                     </p>
                                 </div>
                             </div>
@@ -173,341 +183,7 @@
             </div>
         </div>
     </section>
-    <section class="m-0 border-0 py-2">
-        <div class="container py-5 my-3">
-            <div class="row">
-                <div class="col text-center">
-                    <div class="appear-animation" data-appear-animation="blurIn" data-appear-animation-delay="0">
-                        <h2 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-2">Our Branch</h2>
-                        <h2 class="text-color-dark font-weight-extra-bold text-10 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200"><em>Naypyitaw</em></h2>
-                        <p class="font-weight-light text-color-dark mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra lorem ipsum erat orci, ac auctor</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card border-radius-0 bg-color-light box-shadow-1 box-shadow-1-hover appear-animation animated fadeInUp appear-animation-visible w-100" data-appear-animation="blurIn" data-appear-animation-delay="0" style="animation-delay: 0ms;">
-                        <div class="card-body p-relative ">
-                            <div class="feature-box feature-box-primary">
-                                <div class="feature-box-icon">
-                                    <i class="fa fa-location-dot"></i>
-                                </div>
-                                <div class="feature-box-info">
-                                    <h4 class="mb-2">Address</h4>
-                                    <p class="mb-0">No.(Pa /88), Thapyay Gone Shopping Complex, Thapyay Gone Market, Naypyitaw Capital</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card border-radius-0 bg-color-light box-shadow-1 box-shadow-1-hover appear-animation animated fadeInUp appear-animation-visible w-100" data-appear-animation="blurIn" data-appear-animation-delay="200" style="animation-delay: 200ms;">
-                        <div class="card-body p-relative ">
-                            <div class="feature-box feature-box-primary">
-                                <div class="feature-box-icon">
-                                    <i class="fa fa-phone"></i>
-                                </div>
-                                <div class="feature-box-info">
-                                    <h4 class="mb-2">Phone Number</h4>
-                                    <p class="mb-0">
-                                        (+95) 67-432129 ,<br>
-                                         (+95) 9-790544453
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card border-radius-0 bg-color-light box-shadow-1 box-shadow-1-hover appear-animation animated fadeInUp appear-animation-visible w-100" data-appear-animation="blurIn" data-appear-animation-delay="400" style="animation-delay: 400ms;">
-                        <div class="card-body p-relative ">
-                            <div class="feature-box feature-box-primary">
-                                <div class="feature-box-icon">
-                                    <i class="fa fa-envelope"></i>
-                                </div>
-                                <div class="feature-box-info">
-                                    <h4 class="mb-2">E-mail Address</h4>
-                                    <p class="mb-0">
-                                        setra.sales@zinnine.com
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="section m-0 border-0 py-2">
-        <div class="container py-5 my-3">
-            <div class="row">
-                <div class="col text-center">
-                    <div class="appear-animation" data-appear-animation="blurIn" data-appear-animation-delay="0">
-                        <h2 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-2">Our Branch</h2>
-                        <h2 class="text-color-dark font-weight-extra-bold text-10 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200"><em>Mandalay</em></h2>
-                        <p class="font-weight-light text-color-dark mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra lorem ipsum erat orci, ac auctor</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card border-radius-0 bg-color-light box-shadow-1 box-shadow-1-hover appear-animation animated fadeInUp appear-animation-visible w-100" data-appear-animation="blurIn" data-appear-animation-delay="0" style="animation-delay: 0ms;">
-                        <div class="card-body p-relative ">
-                            <div class="feature-box feature-box-primary">
-                                <div class="feature-box-icon">
-                                    <i class="fa fa-location-dot"></i>
-                                </div>
-                                <div class="feature-box-info">
-                                    <h4 class="mb-2">Address</h4>
-                                    <p class="mb-0">
-                                        No(149/Za), Yangon - Mandalay Road (78 Street) , South of the Phayargyi Meseum, Between of Theik Pan Street & Sagaing Lan Khwe, (902) Thidar Aye Quarter, Chan Mya Tharsi Township, Mandalay. Division
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card border-radius-0 bg-color-light box-shadow-1 box-shadow-1-hover appear-animation animated fadeInUp appear-animation-visible w-100" data-appear-animation="blurIn" data-appear-animation-delay="200" style="animation-delay: 200ms;">
-                        <div class="card-body p-relative ">
-                            <div class="feature-box feature-box-primary">
-                                <div class="feature-box-icon">
-                                    <i class="fa fa-phone"></i>
-                                </div>
-                                <div class="feature-box-info">
-                                    <h4 class="mb-2">Phone Number</h4>
-                                    <p class="mb-0">
-                                        (+95) 9-5129954 ,<br>
-                                        (+95) 47126661 ,<br>
-                                        (+95) 47126662
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card border-radius-0 bg-color-light box-shadow-1 box-shadow-1-hover appear-animation animated fadeInUp appear-animation-visible w-100" data-appear-animation="blurIn" data-appear-animation-delay="400" style="animation-delay: 400ms;">
-                        <div class="card-body p-relative ">
-                            <div class="feature-box feature-box-primary">
-                                <div class="feature-box-icon">
-                                    <i class="fa fa-envelope"></i>
-                                </div>
-                                <div class="feature-box-info">
-                                    <h4 class="mb-2">E-mail Address</h4>
-                                    <p class="mb-0">
-                                        setra.sales@zinnine.com
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="m-0 border-0 py-2">
-        <div class="container py-5 my-3">
-            <div class="row">
-                <div class="col text-center">
-                    <div class="appear-animation" data-appear-animation="blurIn" data-appear-animation-delay="0">
-                        <h2 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-2">Our Branch</h2>
-                        <h2 class="text-color-dark font-weight-extra-bold text-10 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200"><em>Monywa</em></h2>
-                        <p class="font-weight-light text-color-dark mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra lorem ipsum erat orci, ac auctor</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card border-radius-0 bg-color-light box-shadow-1 box-shadow-1-hover appear-animation animated fadeInUp appear-animation-visible w-100" data-appear-animation="blurIn" data-appear-animation-delay="0" style="animation-delay: 0ms;">
-                        <div class="card-body p-relative ">
-                            <div class="feature-box feature-box-primary">
-                                <div class="feature-box-icon">
-                                    <i class="fa fa-location-dot"></i>
-                                </div>
-                                <div class="feature-box-info">
-                                    <h4 class="mb-2">Address</h4>
-                                    <p class="mb-0">
-                                        No.(3), Sithmudam Hawn Shop, Merchant Road, Monywa Township, Sagaing Division
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card border-radius-0 bg-color-light box-shadow-1 box-shadow-1-hover appear-animation animated fadeInUp appear-animation-visible w-100" data-appear-animation="blurIn" data-appear-animation-delay="200" style="animation-delay: 200ms;">
-                        <div class="card-body p-relative ">
-                            <div class="feature-box feature-box-primary">
-                                <div class="feature-box-icon">
-                                    <i class="fa fa-phone"></i>
-                                </div>
-                                <div class="feature-box-info">
-                                    <h4 class="mb-2">Phone Number</h4>
-                                    <p class="mb-0">
-                                        (+95) 71-28280 ,<br>
-                                         (+95)9-43041179
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card border-radius-0 bg-color-light box-shadow-1 box-shadow-1-hover appear-animation animated fadeInUp appear-animation-visible w-100" data-appear-animation="blurIn" data-appear-animation-delay="400" style="animation-delay: 400ms;">
-                        <div class="card-body p-relative ">
-                            <div class="feature-box feature-box-primary">
-                                <div class="feature-box-icon">
-                                    <i class="fa fa-envelope"></i>
-                                </div>
-                                <div class="feature-box-info">
-                                    <h4 class="mb-2">E-mail Address</h4>
-                                    <p class="mb-0">
-                                        setra.sales@zinnine.com
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="section m-0 border-0 py-2">
-        <div class="container py-5 my-3">
-            <div class="row">
-                <div class="col text-center">
-                    <div class="appear-animation" data-appear-animation="blurIn" data-appear-animation-delay="0">
-                        <h2 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-2">Our Branch</h2>
-                        <h2 class="text-color-dark font-weight-extra-bold text-10 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200"><em>Pyay</em></h2>
-                        <p class="font-weight-light text-color-dark mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra lorem ipsum erat orci, ac auctor</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card border-radius-0 bg-color-light box-shadow-1 box-shadow-1-hover appear-animation animated fadeInUp appear-animation-visible w-100" data-appear-animation="blurIn" data-appear-animation-delay="0" style="animation-delay: 0ms;">
-                        <div class="card-body p-relative ">
-                            <div class="feature-box feature-box-primary">
-                                <div class="feature-box-icon">
-                                    <i class="fa fa-location-dot"></i>
-                                </div>
-                                <div class="feature-box-info">
-                                    <h4 class="mb-2">Address</h4>
-                                    <p class="mb-0">
-                                        No. 7, Kyaung Gyi Ward, Near Bogoke Statue, Night Market Street, In front of the social security office, at construction building row
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card border-radius-0 bg-color-light box-shadow-1 box-shadow-1-hover appear-animation animated fadeInUp appear-animation-visible w-100" data-appear-animation="blurIn" data-appear-animation-delay="200" style="animation-delay: 200ms;">
-                        <div class="card-body p-relative ">
-                            <div class="feature-box feature-box-primary">
-                                <div class="feature-box-icon">
-                                    <i class="fa fa-phone"></i>
-                                </div>
-                                <div class="feature-box-info">
-                                    <h4 class="mb-2">Phone Number</h4>
-                                    <p class="mb-0">
-                                        (+95) 9-43191579 ,<br>
-                                        (+95) 429517043 ,<br>
-                                        (+95) 425303597
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card border-radius-0 bg-color-light box-shadow-1 box-shadow-1-hover appear-animation animated fadeInUp appear-animation-visible w-100" data-appear-animation="blurIn" data-appear-animation-delay="400" style="animation-delay: 400ms;">
-                        <div class="card-body p-relative ">
-                            <div class="feature-box feature-box-primary">
-                                <div class="feature-box-icon">
-                                    <i class="fa fa-envelope"></i>
-                                </div>
-                                <div class="feature-box-info">
-                                    <h4 class="mb-2">E-mail Address</h4>
-                                    <p class="mb-0">
-                                        setra.sales@zinnine.com
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="m-0 border-0 py-2">
-        <div class="container py-5 my-3">
-            <div class="row">
-                <div class="col text-center">
-                    <div class="appear-animation" data-appear-animation="blurIn" data-appear-animation-delay="0">
-                        <h2 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-2">Our Branch</h2>
-                        <h2 class="text-color-dark font-weight-extra-bold text-10 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200"><em>Pathein</em></h2>
-                        <p class="font-weight-light text-color-dark mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra lorem ipsum erat orci, ac auctor</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card border-radius-0 bg-color-light box-shadow-1 box-shadow-1-hover appear-animation animated fadeInUp appear-animation-visible w-100" data-appear-animation="blurIn" data-appear-animation-delay="0" style="animation-delay: 0ms;">
-                        <div class="card-body p-relative ">
-                            <div class="feature-box feature-box-primary">
-                                <div class="feature-box-icon">
-                                    <i class="fa fa-location-dot"></i>
-                                </div>
-                                <div class="feature-box-info">
-                                    <h4 class="mb-2">Address</h4>
-                                    <p class="mb-0">
-                                        No.(32), Maha Bandoola Road, Pathein Township, Ayeyarwaddy Division
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card border-radius-0 bg-color-light box-shadow-1 box-shadow-1-hover appear-animation animated fadeInUp appear-animation-visible w-100" data-appear-animation="blurIn" data-appear-animation-delay="200" style="animation-delay: 200ms;">
-                        <div class="card-body p-relative ">
-                            <div class="feature-box feature-box-primary">
-                                <div class="feature-box-icon">
-                                    <i class="fa fa-phone"></i>
-                                </div>
-                                <div class="feature-box-info">
-                                    <h4 class="mb-2">Phone Number</h4>
-                                    <p class="mb-0">
-                                        (+95) 9-401601509 ,<br>
-                                         (+95) 9 250152114
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch">
-                    <div class="card border-radius-0 bg-color-light box-shadow-1 box-shadow-1-hover appear-animation animated fadeInUp appear-animation-visible w-100" data-appear-animation="blurIn" data-appear-animation-delay="400" style="animation-delay: 400ms;">
-                        <div class="card-body p-relative ">
-                            <div class="feature-box feature-box-primary">
-                                <div class="feature-box-icon">
-                                    <i class="fa fa-envelope"></i>
-                                </div>
-                                <div class="feature-box-info">
-                                    <h4 class="mb-2">E-mail Address</h4>
-                                    <p class="mb-0">
-                                        setra.sales@zinnine.com
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @endforeach
     <!-- END CONTACT US -->
 </div> 
 @endsection
