@@ -45,6 +45,8 @@ class DatabaseSeeder extends Seeder
             MilestoneSeeder::class,
             ContactUsSeeder::class,
             OurBranchSeeder::class,
+            FooterSeeder::class,
+            HeaderSeeder::class,            
         ]);
     }
 }

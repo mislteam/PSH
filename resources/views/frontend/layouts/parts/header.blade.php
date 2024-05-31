@@ -9,24 +9,30 @@
                             <ul class="list list-unstyled list-inline mb-0">
                                 <li class="list-inline-item text-color-dark me-md-4 mb-0">
                                     <i
-                                        class="icons icon-phone text-color-primary text-4 position-relative top-2 me-1"></i>
-                                    <a href="tel:+959765432123"
+                                        class="icons icon-phone text-color-primary text-4 position-relative top-2 me-1"></i>+
+                                        @foreach ($header as $item)
+                                             <a href="tel:{{$item->phone}}"
                                         class="text-color-dark text-color-hover-primary text-decoration-none">
-                                        <strong>(+95) 9765432123</strong>
+                                        <strong>{{$item->phone}}</strong>
                                     </a>
+                                        @endforeach                                   
                                 </li>
                                 <li class="list-inline-item text-color-dark me-4 mb-0 d-none d-md-inline-block">
                                     <i
                                         class="icons icon-envelope text-color-primary text-4 position-relative top-4 me-1"></i>
-                                    <a href="mailto:info@yourcompany.com"
+                                        @foreach ($header as $item)
+                                    <a href="mailto:{{$item->email}}"
                                         class="text-color-dark text-color-hover-primary text-decoration-none text-2">
-                                        info@yourcompany.com
+                                        {{$item->email}}
                                     </a>
+                                    @endforeach
                                 </li>
                                 <li class="list-inline-item text-color-dark text-2 mb-0 d-none d-lg-inline-block">
                                     <i
                                         class="icons icon-calendar text-color-primary text-3-5 position-relative top-1 me-1"></i>
-                                    Mon - Fri 9am - 6pm
+                                        @foreach ($header as $item)
+                                            {{$item->open_hour}}
+                                        @endforeach
                                 </li>
                             </ul>
                         </div>
@@ -34,12 +40,18 @@
                     <div class="header-column justify-content-end">
                         <div class="header-row">
                             <ul class="header-social-icons social-icons social-icons-clean d-none d-lg-block">
-                                <li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank"
+                                @foreach ($header as $item)
+                                <li class="social-icons-facebook"><a href="{{url( $item->fb_link)}}" target="_blank"
                                         title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                <li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank"
+                                @endforeach
+                                @foreach ($header as $item)
+                                <li class="social-icons-twitter"><a href="{{url( $item->twitter_link)}}" target="_blank"
                                         title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                                <li class="social-icons-instagram"><a href="http://www.instagram.com/" target="_blank"
+                                @endforeach
+                                @foreach ($header as $item)
+                                <li class="social-icons-instagram"><a href="{{url( $item->ig_link)}}" target="_blank"
                                         title="Instagram"><i class="fab fa-instagram"></i></a></li>
+                                @endforeach
                             </ul>
                             <a href="{{route('user-login')}}"
                                 class="btn btn-primary btn-px-4 py-3 font-weight-bold text-2 rounded-0 ms-lg-4">Login/Signup</a>

@@ -120,24 +120,25 @@
 
             @can('view service')
             <li class="{{ request()->is('admin/feedback*') ? 'active' : '' }}">
-                <a href=""><i class="fa fa-users"></i> <span class="nav-label"> Service/ Survey Form </span><span
+                <a href=""><i class="fa fa-paper-plane" aria-hidden="true"></i> <span class="nav-label"> Service/ Survey Form </span><span
                         class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
                     @can('view service')
                     <li class="{{request()->is('admin/feedback*') ? 'active' : ''}}">
-                        <a href="{{ route('feedback.index') }}"> <span class="nav-label">Customer Feedback Form</span></a>
-                    @endcan
-                    @can('view contactform')
+                        <a href="{{ route('feedback.index') }}"> <span class="nav-label">Customer Feedback
+                                Form</span></a>
+                        @endcan
+                        @can('view contactform')
                     <li class="{{request()->is('admin/contact/contactform*') ? 'active' : ''}}">
                         <a href="{{route('contactform.index')}}"> <span class="nav-label">Contact Form</span></a>
-                    @endcan
+                        @endcan
                 </ul>
             </li>
             @endcan
 
             @can('view testimonial')
             <li class="{{ request()->is('admin/testimonial*') ? 'active' : '' }}">
-                <a href="{{route('testimonial.index')}}"><i class="fa fa-users"></i> <span class="nav-label"> Client
+                <a href="{{route('testimonial.index')}}"><i class="fa fa-comments" aria-hidden="true"></i> <span class="nav-label"> Client
                         /Testimonial </span></a>
             </li>
             @endcan
@@ -146,11 +147,11 @@
             <li class="{{request()->is('admin/user*') ? 'active' : ''}}">
                 <a href="{{ route('userIndex') }}"><i class="fa fa-user-o"></i> <span class="nav-label">Admin
                         Users</span></a>
-            @endcan
+                @endcan
 
                 @can('view allpage')
             <li class="{{ request()->is('admin/allpage*') ? 'active' : '' }}">
-                <a href=""><i class="fa fa-users"></i> <span class="nav-label"> All Page </span><span
+                <a href=""><i class="fa fa-asterisk" aria-hidden="true"></i> <span class="nav-label"> All Page </span><span
                         class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
                     @can('view allpage')
@@ -184,7 +185,8 @@
                         <ul class="nav nav-second-level collapse">
                             @can('view companypolicy')
                             <li class="{{request()->is('admin/allpage/companypolicy*') ? 'active' : ''}}">
-                                <a href="{{route('about.companypolicy')}}"> <span class="nav-label">Company Policy Page</span></a>
+                                <a href="{{route('about.companypolicy')}}"> <span class="nav-label">Company Policy
+                                        Page</span></a>
                             </li>
                             @endcan
                             @can('view company')
@@ -194,17 +196,20 @@
                             @endcan
                             @can('view companydetail')
                             <li class="{{request()->is('admin/allpage/companydetail*') ? 'active' : ''}}">
-                                <a href="{{route('about.companydetail')}}"> <span class="nav-label">Company Detail Page</span></a>
+                                <a href="{{route('about.companydetail')}}"> <span class="nav-label">Company Detail
+                                        Page</span></a>
                             </li>
                             @endcan
                             @can('view companyfounder')
                             <li class="{{request()->is('admin/allpage/companyfounder*') ? 'active' : ''}}">
-                                <a href="{{route('about.companyfounder')}}"> <span class="nav-label">Company Founder Page</span></a>
+                                <a href="{{route('about.companyfounder')}}"> <span class="nav-label">Company Founder
+                                        Page</span></a>
                             </li>
                             @endcan
                             @can('view milestone')
                             <li class="{{request()->is('admin/allpage/milestone*') ? 'active' : ''}}">
-                                <a href="{{route('milestone.index')}}"> <span class="nav-label">Milestone Page</span></a>
+                                <a href="{{route('milestone.index')}}"> <span class="nav-label">Milestone
+                                        Page</span></a>
                             </li>
                             @endcan
                         </ul>
@@ -212,26 +217,57 @@
                     @endcan
                     {{-- all about end --}}
 
-                     {{-- all contact start--}}
-                     @can('view contact')
-                     <li class="{{request()->is('admin/allpage/contact*') ? 'active' : ''}}">
-                         <a href=""><i class="fa fa-folder"></i> <span class="nav-label"> Contact Us Page </span><span
-                                 class="fa arrow"></span></a>
-                         <ul class="nav nav-second-level collapse">
-                             @can('view contact')
-                             <li class="{{request()->is('admin/allpage/contact*') ? 'active' : ''}}">
-                                 <a href="{{route('contact.index')}}"> <span class="nav-label">Head Office Page</span></a>
-                             </li>
-                             @endcan
-                             @can('view ourbranch')
-                             <li class="{{request()->is('admin/allpage/ourbranch*') ? 'active' : ''}}">
-                                 <a href="{{route('ourbranch.index')}}"> <span class="nav-label">Our Branch </span></a>
-                             </li>
-                             @endcan
-                         </ul>
-                     </li>
-                     @endcan
-                     {{-- all contact us end --}}
+                    {{-- all contact start--}}
+                    @can('view contact')
+                    <li class="{{request()->is('admin/allpage/contact*') ? 'active' : ''}}">
+                        <a href=""><i class="fa fa-phone" aria-hidden="true"></i> <span class="nav-label"> Contact Us Page </span><span
+                                class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            @can('view contact')
+                            <li class="{{request()->is('admin/allpage/contact*') ? 'active' : ''}}">
+                                <a href="{{route('contact.index')}}"> <span class="nav-label">Head Office
+                                        Page</span></a>
+                            </li>
+                            @endcan
+                            @can('view ourbranch')
+                            <li class="{{request()->is('admin/allpage/ourbranch*') ? 'active' : ''}}">
+                                <a href="{{route('ourbranch.index')}}"> <span class="nav-label">Our Branch </span></a>
+                            </li>
+                            @endcan
+                        </ul>
+                    </li>
+                    @endcan
+                    {{-- all contact us end --}}
+                    {{-- all footer start--}}
+                    @can('view footer')
+                    <li class="{{request()->is('admin/allpage/footer*') ? 'active' : ''}}">
+                        <a href=""><i class="fa fa-address-book" aria-hidden="true"></i> <span class="nav-label"> Footer </span><span
+                                class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            @can('view footer')
+                            <li class="{{request()->is('admin/allpage/footer*') ? 'active' : ''}}">
+                                <a href="{{route('footer.index')}}"> <span class="nav-label">Footer Page</span></a>
+                            </li>
+                            @endcan
+                        </ul>
+                    </li>
+                    @endcan
+                    {{-- all footer end --}}
+                    {{-- all header start--}}
+                    @can('view header')
+                    <li class="{{request()->is('admin/allpage/header*') ? 'active' : ''}}">
+                        <a href=""><i class="fa fa-bars" aria-hidden="true"></i> <span class="nav-label"> Header </span><span
+                                class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse">
+                            @can('view header')
+                            <li class="{{request()->is('admin/allpage/header*') ? 'active' : ''}}">
+                                <a href="{{route('header.index')}}"> <span class="nav-label">Header Page</span></a>
+                            </li>
+                            @endcan
+                        </ul>
+                    </li>
+                    @endcan
+                    {{-- all header end --}}
                 </ul>
             </li>
             @endcan

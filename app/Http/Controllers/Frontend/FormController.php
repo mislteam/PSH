@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Form;
+use App\Models\Footer;
+use App\Models\Header;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
@@ -13,7 +15,9 @@ class FormController extends Controller
     //user service form
     public function serviceView()
     {
-        return  view('frontend.detail.serviceform.serviceform');
+        $footer = Footer::get();
+        $header = Header::get();
+        return  view('frontend.detail.serviceform.serviceform',compact('footer','header'));
     }
 
     // service store

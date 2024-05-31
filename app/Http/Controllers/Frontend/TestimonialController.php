@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Footer;
+use App\Models\Header;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Testimonial;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 
@@ -13,7 +15,9 @@ class TestimonialController extends Controller
     // user testimonial form
     public function testimonialView()
     {
-        return  view('frontend.detail.clienttestimonial.testimonial');
+        $footer = Footer::get();
+        $header = Header::get();
+        return  view('frontend.detail.clienttestimonial.testimonial',compact('footer','header'));
     }
 
     // service store

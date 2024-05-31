@@ -8,6 +8,8 @@ use App\Http\Controllers\Backend\NewController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\FormController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Backend\FooterController;
+use App\Http\Controllers\Backend\HeaderController;
 use App\Http\Controllers\Backend\AboutUsController;
 use App\Http\Controllers\Backend\AccountController;
 use App\Http\Controllers\Backend\ProductController;
@@ -18,9 +20,9 @@ use App\Http\Controllers\Backend\FeedbackController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Backend\ContactUsController;
 use App\Http\Controllers\Backend\DashboardController;
+
 use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Frontend\UserloginController;
-
 use App\Http\Controllers\Backend\LandingPageController;
 use App\Http\Controllers\Backend\NewCategoryController;
 use App\Http\Controllers\Backend\OurCustomerController;
@@ -337,6 +339,16 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
         Route::get('ourbranch', [ContactUsController::class, 'ourbranchindex'])->name('ourbranch.index');
         Route::get('ourbranch/edit/{id}', [ContactUsController::class, 'ourbranchedit'])->name('ourbranch.edit');
         Route::post('ourbranch/edit/{id}', [ContactUsController::class, 'ourbranchupdate'])->name('ourbranch.update');
+
+        // header 
+        Route::get('header', [HeaderController::class, 'headerindex'])->name('header.index');
+        Route::get('header/edit/{id}', [HeaderController::class, 'headeredit'])->name('header.edit');
+        Route::post('header/edit/{id}', [HeaderController::class, 'headerupdate'])->name('header.update');
+
+         // footer 
+         Route::get('footer', [FooterController::class, 'footerindex'])->name('footer.index');
+         Route::get('footer/edit/{id}', [FooterController::class, 'footeredit'])->name('footer.edit');
+         Route::post('footer/edit/{id}', [FooterController::class, 'footerupdate'])->name('footer.update');
     });
 
     // Account 

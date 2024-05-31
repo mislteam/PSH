@@ -3,9 +3,9 @@
         <div class="row py-4">
             <div class="col-lg-3 mb-5 mb-lg-0">
                 <h5 class="text-transform-none font-weight-bold text-color-light text-5-5 mb-4">About Us</h5>
-                <p class="text-3-5">We duly incorporated under the Myanmar Citizen's Investment Law of the Uion of
-                    Myanmar. Company changed to corporate identy by the merger of Pyei Sone Hein Company Limited and ZIN
-                    9 Company Limited in 2009.</p>
+                @foreach ($footer as $item)
+                <p class="text-3-5">{{$item->about_des}}</p>
+                @endforeach              
                 <a href="{{route('home')}}" class="text-decoration-none">
                     <img src="{{asset('image/logo/'.generalSetting('logo'))}}" class="img-fluid" alt="" />
                 </a>
@@ -52,12 +52,13 @@
                                     class="icons icon-phone text-color-primary text-5-5 position-relative top-2 me-2"></i>
                             </div>
                             <div class="col-lg-10">
-                                <a href="#" class="text-color-light text-decoration-none text-4">(+95) 9-4431
-                                    35270</a>,<br>
-                                <a href="#" class="text-color-light text-decoration-none text-4">(+95) 9-4431
+                                @foreach ($footer as $item)
+                                <d href="#" class="text-color-light text-decoration-none text-4">{{$item->phone}}</d>,<br>
+                                {{-- <a href="#" class="text-color-light text-decoration-none text-4">(+95) 9-4431
                                     45270</a>,<br>
                                 <a href="#" class="text-color-light text-decoration-none text-4">(+95) 1 515203</a>,<br>
-                                <a href="#" class="text-color-light text-decoration-none text-4">(+95 ) 1537530</a>
+                                <a href="#" class="text-color-light text-decoration-none text-4">(+95 ) 1537530</a> --}}
+                                @endforeach
                             </div>
                         </div>
                     </li>
@@ -66,10 +67,11 @@
                             <div class="col-lg-2"><i
                                     class="icons icon-location-pin text-color-primary text-6 position-relative top-6 me-2"></i>
                             </div>
+                            @foreach ($footer as $item)
                             <div class="col-lg-10">
-                                No.(29), Shwe Padauk Yeikmon, Bayintnaung Main Road, Kamayut Tsp, Yangon (11041), Union
-                                of Myanmar
+                                {{$item->address}}
                             </div>
+                            @endforeach
                         </div>
                     </li>
                     <li class="mb-3">
@@ -78,24 +80,32 @@
                                     class="icons icon-envelope text-color-primary text-6 position-relative top-6 me-2"></i>
                             </div>
                             <div class="col-lg-10">
+                                @foreach ($footer as $item)
                                 <a href="mailto:info@yourcompany.com"
-                                    class="text-color-light text-decoration-none text-4">info@yourcompany.com</a>
+                                class="text-color-light text-decoration-none text-4">{{$item->email}}</a>
+                                @endforeach                               
                             </div>
                         </div>
                     </li>
                 </ul>
                 <ul class="custom-social-icons-style-1 social-icons social-icons-clean">
                     <li class="social-icons-instagram">
-                        <a href="#" class="no-footer-css" target="_blank" title="Instagram"><i
+                        @foreach ($footer as $item)
+                        <a href="{{url($item->ig_link)}}" class="no-footer-css" target="_blank" title="Instagram"><i
                                 class="fab fa-instagram"></i></a>
+                        @endforeach
                     </li>
                     <li class="social-icons-twitter mx-4">
-                        <a href="#" class="no-footer-css" target="_blank" title="Twitter"><i
+                        @foreach ($footer as $item)
+                        <a href="{{url($item->twitter_link)}}" class="no-footer-css" target="_blank" title="Twitter"><i
                                 class="fab fa-twitter"></i></a>
+                        @endforeach
                     </li>
                     <li class="social-icons-facebook">
-                        <a href="#" class="no-footer-css" target="_blank" title="Facebook"><i
+                        @foreach ($footer as $item)
+                        <a href="{{url($item->facebook_link)}}" class="no-footer-css" target="_blank" title="Facebook"><i
                                 class="fab fa-facebook-f"></i></a>
+                        @endforeach
                     </li>
                 </ul>
             </div>

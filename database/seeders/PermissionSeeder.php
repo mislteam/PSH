@@ -131,6 +131,14 @@ class PermissionSeeder extends Seeder
             'create contactform',
             'edit contactform',
             'delete contactform',
+            'view footer',
+            'create footer',
+            'edit footer',
+            'delete footer',
+            'view header',
+            'create header',
+            'edit header',
+            'delete header',
         ];
 
         foreach ($permissions as $permission) {
