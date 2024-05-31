@@ -80,14 +80,15 @@
                     <h3 class="d-block alternative-font-4 text-color-primary font-weight-medium text-4 mb-0 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="400">Contact Us</h3>
                     <h2 class="text-color-dark font-weight-bold text-9 pb-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="600">Send A Message</h2>
                 </div>
-                <form class="contact-form custom-form-style-1 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="800" action="" method="POST">
+                <form class="contact-form custom-form-style-1 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="800" action="{{route('contactformstore')}}" method="POST">
+                    @csrf
                     <div class="contact-form-success alert alert-success d-none mt-4">
                         <strong>Success!</strong> Your request has been sent to us.
                     </div>
 
-                    <div class="contact-form-error alert alert-danger d-none mt-4">
-                        <strong>Error!</strong> There was an error sending your request.
-                        <span class="mail-error-message text-1 d-block"></span>
+                    <div class="contact-form-error alert alert-success d-none mt-4">
+                        <strong>Success!</strong> Your request has been sent to us.
+                        {{-- <span class="mail-error-message text-1 d-block"></span> --}}
                     </div>
 
                     <div class="row">
@@ -120,7 +121,7 @@
         </div>
     </div>
     @foreach ($ourbranch as $item)
-    <section class=" @if($loop->odd) section @endif" m-0 border-0 py-2">
+    <section class=" @if($loop->odd) section @endif m-0 border-0 py-2">
         <div class="container py-5 my-3">
             <div class="row">
                 <div class="col text-center">

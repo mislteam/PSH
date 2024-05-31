@@ -1,12 +1,9 @@
 <?php
 
-use App\Models\Testimonial;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\Auth\LoginController;;
-
 use App\Http\Controllers\Backend\NewController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\FormController;
@@ -23,6 +20,7 @@ use App\Http\Controllers\Backend\ContactUsController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Frontend\UserloginController;
+
 use App\Http\Controllers\Backend\LandingPageController;
 use App\Http\Controllers\Backend\NewCategoryController;
 use App\Http\Controllers\Backend\OurCustomerController;
@@ -30,12 +28,14 @@ use App\Http\Controllers\Backend\ProductTypeController;
 use App\Http\Controllers\Backend\TechSupportController;
 use App\Http\Controllers\Backend\UserSupportController;
 use App\Http\Controllers\Backend\ProductBrandController;
+use App\Http\Controllers\Frontend\ContactFormController;
 use App\Http\Controllers\Frontend\TestimonialController;
 use App\Http\Controllers\Backend\GeneralSettingController;
 use App\Http\Controllers\Backend\ProductCategoryController;
 use App\Http\Controllers\Backend\ProjectCategoryController;
 use App\Http\Controllers\Backend\ProductSubCategoryController;
 use App\Http\Controllers\Backend\ProjectSubCategoryController;
+use App\Http\Controllers\Backend\ContactFormController as BackendContactFormController;
 use App\Http\Controllers\Backend\TestimonialController as BackendTestimonialController;
 
 // Frontend  Login 
@@ -82,6 +82,10 @@ Route::post('/service-form/store', [FormController::class, 'servicestore'])->nam
 // client testimonial form
 Route::get('/client-testimonial/view', [TestimonialController::class, 'testimonialView'])->name('testimonialView');
 Route::post('/client-testimonial/store', [TestimonialController::class, 'testimonialstore'])->name('testimonialstore');
+
+// contact form
+Route::get('/contact-form/view', [ContactFormController::class, 'contactformview'])->name('contactformview');
+Route::post('/contact-form/store', [ContactFormController::class, 'contactformstore'])->name('contactformstore');
 
 // User guide and technical guide
 Route::get('/userguide', [HomeController::class, 'userguide'])->name('userguide');
@@ -228,6 +232,13 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
         Route::match(['get', 'post'], '/feedback', [FeedbackController::class, 'index'])->name('feedback.index');
         Route::get('/feedback/view/{id}', [FeedbackController::class, 'view'])->name('feedback.view');
         Route::post('/feedback/delete', [FeedbackController::class, 'delete'])->name('feedback.delete');
+    });
+
+     // Contact Form 
+     Route::prefix('contact')->group(function () {
+        Route::match(['get', 'post'], '/contactform', [BackendContactFormController::class, 'contactformindex'])->name('contactform.index');
+        Route::get('/contactform/view/{id}', [BackendContactFormController::class, 'contactformview'])->name('contactform.view');
+        Route::post('/contactform/delete', [BackendContactFormController::class, 'contactformdelete'])->name('contactform.delete');
     });
 
     // Customer testimonial Form 

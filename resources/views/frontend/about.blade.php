@@ -251,10 +251,11 @@
     </section>
     <!-- END CLIENT tESTIMONIAL -->
     <!-- START COMPANY LISTS -->
-    <section class="border-0 m-0 py-2">
-        <div class="container py-5 my-3">
+    
             @foreach ($company->skip(1) as $item)
                 @if ($loop->iteration % 2 != 0)
+                <section class="border-0 m-0 py-2">
+                    <div class="container py-5 my-3">
                     <section class="border-0 m-0 py-2">
                         <div class="container py-5 my-3">
                             <h2 class="alternative-font-4 text-color-primary font-weight-semibold text-4 mb-2">Companies</h2>
@@ -289,7 +290,11 @@
                             </div>
                         </div>
                     </section>
+                    </div>
+                </section>
                 @else
+                <section class=" @if($loop->odd) section @endif border-0 m-0 py-2">
+                    <div class="container py-5 my-3">
                     <section class="border-0 m-0 py-2">
                         <div class="container py-5 my-3"> 
                             <div class="row align-items-center justify-content-center">
@@ -324,10 +329,11 @@
                             </div>
                         </div>
                     </section>
+                </div>
+            </section>
                 @endif
             @endforeach
-        </div>
-    </section>
+        
     <!-- END COMPANY LISTS -->
 </div>
 @endsection

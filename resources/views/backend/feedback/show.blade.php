@@ -29,7 +29,7 @@
                             <tbody>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">Customer Name</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">Customer Name</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ $service->name }}
@@ -37,7 +37,7 @@
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">E-Mail Address</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">E-Mail Address</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ $service->email }}
@@ -45,7 +45,7 @@
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">Phone Number</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">Phone Number</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ $service->phone }}
@@ -53,7 +53,7 @@
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">Address</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">Address</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ $service->address }}
@@ -61,7 +61,7 @@
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">Series Number</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">Series Number</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ $service->series_number }}
@@ -69,7 +69,7 @@
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">Product Type</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">Product Type</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ $service->product_type }}
@@ -77,12 +77,12 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">(၀န်ထမ်းများ၏ ၀န်ဆောင်မှု) STAFF & CREW MEMBERS</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">(၀န်ထမ်းများ၏ ၀န်ဆောင်မှု) STAFF & CREW MEMBERS</h5>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">1. (ပြေပြစ်စွာပြောဆိုဆက်ဆံနိုင်မှု) Communication Skills</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">1. (ပြေပြစ်စွာပြောဆိုဆက်ဆံနိုင်မှု) Communication Skills</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ mapCommunication($service->communication) }}
@@ -90,7 +90,7 @@
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">2. (ဖော်ရွေစွာ ကူညီပေးနိုင်မှု) Friendliness,helpfulness</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">2. (ဖော်ရွေစွာ ကူညီပေးနိုင်မှု) Friendliness,helpfulness</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ mapCommunication($service->friendliness) }}
@@ -98,7 +98,7 @@
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">3. (စက်သုံးစွဲသူတောင်းဆိုချက်အားဖြည့်စည်းပေးနိုင်မှု)Follow up of Customer request</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">3. (စက်သုံးစွဲသူတောင်းဆိုချက်အားဖြည့်စည်းပေးနိုင်မှု)Follow up of Customer request</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ mapCommunication($service->customer_request) }}
@@ -106,7 +106,7 @@
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">4. (၀န်ထမ်းများစွမ်းဆောင်ရည်) Staff Attitude and Performance</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">4. (၀န်ထမ်းများစွမ်းဆောင်ရည်) Staff Attitude and Performance</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ mapCommunication($service->performance) }}
@@ -114,7 +114,7 @@
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">5. (ချို့ယွင်းမှုအားစစ်ဆေးရာတွင် စေ့စပ်သေချာမှုရှိခြင်း) Meticulous Inspection</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">5. (ချို့ယွင်းမှုအားစစ်ဆေးရာတွင် စေ့စပ်သေချာမှုရှိခြင်း) Meticulous Inspection</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ mapCommunication($service->meticulous_inspection) }}
@@ -122,7 +122,7 @@
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">6. (ပစ္စည်းပို့ဆောင်ရာတွင် တိကျမှုရှိခြင်း) Delivery Time</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">6. (ပစ္စည်းပို့ဆောင်ရာတွင် တိကျမှုရှိခြင်း) Delivery Time</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ mapCommunication($service->delivery_time) }}
@@ -130,12 +130,12 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">(စက်ပစ္စည်း၏ အရည်အသွေး) PRODUCT QUALITY</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">(စက်ပစ္စည်း၏ အရည်အသွေး) PRODUCT QUALITY</h5>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">1. (အချိန်နှင့်တပြေးညီ ၀န်ဆောင်မှုပေးခြင်း) Service In time</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">1. (အချိန်နှင့်တပြေးညီ ၀န်ဆောင်မှုပေးခြင်း) Service In time</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ mapCommunication($service->service_time) }}
@@ -143,7 +143,7 @@
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">2. (ကုန်ပစ္စည်းကြံ့ခိုင်မှု) Product Structure</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">2. (ကုန်ပစ္စည်းကြံ့ခိုင်မှု) Product Structure</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ mapCommunication($service->product_structure) }}
@@ -151,7 +151,7 @@
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">3. (စက်အပိုပစ္စည်းစျေးနူန်း) Spare part Charges</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">3. (စက်အပိုပစ္စည်းစျေးနူန်း) Spare part Charges</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ mapCommunication($service->spare_part_charges) }}
@@ -159,7 +159,7 @@
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">4. (ပြင်ပြီးစက်သုံးစွဲရာတွင် အဆင်ပြေ ယုံကြည်စိတ်ချမှုရှိခြင်း) Confidence after Service</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">4. (ပြင်ပြီးစက်သုံးစွဲရာတွင် အဆင်ပြေ ယုံကြည်စိတ်ချမှုရှိခြင်း) Confidence after Service</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ mapCommunication($service->confidence_after_service) }}
@@ -167,7 +167,7 @@
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">5. (အလေးချိန် ချိန််တွယ်ရာတွင် တိကျမှန်ကန်မှုရှိခြင်း) Accuracy Weight</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">5. (အလေးချိန် ချိန််တွယ်ရာတွင် တိကျမှန်ကန်မှုရှိခြင်း) Accuracy Weight</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ mapCommunication($service->accuracy_weight) }}
@@ -175,7 +175,7 @@
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">6. (သုံးစွဲရာတွင် လွယ်ကူမှု) Easy to use</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">6. (သုံးစွဲရာတွင် လွယ်ကူမှု) Easy to use</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ mapCommunication($service->easy_to_use) }}
@@ -183,7 +183,7 @@
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">7. (နည်းပညာဆိုင်ရာ အရည်အသွေး) Technical Quality</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">7. (နည်းပညာဆိုင်ရာ အရည်အသွေး) Technical Quality</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ mapCommunication($service->technical_quality) }}
@@ -191,7 +191,7 @@
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">(၀န်ဆောင်မှုပေးခြင်း) Overall rating of services</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">(၀န်ဆောင်မှုပေးခြင်း) Overall rating of services</h5>
                                     </td>
                                     <td class="project-title">
                                         {{ mapCommunication($service->overall_rating_services) }}
@@ -199,7 +199,7 @@
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">SUGGESTIONS TO IMPROVE OUR SERVICE</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">SUGGESTIONS TO IMPROVE OUR SERVICE</h5>
                                     </td>
                                     <td class="project-title">
                                         {{$service->suggesstions}}
@@ -207,7 +207,7 @@
                                 </tr>
                                 <tr>
                                     <td class="project-title">
-                                        <h6 class="pb-0 mb-0 fw-bold">OTHER COMPLAINT</h6>
+                                        <h5 class="pb-0 mb-0 fw-bold">OTHER COMPLAINT</h5>
                                     </td>
                                     <td class="project-title">
                                         {{$service->complaint}}

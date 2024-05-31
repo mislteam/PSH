@@ -125,9 +125,12 @@
                 <ul class="nav nav-second-level collapse">
                     @can('view service')
                     <li class="{{request()->is('admin/feedback*') ? 'active' : ''}}">
-                        <a href="{{ route('feedback.index') }}"> <span class="nav-label">Customer Feedback
-                                Form</span></a>
-                        @endcan
+                        <a href="{{ route('feedback.index') }}"> <span class="nav-label">Customer Feedback Form</span></a>
+                    @endcan
+                    @can('view contactform')
+                    <li class="{{request()->is('admin/contact/contactform*') ? 'active' : ''}}">
+                        <a href="{{route('contactform.index')}}"> <span class="nav-label">Contact Form</span></a>
+                    @endcan
                 </ul>
             </li>
             @endcan
@@ -143,7 +146,7 @@
             <li class="{{request()->is('admin/user*') ? 'active' : ''}}">
                 <a href="{{ route('userIndex') }}"><i class="fa fa-user-o"></i> <span class="nav-label">Admin
                         Users</span></a>
-                @endcan
+            @endcan
 
                 @can('view allpage')
             <li class="{{ request()->is('admin/allpage*') ? 'active' : '' }}">

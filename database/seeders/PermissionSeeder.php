@@ -127,6 +127,10 @@ class PermissionSeeder extends Seeder
             'create ourbranch',
             'edit ourbranch',
             'delete ourbranch',
+            'view contactform',
+            'create contactform',
+            'edit contactform',
+            'delete contactform',
         ];
 
         foreach ($permissions as $permission) {
