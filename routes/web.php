@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;;
+
 use App\Http\Controllers\Backend\NewController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\FormController;
@@ -15,12 +16,13 @@ use App\Http\Controllers\Backend\AccountController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProjectController;
 use App\Http\Controllers\Backend\SpecialController;
+use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\FeedbackController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Backend\ContactUsController;
-use App\Http\Controllers\Backend\DashboardController;
 
+use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Frontend\UserloginController;
 use App\Http\Controllers\Backend\LandingPageController;
@@ -57,6 +59,10 @@ Route::get('/admin/login', [LoginController::class, 'adminLogin'])->name('login.
 
 // email 
 Route::get('/email/verify/{id}', [VerificationController::class, 'verify'])->name('verification.verify');
+
+// google login
+Route::get('auth/{website}', [SocialLoginController::class, 'redirectToGoogle'])->name('googlelogin');
+Route::get('auth/{website}/callback', [SocialLoginController::class, 'handleGoogleCallback']);
 
 // start FrontEnd 
 // Home Page 
@@ -100,7 +106,12 @@ Route::get('/techguide/detail/{id}', [HomeController::class, 'techguidedetail'])
 // user login
 Route::get('/userlogin', [UserloginController::class, 'userlogin'])->name('user-login');
 
+
 Route::middleware(['role:user', 'verified', 'auth', 'checkuserban'])->group(function () {
+    Route::get('/memberform/{id}', [UserloginController::class, 'memberform'])->name('memberform');
+    Route::post('/memberform/update/{id}', [UserloginController::class, 'updatememberinfo'])->name('updatememberinfo');
+    Route::get('/otp', [UserloginController::class, 'otp'])->name('otp');
+    Route::get('/otp-verify', [UserloginController::class, 'otpverify'])->name('otpverifity');
 });
 // End FrontEnd 
 // **************************************************************************************************************************
@@ -236,8 +247,8 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
         Route::post('/feedback/delete', [FeedbackController::class, 'delete'])->name('feedback.delete');
     });
 
-     // Contact Form 
-     Route::prefix('contact')->group(function () {
+    // Contact Form 
+    Route::prefix('contact')->group(function () {
         Route::match(['get', 'post'], '/contactform', [BackendContactFormController::class, 'contactformindex'])->name('contactform.index');
         Route::get('/contactform/view/{id}', [BackendContactFormController::class, 'contactformview'])->name('contactform.view');
         Route::post('/contactform/delete', [BackendContactFormController::class, 'contactformdelete'])->name('contactform.delete');
@@ -345,10 +356,10 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
         Route::get('header/edit/{id}', [HeaderController::class, 'headeredit'])->name('header.edit');
         Route::post('header/edit/{id}', [HeaderController::class, 'headerupdate'])->name('header.update');
 
-         // footer 
-         Route::get('footer', [FooterController::class, 'footerindex'])->name('footer.index');
-         Route::get('footer/edit/{id}', [FooterController::class, 'footeredit'])->name('footer.edit');
-         Route::post('footer/edit/{id}', [FooterController::class, 'footerupdate'])->name('footer.update');
+        // footer 
+        Route::get('footer', [FooterController::class, 'footerindex'])->name('footer.index');
+        Route::get('footer/edit/{id}', [FooterController::class, 'footeredit'])->name('footer.edit');
+        Route::post('footer/edit/{id}', [FooterController::class, 'footerupdate'])->name('footer.update');
     });
 
     // Account 

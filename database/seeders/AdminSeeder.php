@@ -18,6 +18,7 @@ class AdminSeeder extends Seeder
     {
 
         $admin = User::create([
+            'user_id' => 100000,
             'name' => 'admin',
             'email' => 'admin@gmail.com',
             'email_verified_at'=> Carbon::now(),

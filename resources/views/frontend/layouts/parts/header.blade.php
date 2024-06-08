@@ -53,8 +53,15 @@
                                         title="Instagram"><i class="fab fa-instagram"></i></a></li>
                                 @endforeach
                             </ul>
-                            <a href="{{route('user-login')}}"
-                                class="btn btn-primary btn-px-4 py-3 font-weight-bold text-2 rounded-0 ms-lg-4">Login/Signup</a>
+                        @guest
+                            <a href="{{ route('user-login') }}" class="btn btn-primary btn-px-4 py-3 font-weight-bold text-2 rounded-0 ms-lg-4">Login/Signup</a>
+                        @endguest
+                        @auth
+                            <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                @csrf
+                                <button type="submit" class="btn btn-primary btn-px-4 py-3 font-weight-bold text-2 rounded-0 ms-lg-4">Logout</button>
+                            </form>
+                        @endauth
                         </div>
                     </div>
                 </div>

@@ -32,7 +32,7 @@
                                     <h2>Login With Social</h2>
                                 </div>
                                 <ul class="fxt-socials list-unstyled d-block">
-                                    <li class="fxt-google"><a href="member-form.html" title="google"><i class="fab fa-google-plus-g"></i><span>Google</span></a></li>
+                                    <li class="fxt-google"><a href="{{route('googlelogin','google')}}" title="google"><i class="fab fa-google-plus-g"></i><span>Google</span></a></li>
                                     <li class="fxt-facebook"><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i><span>Facebook</span></a></li>
                                 </ul>
                             </div>

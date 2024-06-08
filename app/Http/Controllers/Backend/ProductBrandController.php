@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Product;
 use App\Models\ProductBrand;
 use Illuminate\Http\Request;
 use App\Models\ProductCategory;
 use App\Models\ProductSubCategory;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\ResponseController;
 
@@ -20,15 +18,20 @@ class ProductBrandController extends ResponseController
         return view('backend.productbrand.productbrand', compact('product_brand'));
     }
 
-    // product brand create page
     public function create()
     {
-        $brand = ProductBrand::select('id', 'name')->get();
-        $cat = ProductCategory::all();
-        $subcat = ProductSubCategory::all();
-        return view('backend.productbrand.productbrand-create', compact('brand','cat','subcat'));
+        $brands = ProductBrand::select('id', 'name')->get();
+        $categories = ProductCategory::all();
+        $subcategories = ProductSubCategory::all();
+    
+        // Group subcategories by product_category_id and convert to array
+        $categorySubcategories = $subcategories->groupBy('product_category_id')->map(function($row) {
+            return $row->toArray();
+        })->toArray();
+    
+        return view('backend.productbrand.productbrand-create', compact('brands', 'categories', 'categorySubcategories'));
     }
-
+      
     // product brand store method
     public function store(Request $request)
     {

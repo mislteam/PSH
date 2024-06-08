@@ -47,7 +47,8 @@
     <script src="{{asset('frontend/js/plugins.min.js')}}"></script>
     <script src="{{asset('frontend/js/theme.js')}}"></script>
     <script src="{{asset('frontend/js/views/view.contact.js')}}"></script>
-    <script src="{{asset('frontend/js/demos/demo-law-firm-2.js')}}"></script>
+    <script src="{{asset('frontend/js/main.js')}}"></script>
+    {{-- <script src="{{asset('frontend/js/demos/demo-law-firm-2.js')}}"></script> --}}
     <script src="{{asset('frontend/js/custom.js')}}"></script>
     <script src="{{asset('frontend/js/theme.init.js')}}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO829Lh70CXSuMVljPW0M1mXCEKN2vWrg"></script>

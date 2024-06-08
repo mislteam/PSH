@@ -177,6 +177,7 @@
             </div>
             <div class="row mt-4">
                 @foreach ($product_category as $cat)
+                {{-- @dd($product_category) --}}
                 <div class="col-lg-4 d-flex align-items-stretch my-3">
                     <div class="card custom-card-style-1 border-0 border-radius-0 custom-box-shadow-1 appear-animation animated fadeInUp appear-animation-visible"
                         data-appear-animation="blurIn" data-appear-animation-delay="0" style="animation-delay: 0ms;">
@@ -186,7 +187,9 @@
                             <h2
                                 class="card-title alternative-font-4 text-color-dark font-weight-semibold line-height-1 text-5 mb-3">
                                 {{$cat->name}}</h2>
-                            <a href="{{route('subcategory',['id' => $cat->id])}}">
+                                @foreach ($cat->subcategories as $subcategory)
+                                {{-- @dd($subcategory) --}}
+                                <a href="{{ route('subcategory', [$subcategory->id]) }}">
                                 <span
                                     class="custom-read-more d-inline-flex justify-content-center align-items-center text-3 font-weight-medium svg-fill-color-primary">
                                     More Detail
@@ -199,6 +202,7 @@
                                     </svg>
                                 </span>
                             </a>
+                            @endforeach
                         </div>
                     </div>
                 </div>

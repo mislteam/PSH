@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->default(100205);
+            $table->unsignedBigInteger('user_id')->uniqid();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('login_type')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('product_type_id')->constrained()->onDelete('cascade');

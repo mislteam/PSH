@@ -37,7 +37,7 @@ class HomeController extends Controller
     {
         $brands = ProductBrand::all();
         $news = News::all();
-        $product_category = ProductCategory::all();
+        $product_category = ProductCategory::with('subcategories.brands.products')->get();
         $homepage = LandingPage::all();
         $homeabout = Homeabout::all();
         $aboutcounter = HomeaboutCounter::all();
@@ -46,6 +46,7 @@ class HomeController extends Controller
         $ourcustomers = OurCustomer::all();
         $footer = Footer::all();
         $header = Header::all();
+        // dd($product_category);
         return view('frontend.index', compact('brands', 'news', 'product_category','homepage','homeabout','aboutcounter','special','specialcard','ourcustomers','footer','header'));
     }
 
@@ -70,8 +71,10 @@ class HomeController extends Controller
         // return view('frontend.products', compact('product_category'));
         $footer = Footer::all();
         $header = Header::all();
+        $sub = ProductSubCategory::all();
         $product_category = ProductCategory::with('subcategories.brands.products')->get();
-        return view('frontend.products', compact('product_category','footer','header'));
+        // dd($sub);
+        return view('frontend.products', compact('product_category','footer','header','sub'));
     }
 
     // frontend subcategory page
@@ -213,4 +216,6 @@ class HomeController extends Controller
         $productdetail = Product::find($id);
         return view('frontend.detail.techguidedetail.techguidedetail', compact('techguidedetail', 'productdetail','footer','header'));
     }
+
+   
 }

@@ -38,7 +38,7 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => '/login/google/callback',
+        'redirect' => '/auth/google/callback',
     ],
     'recaptcha' => [
         'key' => env('GOOGLE_RECAPTHCA_KEY'),
