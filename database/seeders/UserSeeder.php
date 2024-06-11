@@ -35,7 +35,9 @@ class UserSeeder extends Seeder
                 'idNumber' => '123456789',
                 'front_img' => 'front-img.png',
                 'back_img' => 'back-img.png',
-                'product_type_id'=> 1
+                'product_type_id'=> 1,
+                'region_id'=>13,
+                'township_id'=>1,
             ]);
             $me->assignRole('user');
         }

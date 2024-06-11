@@ -22,6 +22,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('product_type_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('region_id')->nullable();
+            $table->unsignedBigInteger('township_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

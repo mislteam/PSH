@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\User;
 use App\Models\Footer;
 use App\Models\Header;
+use App\Models\Region;
+use App\Models\ProductType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\ProductType;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class UserloginController extends Controller
@@ -17,7 +18,8 @@ class UserloginController extends Controller
     {
         $footer = Footer::all();
         $header = Header::all();
-        return view('frontend.userlogin', compact('footer', 'header'));
+        $region = Region::all();
+        return view('frontend.userlogin', compact('footer', 'header','region'));
     }
 
     // memberform
@@ -26,8 +28,9 @@ class UserloginController extends Controller
         $footer = Footer::all();
         $header = Header::all();
         $producttype = ProductType::all();
+        $region = Region::all();
         $user = User::find($id);
-        return view('frontend.memberform', compact('footer', 'header', 'user', 'producttype'));
+        return view('frontend.memberform', compact('footer', 'header', 'user', 'producttype','region'));
     }
 
     // update member info
@@ -37,8 +40,8 @@ class UserloginController extends Controller
             'name' => $request->name,
             'phone' => $request->phone,
             'product_type_id' => $request->product_type,
-            // 'township'=>$request->township,
-            // 'region'=>$request->region
+            'region_id'=>$request->region_id,
+            'township_id'=>$request->township_id,
         ];
 
         $user = User::where('id', $id)->update($userinfo);

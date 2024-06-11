@@ -6,8 +6,10 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Footer;
 use App\Models\Header;
-use App\Http\Controllers\Controller;
+use App\Models\Region;
 use App\Models\ProductType;
+use App\Http\Controllers\Controller;
+use App\Models\Township;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -24,6 +26,8 @@ class SocialLoginController extends Controller
         $user = User::where('email', $social_user->getEmail())->first();
         $mytime = Carbon::now();
         $producttype = ProductType::all();
+        $region = Region::all();
+        $township = Township::all();
         $footer = Footer::all();
         $header = Header::all();
         if (!$user) {
@@ -40,12 +44,14 @@ class SocialLoginController extends Controller
                 'front_img' => '',
                 'back_img' => '',
                 'password' => '',
+                'region_id'=>13,
+                'township_id'=>1,
                 'login_type' => $website
             ]);
 
             $user->assignRole('user');
             Auth::login($user);
-            return view('frontend.memberform', compact('user', 'footer', 'header', 'producttype'));
+            return view('frontend.memberform', compact('user', 'footer', 'header', 'producttype','region','township'));
         } else {
             Auth::login($user);
             return redirect()->route('home');

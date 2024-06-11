@@ -23,6 +23,7 @@ use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Backend\ContactUsController;
 
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Frontend\TownshipController;
 use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Frontend\UserloginController;
 use App\Http\Controllers\Backend\LandingPageController;
@@ -112,6 +113,7 @@ Route::middleware(['role:user', 'verified', 'auth', 'checkuserban'])->group(func
     Route::post('/memberform/update/{id}', [UserloginController::class, 'updatememberinfo'])->name('updatememberinfo');
     Route::get('/otp', [UserloginController::class, 'otp'])->name('otp');
     Route::get('/otp-verify', [UserloginController::class, 'otpverify'])->name('otpverifity');
+    Route::get('/fetch-townships', [TownshipController::class,'fetchTownships'])->name('fetchTownships');
 });
 // End FrontEnd 
 // **************************************************************************************************************************

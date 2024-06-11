@@ -46,7 +46,9 @@ class DatabaseSeeder extends Seeder
             ContactUsSeeder::class,
             OurBranchSeeder::class,
             FooterSeeder::class,
-            HeaderSeeder::class,            
+            HeaderSeeder::class,
+            RegionSeeder::class, 
+            TownshipSeeder::class          
         ]);
     }
 }
