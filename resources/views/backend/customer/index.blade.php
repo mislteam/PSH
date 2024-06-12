@@ -88,7 +88,7 @@
                                           @endif
                                        </td>
                                        <td>
-                                        {{$user->product_type_id}}
+                                        {{$user->productType->name}}
                                      </td>
                                        <td>
                                            <div class="d-flex align-items-center">

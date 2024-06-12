@@ -45,7 +45,8 @@ class CustomerController extends Controller
         $customer = $query->whereHas('roles', function ($q) {
             $q->where('name', 'user');
         })->paginate($perpage)->appends($request->except('page'));
-        return view('backend.customer.index', compact('customer'));
+        $product_type = ProductType::all();
+        return view('backend.customer.index', compact('customer','product_type'));
     }
 
     // customer Delete
@@ -64,6 +65,8 @@ class CustomerController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        return view('backend.customer.show', compact('user'));
+        $product_type = ProductType::find($id);
+        // dd($product_type);
+        return view('backend.customer.show', compact('user','product_type'));
     }
 }

@@ -22,12 +22,12 @@ class GeneralSettingSeeder extends Seeder
         ]);
         GeneralSetting::create([
             'name' => 'title',
-            'value' => 'MMQRGenerator',
+            'value' => 'PSH GLOBAL',
             'type' => 'string',
         ]);
         GeneralSetting::create([
             'name' => 'Website Name',
-            'value' => 'MMQRGenerator',
+            'value' => 'PSH GLOBAL',
             'type' => 'string',
         ]);
     }

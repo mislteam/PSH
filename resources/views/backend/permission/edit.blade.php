@@ -23,7 +23,7 @@
     </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight">  
-    <div class="row">
+    <div class="row mb-5">
         @foreach ($permissions as $permission)
         <div class="col-md-3 my-3">
             <input type="checkbox" id="{{$role->id}}{{$permission->id}}" class="switchery" {{ $role->hasPermissionTo($permission->name) ? 'checked' : '' }} 

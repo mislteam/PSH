@@ -26,6 +26,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Frontend\TownshipController;
 use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Frontend\UserloginController;
+use App\Http\Controllers\Backend\ActivityLogController;
 use App\Http\Controllers\Backend\LandingPageController;
 use App\Http\Controllers\Backend\NewCategoryController;
 use App\Http\Controllers\Backend\OurCustomerController;
@@ -383,6 +384,9 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
         Route::get('admin/general', [GeneralSettingController::class, 'index'])->name('generalIndex');
         Route::get('/general/edit/{id}', [GeneralSettingController::class, 'edit'])->name('generalEdit');
         Route::put('/general/edit/{id}', [GeneralSettingController::class, 'update'])->name('generalUpdate');
+
+        // activity log
+        Route::get('admin/activitylog', [ActivityLogController::class, 'activitylog'])->name('activitylog');
     });
 
     // change State 

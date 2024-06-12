@@ -71,7 +71,7 @@ class ProductCategoryController extends ResponseController
             $category['category_image'] = $fileName;
         }
 
-        ProductCategory::where('id', $id)->update($category, $fileName);
+        ProductCategory::where('id', $id)->update($category);
         return redirect()->route('productcategory.index')->with('message', 'Product-category updated successfully');;
     }
 

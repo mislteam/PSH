@@ -149,7 +149,7 @@
                         Users</span></a>
                 @endcan
 
-                @can('view allpage')
+            @can('view allpage')
             <li class="{{ request()->is('admin/allpage*') ? 'active' : '' }}">
                 <a href=""><i class="fa fa-asterisk" aria-hidden="true"></i> <span class="nav-label"> All Page </span><span
                         class="fa arrow"></span></a>
@@ -289,6 +289,10 @@
                     @can('view permissions')
                     <li class="{{ request()->is('admin/setting/permission*') ? 'active' : '' }}"><a
                             href="{{ route('permissionIndex') }}"> Admin Role </a></li>
+                    @endcan
+                    @can('view activity log')
+                    <li class="{{ request()->is('admin/setting/activitylog*') ? 'active' : '' }}"><a
+                            href="{{ route('activitylog') }}"> Activity Log </a></li>
                     @endcan
                 </ul>
             </li>

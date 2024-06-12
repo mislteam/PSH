@@ -20,7 +20,12 @@
 	    </div>
 		<section class="fxt-template-animation fxt-template-layout6" data-bg-image="{{asset('assets/img/login-bg.jpg')}}">
 			<div class="fxt-header">
+				@if (generalSetting('logo') == "logo.png")
+					{{-- <h1>PSH GLOBAL</h1> --}}
+				@else
 				<a href="{{route('home')}}" class="fxt-logo"><img src="{{asset('image/logo/'.generalSetting('logo'))}}" alt="Logo"></a>
+				@endif
+				
 			</div>
 			<div class="fxt-content">
 				<div class="fxt-form">
