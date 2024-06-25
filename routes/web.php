@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;;
 
 use App\Http\Controllers\Backend\NewController;
+use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\FormController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -20,8 +21,8 @@ use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\FeedbackController;
 use App\Http\Controllers\Auth\VerificationController;
-use App\Http\Controllers\Backend\ContactUsController;
 
+use App\Http\Controllers\Backend\ContactUsController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Frontend\TownshipController;
 use App\Http\Controllers\Backend\PermissionController;
@@ -241,6 +242,15 @@ Route::prefix('admin')->middleware(['role:admin|editor|sale|office', 'auth'])->g
         Route::get('/news/edit/{id}', [NewController::class, 'edit'])->name('news.edit');
         Route::post('/news/update/{id}', [NewController::class, 'update'])->name('news.update');
         Route::post('/news/delete', [NewController::class, 'delete'])->name('news.delete');
+    });
+
+    // forum 
+    Route::prefix('forum')->group(function (){
+        Route::get('/post',[PostController::class,'PostIndex'])->name('PostIndex');
+        Route::get('/post/create',[PostController::class,'PostCreate'])->name('PostCreate');
+        Route::post('/post/create',[PostController::class,'PostStore'])->name('PostStore');
+        Route::get('/post/edit/{id}',[PostController::class,'PostEdit'])->name('PostEdit');
+        Route::post('/post/update/{id}',[PostController::class,'PostUpdate'])->name('PostUpdate');
     });
 
     // Customer Feedback Form 

@@ -140,6 +140,10 @@ class PermissionSeeder extends Seeder
             'edit header',
             'delete header',
             'view activity log',
+            'create forum',
+            'edit forum',
+            'delete forum',
+            'view forum',
         ];
 
         foreach ($permissions as $permission) {

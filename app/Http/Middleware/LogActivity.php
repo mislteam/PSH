@@ -332,6 +332,15 @@ class LogActivity
                     break;
                 // General Setting
 
+                 // forum
+                 case 'PostStore':
+                    $activity = 'Forum Category Created';
+                    break;
+                case 'PostUpdate':
+                    $activity = 'Forum Category Updated';
+                    break;
+                // forum
+
                 // Add more cases for other actions as needed
                 default:
                     // // Use a generic activity if none of the specific cases match

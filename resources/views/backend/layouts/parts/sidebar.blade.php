@@ -105,6 +105,26 @@
             </li>
             @endcan
 
+            @can('view forum')
+            <li class="{{ request()->is('admin/post*') ? 'active' : '' }}">
+                <a href=""><i class="fa fa-list-alt"></i> <span class="nav-label"> Forum System </span><span
+                        class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    @can('view forum')
+                    <li class="{{ url()->current() == url('/admin/forum/post') ? 'active' : '' }}">
+                        <a href="{{route('PostIndex')}}"><span class="nav-label">All Category</span></a>
+                    </li>
+                    @endcan
+                    {{-- @can('view newcategory')
+                    <li class="{{ url()->current() == url('/admin/news/new-category') ? 'active' : '' }}">
+                        <a href="{{ route('new-category.index') }}"> <span class="nav-label">News
+                                Category</span></a>
+                    </li>
+                    @endcan --}}
+                </ul>
+            </li>
+            @endcan
+
             @can('view customers')
             <li class="{{ request()->is('admin/customer*') ? 'active' : '' }}">
                 <a href=""><i class="fa fa-users"></i> <span class="nav-label"> Members </span><span
